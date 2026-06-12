@@ -39,7 +39,7 @@ export default function TestimonialsSection() {
           {testimonials.map((testimonial, idx) => (
             <div
               key={idx}
-              className="min-w-[85vw] sm:min-w-[450px] lg:min-w-0 snap-center flex-shrink-0"
+              className="min-w-[85vw] sm:min-w-[450px] lg:min-w-0 snap-center flex-shrink-0 flex flex-col h-full"
             >
               <TestimonialCard
                 text={testimonial.text}

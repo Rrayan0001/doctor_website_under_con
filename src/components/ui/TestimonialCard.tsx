@@ -6,7 +6,7 @@ interface TestimonialCardProps {
 
 export default function TestimonialCard({ text, name, tag }: TestimonialCardProps) {
   return (
-    <div className="relative bg-white p-6 sm:p-8 rounded-card shadow-card hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+    <div className="relative bg-white p-6 sm:p-8 rounded-card shadow-card hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden h-full">
       {/* Decorative Quote Icon Background */}
       <span className="absolute top-2 left-4 font-display text-[120px] leading-none text-primary-muted select-none pointer-events-none opacity-60">
         “
