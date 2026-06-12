@@ -81,7 +81,7 @@ export default function Navbar() {
               className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white font-sans text-sm font-semibold rounded-button shadow-button hover:bg-primary-light transition-all hover:scale-[1.03]"
             >
               <Calendar className="w-4 h-4" />
-              Book Appointment
+              Check Availability
             </a>
           </div>
 
@@ -154,7 +154,7 @@ export default function Navbar() {
           className="w-full text-center py-3 bg-primary text-white font-sans font-semibold rounded-button shadow-button hover:bg-primary-light transition-all inline-flex items-center justify-center gap-2"
         >
           <Calendar className="w-4 h-4" />
-          Book Appointment
+          Check Availability
         </a>
       </div>
     </>

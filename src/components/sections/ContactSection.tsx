@@ -1,85 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import { MapPin, Phone, MessageCircle, Mail, Clock, CheckCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail, Clock } from "lucide-react";
 import SectionHeading from "../ui/SectionHeading";
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    service: "",
-    date: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const services = [
-    "General Gynaecology",
-    "Pregnancy Care",
-    "PCOS Treatment",
-    "Infertility Evaluation",
-    "Laparoscopic Surgery",
-    "High-Risk Pregnancy",
-    "Menstrual Disorder",
-    "Other",
-  ];
-
   const phoneNumber = "919876543210";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I'd%20like%20to%20book%20an%20appointment.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[name];
-        return next;
-      });
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Full name is required";
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!/^\+?([0-9]{2})?[-. ]?([0-9]{5})[-. ]?([0-9]{5})$/.test(formData.phone.replace(/\s+/g, ""))) {
-      newErrors.phone = "Please enter a valid 10-digit phone number";
-    }
-    if (!formData.service) newErrors.service = "Please select a service";
-    return newErrors;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    // Simulate API Submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      // Reset form
-      setFormData({
-        name: "",
-        phone: "",
-        service: "",
-        date: "",
-        message: "",
-      });
-    }, 1500);
-  };
+  const availabilityHours = [
+    { day: "Monday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Tuesday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Wednesday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Thursday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Friday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Saturday", morning: "9:00 AM – 1:00 PM", evening: "5:00 PM – 8:00 PM", status: "Available" },
+    { day: "Sunday", morning: "Closed", evening: "Closed", status: "Closed", closed: true },
+  ];
 
   return (
     <section id="contact" className="py-12 md:py-20 bg-surface scroll-mt-20">
@@ -87,9 +23,9 @@ export default function ContactSection() {
         
         {/* Section Heading */}
         <SectionHeading
-          eyebrow="Contact"
-          heading="Book an Appointment"
-          subheading="Schedule your visit or get in touch with our team for consultations."
+          eyebrow="Contact & Hours"
+          heading="Clinic Location & Availability"
+          subheading="Check our daily practice hours, find clinic coordinates, or reach out directly."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -177,7 +113,7 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Clinic Timings */}
+              {/* Clinic Timings Summary */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
                   <Clock className="w-5 h-5" />
@@ -212,163 +148,92 @@ export default function ContactSection() {
 
           </div>
 
-          {/* Right Column - Appointment Form */}
+          {/* Right Column - Clinic Weekly Availability Calendar */}
           <div className="lg:col-span-7 w-full">
             <div className="bg-white p-5 sm:p-8 md:p-10 rounded-card border border-border-custom shadow-card">
-              
-              {submitSuccess ? (
-                /* Success Message */
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 bg-primary-muted text-primary rounded-full flex items-center justify-center mb-6">
-                    <CheckCircle className="w-10 h-10" />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold text-text-dark mb-3">
-                    Appointment Requested!
-                  </h3>
-                  <p className="font-sans text-sm text-text-mid max-w-sm leading-relaxed mb-8">
-                    Thank you. We have received your preference. Our desk coordinator will call you back within 2 hours to confirm your final slot.
-                  </p>
-                  <button
-                    onClick={() => setSubmitSuccess(false)}
-                    className="px-6 py-2.5 bg-primary text-white font-sans text-sm font-semibold rounded-button shadow-button hover:bg-primary-light transition-all"
+              <h3 className="font-display text-2xl font-bold text-text-dark mb-2">
+                Clinic Practice Schedule
+              </h3>
+              <p className="font-sans text-sm text-text-mid leading-relaxed mb-8">
+                Walk-ins are welcomed. To confirm live waiting times, check holiday hours, or consult online, contact us directly via WhatsApp or Phone call.
+              </p>
+
+              {/* Weekly Availability Grid */}
+              <div className="space-y-4 mb-8">
+                {availabilityHours.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-card border transition-all ${
+                      item.closed
+                        ? "bg-red-50/30 border-red-100/70 text-red-700/80"
+                        : "bg-surface border-border-custom hover:border-primary/20"
+                    }`}
                   >
-                    Request Another Slot
-                  </button>
+                    {/* Day & Status Badge */}
+                    <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                      <span className="font-sans text-sm font-bold text-text-dark min-w-[70px]">
+                        {item.day}
+                      </span>
+                      <span
+                        className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-[6px] ${
+                          item.closed
+                            ? "bg-red-100 text-red-700"
+                            : "bg-primary-muted text-primary"
+                        }`}
+                      >
+                        {item.status}
+                      </span>
+                    </div>
+
+                    {/* Timings */}
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 text-xs font-sans text-text-mid">
+                      {item.closed ? (
+                        <span className="font-semibold italic text-red-500">Emergency calls only</span>
+                      ) : (
+                        <>
+                          <div className="flex items-center">
+                            <span className="text-text-light mr-1">Morning:</span>
+                            <span className="font-semibold text-text-dark">{item.morning}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <span className="text-text-light mr-1">Evening:</span>
+                            <span className="font-semibold text-text-dark">{item.evening}</span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Direct Actions Card */}
+              <div className="bg-primary-muted/40 p-6 rounded-card border border-primary/10 flex flex-col gap-4">
+                <h4 className="font-display text-base font-bold text-primary">
+                  Need Consultation Assistance?
+                </h4>
+                <p className="font-sans text-xs text-text-mid leading-relaxed">
+                  Tap below to chat with our clinic representative on WhatsApp or call our desk to verify slot availability.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 bg-[#25D366] text-white font-sans text-sm font-bold rounded-button shadow-md hover:scale-[1.02] transition-transform text-center flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle className="w-4.5 h-4.5 fill-current" />
+                    Consult on WhatsApp
+                  </a>
+                  <a
+                    href="tel:+919876543210"
+                    className="flex-1 py-3 bg-primary text-white font-sans text-sm font-bold rounded-button shadow-md hover:bg-primary-light hover:scale-[1.02] transition-transform text-center flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-4.5 h-4.5" />
+                    Call Clinic Desk
+                  </a>
                 </div>
-              ) : (
-                /* Form fields */
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  
-                  {/* Name field */}
-                  <div className="flex flex-col font-sans">
-                    <label htmlFor="name" className="text-xs font-bold text-text-mid uppercase tracking-wide mb-2">
-                      Your Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="e.g. Shalini Sharma"
-                      className={`w-full px-4 py-3.5 bg-surface border rounded-[10px] text-sm text-text-dark placeholder-text-light focus:outline-none focus:bg-white transition-all ${
-                        errors.name ? "border-red-500 focus:border-red-500" : "border-border-custom focus:border-primary focus:ring-1 focus:ring-primary"
-                      }`}
-                    />
-                    {errors.name && (
-                      <span className="text-xs text-red-500 mt-1.5">{errors.name}</span>
-                    )}
-                  </div>
+              </div>
 
-                  {/* Phone field */}
-                  <div className="flex flex-col font-sans">
-                    <label htmlFor="phone" className="text-xs font-bold text-text-mid uppercase tracking-wide mb-2">
-                      Phone Number <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="e.g. 9876543210"
-                      className={`w-full px-4 py-3.5 bg-surface border rounded-[10px] text-sm text-text-dark placeholder-text-light focus:outline-none focus:bg-white transition-all ${
-                        errors.phone ? "border-red-500 focus:border-red-500" : "border-border-custom focus:border-primary focus:ring-1 focus:ring-primary"
-                      }`}
-                    />
-                    {errors.phone && (
-                      <span className="text-xs text-red-500 mt-1.5">{errors.phone}</span>
-                    )}
-                  </div>
-
-                  {/* Service select */}
-                  <div className="flex flex-col font-sans">
-                    <label htmlFor="service" className="text-xs font-bold text-text-mid uppercase tracking-wide mb-2">
-                      Select Service <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-3.5 bg-surface border rounded-[10px] text-sm text-text-dark focus:outline-none focus:bg-white transition-all ${
-                        errors.service ? "border-red-500 focus:border-red-500" : "border-border-custom focus:border-primary focus:ring-1 focus:ring-primary"
-                      }`}
-                    >
-                      <option value="">Choose a medical service...</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.service && (
-                      <span className="text-xs text-red-500 mt-1.5">{errors.service}</span>
-                    )}
-                  </div>
-
-                  {/* Preferred Date */}
-                  <div className="flex flex-col font-sans">
-                    <label htmlFor="date" className="text-xs font-bold text-text-mid uppercase tracking-wide mb-2">
-                      Preferred Date (Optional)
-                    </label>
-                    <input
-                      type="date"
-                      id="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3.5 bg-surface border border-border-custom rounded-[10px] text-sm text-text-dark focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                    />
-                  </div>
-
-                  {/* Message field */}
-                  <div className="flex flex-col font-sans">
-                    <label htmlFor="message" className="text-xs font-bold text-text-mid uppercase tracking-wide mb-2">
-                      Additional Info (Optional)
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Mention any symptoms, doctor referrals, or questions here..."
-                      rows={3}
-                      className="w-full px-4 py-3.5 bg-surface border border-border-custom rounded-[10px] text-sm text-text-dark placeholder-text-light focus:outline-none focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 bg-primary text-white font-sans font-semibold rounded-button shadow-button hover:bg-[#145555] active:scale-[0.99] transition-all disabled:bg-primary/50 disabled:pointer-events-none flex items-center justify-center gap-2"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                        Verifying details...
-                      </>
-                    ) : (
-                      "Confirm Appointment Preference"
-                    )}
-                  </button>
-
-                  {/* WhatsApp Fallback */}
-                  <div className="pt-4 border-t border-border-custom flex items-center justify-center gap-2 font-sans text-xs">
-                    <span className="text-text-mid">Prefer WhatsApp?</span>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary-light font-bold flex items-center gap-0.5"
-                    >
-                      Message us directly &rarr;
-                    </a>
-                  </div>
-
-                </form>
-              )}
             </div>
           </div>
 

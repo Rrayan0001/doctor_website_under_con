@@ -6,7 +6,7 @@ import { Calendar } from "lucide-react";
 import StatPill from "../ui/StatPill";
 
 export default function HeroSection() {
-  const handleBookClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const handleAvailabilityClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     e.preventDefault();
     const targetElement = document.querySelector("#contact");
     if (targetElement) {
@@ -15,7 +15,7 @@ export default function HeroSection() {
   };
 
   const phoneNumber = "919876543210";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I'd%20like%20to%20book%20an%20appointment.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
   return (
     <section
@@ -69,11 +69,11 @@ export default function HeroSection() {
           >
             <a
               href="#contact"
-              onClick={handleBookClick}
+              onClick={handleAvailabilityClick}
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-sans font-semibold rounded-button shadow-button hover:bg-primary-light transition-all hover:scale-[1.03]"
             >
               <Calendar className="w-5 h-5" />
-              Book an Appointment
+              Check Availability
             </a>
 
             <a

@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dr-santosh.com"),
   title: "Dr. Santosh | Gynecologist & Women's Health Specialist",
-  description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. Book an appointment today.",
+  description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
   keywords: [
     "gynecologist",
     "obstetrician",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Dr. Santosh | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. Book an appointment today.",
+    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
     images: [
       {
         url: "/images/headshot_navy.jpeg",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Santosh | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. Book an appointment today.",
+    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
     images: ["/images/headshot_navy.jpeg"],
   },
 };

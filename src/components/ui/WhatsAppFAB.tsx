@@ -27,7 +27,7 @@ export default function WhatsAppFAB() {
 
   // Pre-filled WhatsApp message
   const phoneNumber = "919876543210";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I'd%20like%20to%20book%20an%20appointment.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col gap-3.5 z-[999] items-center">
