@@ -57,21 +57,21 @@ function StatCounterItem({ number, suffix, label, icon: Icon, decimals = 0 }: St
   return (
     <div
       ref={containerRef}
-      className="flex flex-col items-center text-center p-6 transition-all duration-300 hover:scale-[1.03]"
+      className="flex flex-col items-center text-center py-2 px-3 md:py-3 md:px-4 transition-all duration-300 hover:scale-[1.05] stat-card-glow rounded-card relative z-10"
     >
       {/* Icon */}
-      <div className="w-12 h-12 bg-primary-muted rounded-full flex items-center justify-center text-primary mb-4 border border-primary-light/10">
-        <Icon className="w-5 h-5" />
+      <div className="w-10 h-10 rounded-full flex items-center justify-center mb-1.5 bg-white/10 border border-white/15 text-accent icon-glow">
+        <Icon className="w-4 h-4" />
       </div>
 
       {/* Number */}
-      <div className="font-display text-4xl sm:text-5xl font-bold text-primary mb-2 flex items-center justify-center">
+      <div className="font-display text-2xl sm:text-3xl font-bold text-white mb-0.5 flex items-center justify-center">
         <span ref={countSpanRef}>0</span>
-        <span>{suffix}</span>
+        <span className="gradient-text-gold">{suffix}</span>
       </div>
 
       {/* Label */}
-      <p className="font-sans text-sm font-semibold text-text-mid tracking-wide">
+      <p className="font-sans text-[11px] sm:text-xs font-semibold text-white/60 tracking-wide">
         {label}
       </p>
     </div>
@@ -111,11 +111,15 @@ export default function StatsCounter() {
   ];
 
   return (
-    <section className="bg-white border-y border-border-custom py-16 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y sm:divide-y-0 lg:divide-x divide-border-custom">
+    <section className="stats-gradient py-6 md:py-8 scroll-mt-20 relative overflow-hidden">
+      {/* Decorative floating orbs */}
+      <div className="orb orb-2 top-[-80px] left-[-100px] opacity-20" />
+      <div className="orb orb-3 bottom-[-60px] right-[-80px] opacity-15" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-0 lg:divide-x divide-white/10">
           {statsList.map((stat, idx) => (
-            <div key={idx} className="sm:border-none">
+            <div key={idx}>
               <StatCounterItem
                 number={stat.number}
                 suffix={stat.suffix}

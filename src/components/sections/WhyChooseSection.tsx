@@ -29,8 +29,11 @@ const features = [
 
 export default function WhyChooseSection() {
   return (
-    <section className="py-12 md:py-20 bg-white scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section className="py-12 md:py-20 section-gradient-white scroll-mt-20 relative overflow-hidden">
+      {/* Subtle mesh pattern */}
+      <div className="absolute inset-0 mesh-pattern opacity-25 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column - Content & Features */}
@@ -47,12 +50,12 @@ export default function WhyChooseSection() {
                 return (
                   <div
                     key={index}
-                    className="flex flex-col gap-3 group hover:translate-y-[-2px] transition-transform duration-200"
+                    className="flex flex-col gap-3 group hover:translate-y-[-4px] transition-all duration-300 p-4 rounded-card hover:bg-white/80 hover:shadow-card"
                   >
-                    <div className="w-10 h-10 bg-primary-muted rounded-[10px] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <div className="w-11 h-11 bg-primary-muted rounded-[12px] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow group-hover:scale-110">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h4 className="font-display text-lg font-bold text-text-dark">
+                    <h4 className="font-display text-lg font-bold text-text-dark group-hover:text-primary transition-colors duration-300">
                       {feature.title}
                     </h4>
                     <p className="font-sans text-sm text-text-mid leading-relaxed">
@@ -72,10 +75,16 @@ export default function WhyChooseSection() {
                 alt="Dr. Santosh Kulkarni in consultations - Women's Specialist"
                 fill
                 sizes="(max-width: 1024px) 100vw, 360px"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              {/* Overlay shading */}
-              <div className="absolute inset-0 bg-gradient-to-t from-text-dark/40 to-transparent pointer-events-none" />
+              {/* Premium gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none opacity-60" />
+              
+              {/* Bottom text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-text-dark/80 to-transparent">
+                <p className="font-display text-lg font-bold text-white">Trusted by Thousands</p>
+                <p className="font-sans text-xs text-white/80">15+ years of dedicated care</p>
+              </div>
             </div>
           </div>
 

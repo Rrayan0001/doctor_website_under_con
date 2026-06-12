@@ -18,8 +18,11 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-12 md:py-20 bg-surface scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="contact" className="py-12 md:py-20 contact-gradient scroll-mt-20 relative">
+      {/* Decorative orb */}
+      <div className="orb orb-1 top-[-100px] left-[-150px] opacity-15" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Heading */}
         <SectionHeading
@@ -34,11 +37,11 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-8">
             
             {/* Info Cards */}
-            <div className="bg-white p-8 rounded-card border border-border-custom shadow-card space-y-6">
+            <div className="glass-card p-8 rounded-card space-y-6">
               
               {/* Address */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col font-sans">
@@ -55,8 +58,8 @@ export default function ContactSection() {
               </div>
 
               {/* Phone */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col font-sans">
@@ -73,8 +76,8 @@ export default function ContactSection() {
               </div>
 
               {/* WhatsApp */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col font-sans">
@@ -96,8 +99,8 @@ export default function ContactSection() {
               </div>
 
               {/* Email */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col font-sans">
@@ -114,8 +117,8 @@ export default function ContactSection() {
               </div>
 
               {/* Clinic Timings Summary */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0">
+              <div className="flex gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:shadow-glow">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col font-sans">
@@ -135,7 +138,7 @@ export default function ContactSection() {
             {/* Google Map Embed */}
             <div className="overflow-hidden rounded-card border border-border-custom shadow-card h-[240px] relative w-full bg-white">
               <iframe
-                title="Dr. Santosh Clinic Map Location"
+                title="Dr. Santosh Kulkarni Clinic Map Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.7562858882823!2d72.8277562761899!3d19.11942008707119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9e061805555%3A0xe54dbe4198d023f0!2sAndheri%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
@@ -150,7 +153,7 @@ export default function ContactSection() {
 
           {/* Right Column - Clinic Weekly Availability Calendar */}
           <div className="lg:col-span-7 w-full">
-            <div className="bg-white p-5 sm:p-8 md:p-10 rounded-card border border-border-custom shadow-card">
+            <div className="glass-card p-5 sm:p-8 md:p-10 rounded-card">
               <h3 className="font-display text-2xl font-bold text-text-dark mb-2">
                 Clinic Practice Schedule
               </h3>
@@ -163,10 +166,10 @@ export default function ContactSection() {
                 {availabilityHours.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-card border transition-all ${
+                    className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-card border transition-all duration-300 ${
                       item.closed
                         ? "bg-red-50/30 border-red-100/70 text-red-700/80"
-                        : "bg-surface border-border-custom hover:border-primary/20"
+                        : "bg-white/60 border-border-custom hover:border-primary/30 hover:bg-white hover:shadow-sm"
                     }`}
                   >
                     {/* Day & Status Badge */}
@@ -207,7 +210,7 @@ export default function ContactSection() {
               </div>
 
               {/* Direct Actions Card */}
-              <div className="bg-primary-muted/40 p-6 rounded-card border border-primary/10 flex flex-col gap-4">
+              <div className="bg-gradient-to-r from-primary-muted/50 to-primary-muted/30 p-6 rounded-card border border-primary/10 flex flex-col gap-4">
                 <h4 className="font-display text-base font-bold text-primary">
                   Need Consultation Assistance?
                 </h4>
@@ -219,14 +222,14 @@ export default function ContactSection() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 bg-[#25D366] text-white font-sans text-sm font-bold rounded-button shadow-md hover:scale-[1.02] transition-transform text-center flex items-center justify-center gap-2"
+                    className="btn-premium flex-1 py-3 bg-[#25D366] text-white font-sans text-sm font-bold rounded-button shadow-md text-center flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-4.5 h-4.5 fill-current" />
                     Consult on WhatsApp
                   </a>
                   <a
                     href="tel:+919876543210"
-                    className="flex-1 py-3 bg-primary text-white font-sans text-sm font-bold rounded-button shadow-md hover:bg-primary-light hover:scale-[1.02] transition-transform text-center flex items-center justify-center gap-2"
+                    className="btn-premium flex-1 py-3 bg-primary text-white font-sans text-sm font-bold rounded-button shadow-md text-center flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4.5 h-4.5" />
                     Call Clinic Desk

@@ -12,24 +12,27 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-text-dark text-white pt-16 pb-8 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="section-gradient-dark text-white pt-16 pb-8 border-t border-white/5 relative overflow-hidden">
+      {/* Decorative orbs */}
+      <div className="orb orb-3 top-[-60px] right-[-80px] opacity-10" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 relative z-10">
         {/* Brand Column */}
         <div className="flex flex-col gap-4">
           <span className="font-display text-2xl font-bold tracking-tight text-white leading-none">
             Dr. Santosh Kulkarni
           </span>
-          <span className="font-sans text-xs text-text-light tracking-wide uppercase leading-none">
+          <span className="font-sans text-xs text-white/70 tracking-wide uppercase leading-none">
             Gynecologist & Women&apos;s Health
           </span>
-          <p className="font-sans text-sm text-text-light leading-relaxed mt-2 max-w-xs">
+          <p className="font-sans text-sm text-white/80 leading-relaxed mt-2 max-w-xs">
             Dedicated to compassionate, evidence-based women&apos;s healthcare. Guiding you through every milestone with clinical excellence and warmth.
           </p>
         </div>
 
         {/* Quick Links Column */}
         <div>
-          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-primary-light mb-6">
+          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
             Quick Links
           </h4>
           <ul className="flex flex-col gap-3">
@@ -44,7 +47,7 @@ export default function Footer() {
                 <a
                   href={link.anchor}
                   onClick={(e) => handleLinkClick(e, link.anchor)}
-                  className="font-sans text-sm text-text-light hover:text-white transition-colors"
+                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 hover:pl-1"
                 >
                   {link.label}
                 </a>
@@ -55,7 +58,7 @@ export default function Footer() {
 
         {/* Services List Column */}
         <div>
-          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-primary-light mb-6">
+          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
             Services
           </h4>
           <ul className="flex flex-col gap-3">
@@ -71,7 +74,7 @@ export default function Footer() {
                 <a
                   href="#services"
                   onClick={(e) => handleLinkClick(e, "#services")}
-                  className="font-sans text-sm text-text-light hover:text-white transition-colors"
+                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300 hover:pl-1"
                 >
                   {service}
                 </a>
@@ -82,10 +85,10 @@ export default function Footer() {
 
         {/* Contact Info Column */}
         <div>
-          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-primary-light mb-6">
+          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
             Clinic Contact
           </h4>
-          <ul className="flex flex-col gap-3 font-sans text-sm text-text-light">
+          <ul className="flex flex-col gap-3 font-sans text-sm text-white/70">
             <li className="leading-relaxed">
               📍 <strong className="text-white font-medium">Niramay Women&apos;s Clinic:</strong> 402, Medical Enclave, Link Road, Andheri West, Mumbai, 400053
             </li>
@@ -103,11 +106,11 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom Banner */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="font-sans text-xs text-text-light text-center md:text-left">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+        <p className="font-sans text-xs text-white/60 text-center md:text-left">
           © {new Date().getFullYear()} Dr. Santosh Kulkarni. All rights reserved.
         </p>
-        <p className="font-sans text-xs text-text-light flex items-center gap-1.5 justify-center md:justify-end">
+        <p className="font-sans text-xs text-white/60 flex items-center gap-1.5 justify-center md:justify-end">
           Built with <Heart className="w-3.5 h-3.5 text-accent fill-accent animate-pulse" /> for better healthcare.
         </p>
       </div>

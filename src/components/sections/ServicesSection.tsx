@@ -68,8 +68,11 @@ export default function ServicesSection() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I'd%20like%20to%20ask%20about%20your%20services.`;
 
   return (
-    <section id="services" className="py-12 md:py-20 bg-surface scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="services" className="py-12 md:py-20 section-gradient-teal scroll-mt-20 relative overflow-hidden">
+      {/* Decorative dot pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Heading */}
         <SectionHeading
@@ -100,7 +103,7 @@ export default function ServicesSection() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary hover:bg-primary-muted font-sans text-sm font-bold rounded-button transition-all hover:scale-[1.03]"
+            className="btn-premium inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white font-sans text-sm font-bold rounded-button transition-all"
           >
             {/* WhatsApp custom SVG icon */}
             <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">

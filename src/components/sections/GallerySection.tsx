@@ -82,8 +82,11 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="py-12 md:py-20 bg-white scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="gallery" className="py-12 md:py-20 section-gradient-white scroll-mt-20 relative overflow-hidden">
+      {/* Decorative mesh pattern */}
+      <div className="absolute inset-0 mesh-pattern opacity-20 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Heading */}
         <SectionHeading
@@ -98,7 +101,7 @@ export default function GallerySection() {
             <div
               key={idx}
               onClick={() => openLightbox(idx)}
-              className={`break-inside-avoid relative rounded-image overflow-hidden cursor-pointer group shadow-card border border-border-custom hover:scale-[1.02] transition-transform duration-300 ${item.aspect}`}
+              className={`break-inside-avoid relative rounded-image overflow-hidden cursor-pointer group shadow-card border border-border-custom hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 ${item.aspect}`}
             >
               {item.type === "image" ? (
                 <>
@@ -110,7 +113,7 @@ export default function GallerySection() {
                     className="w-full h-full object-cover"
                   />
                   {/* Hover overlay with zoom icon */}
-                  <div className="absolute inset-0 bg-primary/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 text-white">
                     <ZoomIn className="w-8 h-8 animate-pulse" />
                     <span className="font-sans text-xs font-bold uppercase tracking-wider">
                       Zoom Photo
@@ -120,7 +123,7 @@ export default function GallerySection() {
               ) : (
                 /* Placeholder Tile */
                 <div className="w-full h-full min-h-[260px] bg-primary-muted flex flex-col items-center justify-center gap-4 p-8 text-center select-none group-hover:bg-primary-muted/80 transition-colors">
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-primary shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-primary shadow-sm group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
                     <Camera className="w-6 h-6" />
                   </div>
                   <div className="flex flex-col gap-1.5">

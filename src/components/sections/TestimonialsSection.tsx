@@ -23,8 +23,11 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-12 md:py-20 bg-surface scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="testimonials" className="py-12 md:py-20 section-gradient-teal scroll-mt-20 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="orb orb-2 bottom-[-100px] right-[-120px] opacity-20" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Heading */}
         <SectionHeading
@@ -34,7 +37,6 @@ export default function TestimonialsSection() {
         />
 
         {/* Responsive Testimonials Row/Grid */}
-        {/* On mobile: overflow-x scroll with snap layout. On desktop: 3-column grid */}
         <div className="flex overflow-x-auto lg:grid lg:grid-cols-3 gap-6 md:gap-8 pb-4 lg:pb-0 snap-x snap-mandatory no-scrollbar scroll-smooth">
           {testimonials.map((testimonial, idx) => (
             <div

@@ -17,27 +17,33 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-12 md:py-20 bg-surface scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="about" className="py-12 md:py-20 about-gradient-bg scroll-mt-20 relative overflow-hidden">
+      {/* Decorative Orb */}
+      <div className="orb orb-3 top-[-50px] right-[-100px] opacity-30" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column - Image & Badge Overlay */}
           <div className="lg:col-span-5 relative w-full flex justify-center">
-            <div className="relative w-full max-w-[400px] aspect-[4/5] sm:aspect-[768/1288] rounded-image overflow-hidden shadow-hero-image border border-primary/10">
+            <div className="relative w-full max-w-[400px] aspect-[4/5] sm:aspect-[768/1288] rounded-image overflow-hidden shadow-hero-image border border-primary/10 group">
               <Image
                 src="/images/clinical_scrubs_patients.jpeg"
                 alt="Dr. Santosh Kulkarni in a clinical consultation with patients"
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
               {/* Overlapping Badge Overlay */}
-              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-primary text-white p-4 sm:p-5 rounded-[16px] shadow-xl max-w-[150px] border border-white/10 hover:scale-105 transition-transform">
+              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 glass-card bg-primary/90 text-white p-4 sm:p-5 rounded-[16px] shadow-xl max-w-[150px] hover:scale-105 transition-transform">
                 <span className="font-display text-2xl font-bold italic block leading-tight">
                   15+ Years
                 </span>
-                <span className="font-sans text-xs font-medium uppercase tracking-wider text-primary-muted mt-1 block">
+                <span className="font-sans text-xs font-medium uppercase tracking-wider text-white/80 mt-1 block">
                   of Healing
                 </span>
               </div>
@@ -68,8 +74,8 @@ export default function AboutSection() {
               </h4>
               <ul className="grid grid-cols-1 gap-3">
                 {qualifications.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="w-5 h-5 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/20">
+                  <li key={index} className="flex items-start gap-3 group/item">
+                    <span className="w-5 h-5 rounded-full bg-primary-muted text-primary flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary/20 group-hover/item:bg-primary group-hover/item:text-white transition-colors duration-300">
                       <Check className="w-3.5 h-3.5" />
                     </span>
                     <span className="font-sans text-sm text-text-mid leading-tight">
@@ -106,7 +112,7 @@ export default function AboutSection() {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden mt-6 w-full"
                 >
-                  <div className="bg-white p-6 rounded-card border border-border-custom shadow-card space-y-4 font-sans text-sm text-text-mid leading-relaxed">
+                  <div className="glass-card p-6 rounded-card space-y-4 font-sans text-sm text-text-mid leading-relaxed">
                     <h5 className="font-display text-base font-bold text-text-dark">
                       Philosophy of Care
                     </h5>

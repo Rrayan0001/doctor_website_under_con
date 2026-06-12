@@ -22,8 +22,8 @@ export default function SectionHeading({
       }`}
     >
       {eyebrow && (
-        <span className="inline-block px-4 py-1.5 mb-4 font-sans text-xs font-bold tracking-widest text-primary uppercase bg-primary-muted border border-primary-light/20 rounded-[8px]">
-          {eyebrow}
+        <span className="inline-block px-4 py-1.5 mb-4 font-sans text-xs font-bold tracking-widest text-primary uppercase glass-dark rounded-[8px]">
+          ✦ {eyebrow}
         </span>
       )}
       
@@ -34,6 +34,13 @@ export default function SectionHeading({
       >
         {heading}
       </h2>
+
+      {/* Decorative line under heading */}
+      <div className={`flex gap-1 mt-4 ${isLeft ? "" : "justify-center"}`}>
+        <div className="w-8 h-1 rounded-full bg-primary" />
+        <div className="w-3 h-1 rounded-full bg-accent" />
+        <div className="w-1.5 h-1 rounded-full bg-primary-light" />
+      </div>
 
       {subheading && (
         <p
