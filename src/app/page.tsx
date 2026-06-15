@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import TickerStrip from "@/components/sections/TickerStrip";
 import AboutSection from "@/components/sections/AboutSection";
-import StatsCounter from "@/components/sections/StatsCounter";
 import ServicesSection from "@/components/sections/ServicesSection";
 import WhyChooseSection from "@/components/sections/WhyChooseSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -22,7 +21,6 @@ export default function Home() {
         <HeroSection />
         <TickerStrip />
         <AboutSection />
-        <StatsCounter />
         <ServicesSection />
         <WhyChooseSection />
         <TestimonialsSection />

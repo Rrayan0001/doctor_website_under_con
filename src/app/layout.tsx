@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "600", "700"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dr-santosh.com"),
+  metadataBase: new URL("https://santosh-doctor.vercel.app"),
   title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-  description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
+  description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
   keywords: [
     "gynecologist",
     "obstetrician",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
+    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
     images: [
       {
         url: "/images/headshot_navy.jpeg",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist specialising in pregnancy care, PCOS, infertility, and laparoscopic surgery. View clinic location and check availability today.",
+    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
     images: ["/images/headshot_navy.jpeg"],
   },
 };
@@ -54,13 +55,13 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-  }>) {
+}>) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} scroll-smooth`}
+      className={`${cormorant.variable} ${dmSans.variable} scroll-smooth`}
     >
-      <body className="font-sans bg-white text-text-dark antialiased">
+      <body className="font-sans bg-bg text-text antialiased">
         {children}
       </body>
     </html>

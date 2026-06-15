@@ -1,117 +1,170 @@
 "use client";
 
-import {
-  Baby,
-  Activity,
-  Heart,
-  Stethoscope,
-  Scissors,
-  Sun,
-  Shield,
-  Calendar,
-  Users,
-} from "lucide-react";
-import SectionHeading from "../ui/SectionHeading";
-import ServiceCard from "../ui/ServiceCard";
+import { MessageSquare } from "lucide-react";
 
-const servicesList = [
+const services = [
   {
-    icon: Baby,
+    num: "01",
     title: "Pregnancy & Antenatal Care",
-    description: "Complete care through every trimester — scans, health monitoring, birth planning, and postpartum support.",
+    desc: "Complete care through every trimester — scans, health monitoring, and birth planning.",
+    isFeatured: true,
+    gridClass: "md:col-span-2",
     tag: "Most Requested",
   },
   {
-    icon: Activity,
-    title: "PCOS / PCOD Treatment",
-    description: "Evidence-based diagnosis and personalised treatment plans for hormonal balance and long-term wellness.",
+    num: "02",
+    title: "PCOS Treatment",
+    desc: "Evidence-based diagnosis and lifestyle-led treatment plans for hormonal balance.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
   },
   {
-    icon: Heart,
+    num: "03",
     title: "Infertility Evaluation",
-    description: "Compassionate workup and treatment — from hormonal profiling to IUI and specialist referrals.",
+    desc: "Compassionate diagnostic workups, ovulation induction, and follicular monitoring.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
   },
   {
-    icon: Stethoscope,
-    title: "General Gynaecology",
-    description: "Routine pelvic exams, pap smears, menstrual health, contraception, and preventive screenings.",
-  },
-  {
-    icon: Scissors,
+    num: "04",
     title: "Laparoscopic Surgery",
-    description: "Minimally invasive procedures for fibroids, ovarian cysts, endometriosis, and hysterectomy.",
+    desc: "Minimally invasive keyhole surgery for fibroids, ovarian cysts, and hysterectomy with fast recovery times.",
+    isFeatured: true,
+    gridClass: "md:row-span-2 md:col-span-1",
   },
   {
-    icon: Sun,
+    num: "05",
+    title: "General Gynaecology",
+    desc: "Routine preventive checks, Pap smears, contraception advice, and pelvic pain management.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
+  },
+  {
+    num: "06",
     title: "Menopause Management",
-    description: "Holistic support through perimenopause and menopause — HRT counselling, bone health, and lifestyle guidance.",
+    desc: "HRT counseling, bone density tracking, and custom support for perimenopausal symptoms.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
   },
   {
-    icon: Shield,
-    title: "High-Risk Pregnancy",
-    description: "Specialist monitoring and care for gestational diabetes, hypertension, twin pregnancies, and more.",
-  },
-  {
-    icon: Calendar,
+    num: "07",
     title: "Menstrual Disorders",
-    description: "Diagnosis and treatment for irregular periods, heavy bleeding, painful cycles, and endometriosis.",
+    desc: "Clinical solutions for heavy bleeding, painful periods, and irregular cycles.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
   },
   {
-    icon: Users,
+    num: "08",
+    title: "High-Risk Pregnancy",
+    desc: "Close medical surveillance for gestational diabetes, hypertension, and multiple pregnancies.",
+    isFeatured: false,
+    gridClass: "md:col-span-2",
+  },
+  {
+    num: "09",
     title: "Family Planning",
-    description: "Counselling and provision of contraceptive options — pills, IUDs, implants, and permanent methods.",
+    desc: "Consultation on modern contraceptive methods including loops, implants, and pills.",
+    isFeatured: false,
+    gridClass: "md:col-span-1",
   },
 ];
 
 export default function ServicesSection() {
   const phoneNumber = "919876543210";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I'd%20like%20to%20ask%20about%20your%20services.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
 
   return (
-    <section id="services" className="py-12 md:py-20 section-gradient-teal scroll-mt-20 relative overflow-hidden">
-      {/* Decorative dot pattern */}
-      <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
-
+    <section id="services" className="py-20 bg-white scroll-mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
-        {/* Section Heading */}
-        <SectionHeading
-          eyebrow="Services"
-          heading="Comprehensive Care, Every Stage of Life"
-          subheading="From routine check-ups to complex surgical procedures — all under one roof."
-        />
+        {/* Left-aligned Header */}
+        <div className="mb-16 text-left max-w-2xl">
+          <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
+            TREATMENTS
+          </span>
+          <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-4">
+            Comprehensive Care,<br />Every Stage of Life
+          </h2>
+          <p className="font-sans text-base text-text-muted leading-relaxed">
+            From routine check-ups to complex surgical procedures &mdash; all under one roof.
+          </p>
+        </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {servicesList.map((service, index) => (
-            <ServiceCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              tag={service.tag}
-            />
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-fr">
+          {services.map((service, idx) => (
+            <div
+              key={idx}
+              className={`relative rounded-2xl p-8 overflow-hidden transition-all duration-300 bento-card cursor-default ${
+                service.gridClass
+              } ${
+                service.isFeatured
+                  ? "bg-primary text-white border border-primary/20 hover:shadow-[0_0_25px_rgba(200,153,74,0.3)] hover:border-accent"
+                  : "bg-bg text-text border border-primary/5 hover:border-primary/20"
+              }`}
+            >
+              {/* Massive faint decorative number in the corner */}
+              <span
+                className={`absolute top-4 right-6 font-display text-[4.5rem] font-bold leading-none select-none pointer-events-none transition-opacity duration-300 ${
+                  service.isFeatured
+                    ? "text-accent opacity-[0.08]"
+                    : "text-accent opacity-[0.07]"
+                }`}
+              >
+                {service.num}
+              </span>
+
+              {/* Tag for featured cards */}
+              {service.tag && (
+                <span className="inline-block bg-accent/20 border border-accent/30 text-accent font-sans text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-6 relative z-10">
+                  {service.tag}
+                </span>
+              )}
+
+              {/* Service title and details */}
+              <div className={`flex flex-col h-full justify-between relative z-10 ${service.tag ? "mt-0" : "mt-4"}`}>
+                <div>
+                  <h3
+                    className={`font-display text-xl font-bold mb-3 ${
+                      service.isFeatured ? "text-white" : "text-primary-dark"
+                    }`}
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    className={`font-sans text-sm leading-relaxed ${
+                      service.isFeatured ? "text-white/85" : "text-text-muted"
+                    }`}
+                  >
+                    {service.desc}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="flex flex-col items-center gap-4 text-center">
-          <p className="font-sans text-sm font-semibold text-text-mid">
-            Not sure which service you need?
-          </p>
+        {/* Bottom Contact Banner */}
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-bg rounded-2xl border border-primary/5">
+          <div className="text-left">
+            <h4 className="font-display text-lg font-bold text-primary-dark mb-1">
+              Not sure which treatment is right for you?
+            </h4>
+            <p className="font-sans text-sm text-text-muted">
+              Connect with Dr. Kulkarni&apos;s team on WhatsApp for quick guidance.
+            </p>
+          </div>
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-premium inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white font-sans text-sm font-bold rounded-button transition-all"
+            className="px-6 py-3 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 flex-shrink-0"
           >
-            {/* WhatsApp custom SVG icon */}
-            <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.706 1.458h.008c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            Talk to Us — WhatsApp
+            <MessageSquare className="w-4.5 h-4.5 fill-current" />
+            WhatsApp Consultation
           </a>
         </div>
+
       </div>
     </section>
   );
