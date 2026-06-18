@@ -122,6 +122,8 @@ export default function Footer() {
                 <span>
                   {language === "kn" ? (
                     <>ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ೪೦೨ ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
+                  ) : language === "hi" ? (
+                    <>निरामय महिला क्लिनिक, 402 मेडिकल एन्क्लेव, लिंक रोड, अंधेरी वेस्ट, मुंबई &mdash; 400053</>
                   ) : (
                     <>Niramay Women&apos;s Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai &mdash; 400053</>
                   )}

@@ -95,7 +95,7 @@ export default function Navbar() {
             <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-xs">
               <button
                 onClick={() => setLanguage("en")}
-                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`px-2 py-1 rounded-full transition-all duration-200 cursor-pointer ${
                   language === "en"
                     ? "bg-primary text-white font-bold shadow-sm"
                     : "text-text hover:text-primary font-medium"
@@ -105,13 +105,23 @@ export default function Navbar() {
               </button>
               <button
                 onClick={() => setLanguage("kn")}
-                className={`px-3 py-1 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
                   language === "kn"
                     ? "bg-primary text-white font-bold shadow-sm"
                     : "text-text hover:text-primary font-medium"
                 }`}
               >
                 ಕನ್ನಡ
+              </button>
+              <button
+                onClick={() => setLanguage("hi")}
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
+                  language === "hi"
+                    ? "bg-primary text-white font-bold shadow-sm"
+                    : "text-text hover:text-primary font-medium"
+                }`}
+              >
+                हिंदी
               </button>
             </div>
 
@@ -131,7 +141,7 @@ export default function Navbar() {
             <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-[10px]">
               <button
                 onClick={() => setLanguage("en")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`px-1.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
                   language === "en"
                     ? "bg-primary text-white font-bold"
                     : "text-text hover:text-primary"
@@ -141,13 +151,23 @@ export default function Navbar() {
               </button>
               <button
                 onClick={() => setLanguage("kn")}
-                className={`px-2.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
+                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
                   language === "kn"
                     ? "bg-primary text-white font-bold"
                     : "text-text hover:text-primary"
                 }`}
               >
                 ಕನ್ನಡ
+              </button>
+              <button
+                onClick={() => setLanguage("hi")}
+                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
+                  language === "hi"
+                    ? "bg-primary text-white font-bold"
+                    : "text-text hover:text-primary"
+                }`}
+              >
+                हिंदी
               </button>
             </div>
             
@@ -193,6 +213,8 @@ export default function Navbar() {
             <span className="font-display text-3xl font-bold text-primary block leading-tight">
               {language === "kn" ? (
                 <>ಡಾ. ಸಂತೋಷ್<br />ಕುಲಕರ್ಣಿ</>
+              ) : language === "hi" ? (
+                <>डॉ. संतोष<br />कुलकर्णी</>
               ) : (
                 <>Dr. Santosh<br />Kulkarni</>
               )}

@@ -3,8 +3,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { en } from "../locales/en";
 import { kn } from "../locales/kn";
+import { hi } from "../locales/hi";
 
-type Language = "en" | "kn";
+type Language = "en" | "kn" | "hi";
 type TranslationType = typeof en;
 
 interface LanguageContextProps {
@@ -21,7 +22,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Load language preference from local storage if available
   useEffect(() => {
     const savedLang = localStorage.getItem("doctor_portfolio_lang") as Language;
-    if (savedLang === "en" || savedLang === "kn") {
+    if (savedLang === "en" || savedLang === "kn" || savedLang === "hi") {
       setLanguageState(savedLang);
       document.documentElement.lang = savedLang;
     } else {
@@ -35,7 +36,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = lang;
   };
 
-  const t = language === "en" ? en : kn;
+  const getTranslation = (lang: Language) => {
+    if (lang === "kn") return kn;
+    if (lang === "hi") return hi;
+    return en;
+  };
+
+  const t = getTranslation(language);
 
   return (
     <LanguageContext.Provider value={{ language, t, setLanguage }}>

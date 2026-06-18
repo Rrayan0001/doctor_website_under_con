@@ -35,6 +35,8 @@ export default function ContactSection() {
                   <span className="text-text-muted">
                     {language === "kn" ? (
                       <>೪೦೨, ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್,<br />ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
+                    ) : language === "hi" ? (
+                      <>402, मेडिकल एन्क्लेव, लिंक रोड,<br />अंधेरी वेस्ट, मुंबई &mdash; 400053</>
                     ) : (
                       <>402, Medical Enclave, Link Road,<br />Andheri West, Mumbai &mdash; 400053</>
                     )}
@@ -101,8 +103,8 @@ export default function ContactSection() {
                     {t.contact.weekdays}
                   </span>
                   <div className="space-y-1 font-sans text-sm text-text-muted">
-                    <p><span className="font-semibold text-primary">{t.contact.morning}:</span> {language === "kn" ? "೯:೦೦ ರಿಂದ ಮಧ್ಯಾಹ್ನ ೧:೦೦" : "9:00 AM – 1:00 PM"}</p>
-                    <p><span className="font-semibold text-primary">{t.contact.evening}:</span> {language === "kn" ? "೫:೦０ ರಿಂದ ರಾತ್ರಿ ೮:೦೦" : "5:00 PM – 8:00 PM"}</p>
+                    <p><span className="font-semibold text-primary">{t.contact.morning}:</span> {language === "kn" ? "೯:೦೦ ರಿಂದ ಮಧ್ಯಾಹ್ನ ೧:೦೦" : language === "hi" ? "सुबह 9:00 - दोपहर 1:00" : "9:00 AM – 1:00 PM"}</p>
+                    <p><span className="font-semibold text-primary">{t.contact.evening}:</span> {language === "kn" ? "೫:೦０ ರಿಂದ ರಾತ್ರಿ ೮:೦೦" : language === "hi" ? "शाम 5:00 - रात 8:00" : "5:00 PM – 8:00 PM"}</p>
                   </div>
                 </div>
                 <div>
