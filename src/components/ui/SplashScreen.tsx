@@ -30,10 +30,10 @@ export default function SplashScreen() {
       {/* Logo */}
       <div className="splash-logo-wrap">
         <Image
-          src="/logo.png"
+          src="/bg_logo.png"
           alt="Niramay Women's Clinic Logo"
-          width={72}
-          height={72}
+          width={76}
+          height={76}
           priority
           className="splash-logo"
         />
