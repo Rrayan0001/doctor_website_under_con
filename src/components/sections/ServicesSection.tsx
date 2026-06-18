@@ -98,22 +98,12 @@ export default function ServicesSection() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className={`relative rounded-2xl p-8 overflow-hidden transition-all duration-300 bento-card cursor-default ${
+              className={`relative rounded-2xl p-8 overflow-hidden transition-all duration-300 embossed-card cursor-default text-white ${
                 service.gridClass
-              } ${
-                service.isFeatured
-                  ? "bg-primary text-white border border-primary/20 hover:shadow-[0_0_25px_rgba(200,153,74,0.3)] hover:border-accent"
-                  : "bg-bg text-text border border-primary/5 hover:border-primary/20"
               }`}
             >
               {/* Massive faint decorative number in the corner */}
-              <span
-                className={`absolute top-4 right-6 font-display text-[4.5rem] font-bold leading-none select-none pointer-events-none transition-opacity duration-300 ${
-                  service.isFeatured
-                    ? "text-accent opacity-[0.08]"
-                    : "text-accent opacity-[0.07]"
-                }`}
-              >
+              <span className="absolute top-4 right-6 font-display text-[4.5rem] font-bold leading-none select-none pointer-events-none text-accent opacity-[0.08]">
                 {service.num}
               </span>
 
@@ -127,18 +117,10 @@ export default function ServicesSection() {
               {/* Service title and details */}
               <div className={`flex flex-col h-full justify-between relative z-10 ${service.tag ? "mt-0" : "mt-4"}`}>
                 <div className="text-left">
-                  <h3
-                    className={`font-display text-xl font-bold mb-3 ${
-                      service.isFeatured ? "text-white" : "text-primary-dark"
-                    }`}
-                  >
+                  <h3 className="font-display text-xl font-bold mb-3 text-white">
                     {service.title}
                   </h3>
-                  <p
-                    className={`font-sans text-sm leading-relaxed ${
-                      service.isFeatured ? "text-white/85" : "text-text-muted"
-                    }`}
-                  >
+                  <p className="font-sans text-sm leading-relaxed text-white/85">
                     {service.desc}
                   </p>
                 </div>

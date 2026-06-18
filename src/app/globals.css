@@ -215,3 +215,24 @@ body {
   background: rgba(13, 13, 13, 0.95);
   backdrop-filter: blur(10px);
 }
+
+/* Premium Embossed Bento Cards */
+.embossed-card {
+  background: linear-gradient(135deg, #0a4f52 0%, #071e22 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    inset 1px 1px 1.5px rgba(255, 255, 255, 0.15),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(7, 30, 34, 0.15);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.embossed-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-accent);
+  box-shadow: 
+    inset 1.5px 1.5px 1.5px rgba(255, 255, 255, 0.25),
+    inset -1.5px -1.5px 2px rgba(0, 0, 0, 0.6),
+    0 12px 28px rgba(7, 30, 34, 0.3),
+    0 0 20px rgba(200, 153, 74, 0.25);
+}
