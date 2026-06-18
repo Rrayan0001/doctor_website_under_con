@@ -9,6 +9,7 @@ export default function Navbar() {
   const { language, t, setLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,44 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Intersection Observer for Active Nav Highlighting (Scroll Spy)
+  useEffect(() => {
+    const sections = ["home", "about", "services", "testimonials", "gallery", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    // Fallback for scrolling to the very top
+    const handleScrollTop = () => {
+      if (window.scrollY < 50) {
+        setActiveSection("home");
+      }
+    };
+    window.addEventListener("scroll", handleScrollTop);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScrollTop);
+    };
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
@@ -79,16 +118,25 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
             <div className="flex gap-3.5 lg:gap-5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.anchor}
-                  href={link.anchor}
-                  onClick={(e) => handleLinkClick(e, link.anchor)}
-                  className="font-sans text-sm font-semibold text-text hover:text-primary transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full whitespace-nowrap"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.anchor.replace("#", "");
+                return (
+                  <a
+                    key={link.anchor}
+                    href={link.anchor}
+                    onClick={(e) => handleLinkClick(e, link.anchor)}
+                    className={`font-sans text-sm font-semibold transition-colors relative py-1 whitespace-nowrap
+                      after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-primary after:transition-all
+                      ${
+                        isActive
+                          ? "text-primary after:w-full"
+                          : "text-text hover:text-primary after:w-0 hover:after:w-full"
+                      }`}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
             </div>
 
             {/* Language Selector */}
@@ -226,16 +274,24 @@ export default function Navbar() {
 
           {/* Drawer Links */}
           <div className="flex flex-col gap-5">
-            {navLinks.map((link) => (
-              <a
-                key={link.anchor}
-                href={link.anchor}
-                onClick={(e) => handleLinkClick(e, link.anchor)}
-                className="font-sans text-base font-semibold text-text hover:text-primary transition-colors py-2 border-b border-primary/5"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.anchor.replace("#", "");
+              return (
+                <a
+                  key={link.anchor}
+                  href={link.anchor}
+                  onClick={(e) => handleLinkClick(e, link.anchor)}
+                  className={`font-sans text-base font-semibold transition-colors py-2 border-b border-primary/5 text-left
+                    ${
+                      isActive
+                        ? "text-primary border-b-primary font-bold"
+                        : "text-text hover:text-primary"
+                    }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
         </div>
 
