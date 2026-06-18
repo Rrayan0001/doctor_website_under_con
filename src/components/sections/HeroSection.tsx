@@ -112,10 +112,30 @@ export default function HeroSection() {
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
             {t.hero.trustTag}
           </span>
-          <h1 className="font-display text-[2.1rem] xs:text-[2.6rem] sm:text-[3.5rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-primary-dark leading-[1.1] mb-6">
-            {t.hero.titleLine1}<br />
-            {t.hero.titleLine2}<br />
-            {t.hero.titleLine3}
+          <h1 className={`font-display font-bold text-primary-dark mb-6 leading-[1.25] lg:leading-[1.18] ${
+            language === "en"
+              ? "text-[2.1rem] xs:text-[2.6rem] sm:text-[3.5rem] lg:text-[4.5rem] xl:text-[5rem]"
+              : "text-[1.8rem] xs:text-[2.2rem] sm:text-[3rem] lg:text-[3.8rem] xl:text-[4.2rem]"
+          }`}>
+            {language === "en" ? (
+              <>
+                Expert Care for<br />
+                Every Stage of<br />
+                a Woman&apos;s Life.
+              </>
+            ) : language === "kn" ? (
+              <>
+                ಮಹಿಳೆಯ ಜೀವನದ<br />
+                ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ<br />
+                ಸೂಕ್ತ ಆರೋಗ್ಯ ರಕ್ಷಣೆ.
+              </>
+            ) : (
+              <>
+                महिला के जीवन के<br />
+                हर चरण के लिए<br />
+                विशेषज्ञ देखभाल।
+              </>
+            )}
           </h1>
           <p className="font-sans text-[1rem] sm:text-[1.125rem] text-text-muted leading-relaxed mb-8 max-w-xl">
             {t.hero.description}

@@ -77,8 +77,8 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <div className="flex gap-5">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+            <div className="flex gap-3.5 lg:gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.anchor}

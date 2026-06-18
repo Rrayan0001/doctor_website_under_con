@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Noto_Sans_Kannada, Noto_Sans_Devanagari } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
@@ -13,6 +13,18 @@ const cormorant = Cormorant_Garamond({
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const notoKannada = Noto_Sans_Kannada({
+  subsets: ["kannada"],
+  variable: "--font-kannada",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  variable: "--font-devanagari",
   weight: ["300", "400", "500", "600", "700"],
 });
 
@@ -60,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${dmSans.variable} scroll-smooth`}
+      className={`${cormorant.variable} ${dmSans.variable} ${notoKannada.variable} ${notoDevanagari.variable} scroll-smooth`}
     >
       <body className="font-sans bg-bg text-text antialiased">
         <LanguageProvider>
