@@ -85,7 +85,7 @@ export default function GallerySection() {
               src={images[0].src}
               alt={images[0].alt}
               fill
-              className="object-cover object-top transition-all duration-500 group-hover:scale-103"
+              className="object-cover object-center transition-all duration-500 group-hover:scale-103"
               sizes="(max-w-768px) 100vw, 600px"
               loading="lazy"
             />
@@ -106,7 +106,7 @@ export default function GallerySection() {
               src={images[1].src}
               alt={images[1].alt}
               fill
-              className="object-cover object-top transition-all duration-500 group-hover:scale-103"
+              className="object-cover object-center transition-all duration-500 group-hover:scale-103"
               sizes="(max-w-768px) 100vw, 400px"
               loading="lazy"
             />
