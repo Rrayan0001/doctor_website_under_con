@@ -104,7 +104,7 @@ export default function AboutSection() {
           </div>
 
           {/* Right Column: Text and Stats (60% width / lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left reveal-up">
+          <div className="lg:col-span-6 flex flex-col items-start text-left">
             <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
               {t.about.badge}
             </span>
@@ -128,7 +128,7 @@ export default function AboutSection() {
                 { value: 2000, suffix: "+", label: t.about.stats.deliveries, decimals: 0 },
                 { value: 4.9, suffix: "/5", label: t.about.stats.rating, decimals: 1 },
               ].map((stat, idx) => (
-                <div key={idx} className="glass-card border border-primary/5 p-4 rounded-2xl card-hover flex flex-col">
+                <div key={idx} className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col">
                   <span className="font-display text-xl sm:text-3xl font-bold text-primary mb-1">
                     <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
                   </span>
