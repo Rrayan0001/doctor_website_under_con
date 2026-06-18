@@ -25,6 +25,8 @@ export default function SplashScreen() {
       className={`splash-screen ${phase === "fading" ? "splash-screen--fading" : ""}`}
       aria-hidden="true"
     >
+      {/* Background Watermark */}
+      <div className="splash-bg-watermark" />
       {/* Logo */}
       <div className="splash-logo-wrap">
         <Image
