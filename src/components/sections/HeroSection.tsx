@@ -182,12 +182,12 @@ export default function HeroSection() {
           </div>
 
           {/* Floating Badges */}
-          <div className="absolute left-[-20px] top-[15%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float">
+          <div className="absolute left-[-10px] lg:left-[-20px] top-[15%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float">
             <span className="text-accent">✦</span>
             <span className="font-sans text-xs font-bold text-primary-dark">{t.hero.badgePregnancy}</span>
           </div>
           
-          <div className="absolute right-[-10px] top-[45%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float-delayed" style={{ animationDelay: "1.5s" }}>
+          <div className="absolute right-[-5px] lg:right-[-10px] top-[58%] lg:top-[45%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float-delayed" style={{ animationDelay: "1.5s" }}>
             <span className="text-accent">✦</span>
             <span className="font-sans text-xs font-bold text-primary-dark">{t.hero.badgeFellowship}</span>
           </div>
