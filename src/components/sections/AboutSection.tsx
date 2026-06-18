@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Check } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 // CountUp component using requestAnimationFrame
 function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
@@ -58,12 +59,9 @@ function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?:
 }
 
 export default function AboutSection() {
-  const credentials = [
-    "MBBS — Grant Govt Medical College, Mumbai (2006)",
-    "MD (OBG) — KEM Hospital, Mumbai (2010)",
-    "Fellowship in Laparoscopy — AIIMS (2012)",
-    "FOGSI & IMA Member",
-  ];
+  const { t } = useLanguage();
+
+  const credentials = t.about.credentials;
 
   return (
     <section id="about" className="py-20 bg-bg relative overflow-hidden scroll-mt-20">
@@ -80,7 +78,7 @@ export default function AboutSection() {
               <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-primary/5 bg-[#faf8f4]">
                 <Image
                   src="/images/headshot_navy.jpeg"
-                  alt="Dr. Santosh Kulkarni"
+                  alt={t.common.doctorName}
                   fill
                   className="object-cover object-top"
                   sizes="(max-w-1024px) 100vw, 320px"
@@ -92,7 +90,7 @@ export default function AboutSection() {
             <div className="mt-6 bg-white border border-primary/5 shadow-md p-5 rounded-xl w-full max-w-[340px]">
               <ul className="flex flex-col gap-2.5">
                 {credentials.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
+                  <li key={idx} className="flex items-start gap-2.5 text-left">
                     <span className="w-4 h-4 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </span>
@@ -107,35 +105,28 @@ export default function AboutSection() {
 
           {/* Right Column: Text and Stats (60% width / lg:col-span-6) */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4">
-              ABOUT THE DOCTOR
+            <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
+              {t.about.badge}
             </span>
-            <h2 className="font-display text-[1.8rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-6">
-              A Legacy of Compassionate<br />Women&apos;s Healthcare
+            <h2 className="font-display text-[1.8rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-6 whitespace-pre-line">
+              {t.about.title}
             </h2>
             <div className="space-y-4 font-sans text-base text-text-muted leading-relaxed mb-8">
               <p>
-                Dr. Santosh Kulkarni is a highly experienced Gynecologist and
-                Obstetrician with over 15 years of dedicated practice in women&apos;s
-                health. Known for a calm, thorough, and patient-first approach,
-                Dr. Kulkarni has guided thousands of women through some of life&apos;s
-                most significant moments.
+                {t.about.para1}
               </p>
               <p>
-                With expertise ranging from routine check-ups to complex
-                laparoscopic procedures, Dr. Kulkarni combines clinical precision
-                with genuine empathy &mdash; ensuring every patient feels heard,
-                respected, and cared for.
+                {t.about.para2}
               </p>
             </div>
 
             {/* 2x2 Stats Grid */}
             <div className="grid grid-cols-2 gap-4 w-full max-w-lg">
               {[
-                { value: 15, suffix: "+", label: "Years Experience", decimals: 0 },
-                { value: 10000, suffix: "+", label: "Patients Treated", decimals: 0 },
-                { value: 2000, suffix: "+", label: "Successful Deliveries", decimals: 0 },
-                { value: 4.9, suffix: "/5", label: "Average Rating", decimals: 1 },
+                { value: 15, suffix: "+", label: t.about.stats.experience, decimals: 0 },
+                { value: 10000, suffix: "+", label: t.about.stats.treated, decimals: 0 },
+                { value: 2000, suffix: "+", label: t.about.stats.deliveries, decimals: 0 },
+                { value: 4.9, suffix: "/5", label: t.about.stats.rating, decimals: 1 },
               ].map((stat, idx) => (
                 <div key={idx} className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col">
                   <span className="font-display text-xl sm:text-3xl font-bold text-primary mb-1">

@@ -2,43 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
-
-const featuredQuotes = [
-  {
-    text: "Dr. Kulkarni guided me through a high-risk pregnancy with so much patience and expertise. I felt completely safe throughout.",
-    attribution: "— High-Risk Pregnancy Patient, Mumbai",
-  },
-  {
-    text: "After years of struggling with PCOS, Dr. Kulkarni finally gave me a clear plan and real results. Life-changing.",
-    attribution: "— Preethi S., PCOS Patient",
-  },
-  {
-    text: "Very professional, thorough, and genuinely caring. The clinic is clean and appointments are always on time.",
-    attribution: "— Kavitha M., Regular Patient",
-  },
-];
-
-const cards = [
-  {
-    quote: "After years of struggling with PCOS, Dr. Kulkarni finally gave me a clear plan and real results. Life-changing.",
-    author: "Preethi S.",
-    tag: "PCOS Patient",
-  },
-  {
-    quote: "Very professional, thorough, and genuinely caring. The clinic is clean and appointments are always on time.",
-    author: "Kavitha M.",
-    tag: "Regular Patient",
-  },
-  {
-    quote: "Cannot recommend enough. Felt completely safe and cared for throughout my entire pregnancy.",
-    author: "Anonymous",
-    tag: "High-Risk Pregnancy",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TestimonialsSection() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opacity, setOpacity] = useState(100);
+
+  const featuredQuotes = t.testimonials.featured;
+  const cards = t.testimonials.cards;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,7 +24,7 @@ export default function TestimonialsSection() {
       }, 400);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [featuredQuotes.length]);
 
   return (
     <section id="testimonials" className="py-20 bg-bg scroll-mt-20 relative overflow-hidden">
@@ -61,10 +33,10 @@ export default function TestimonialsSection() {
         {/* Section Label */}
         <div className="mb-12 text-left">
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
-            PATIENT STORIES
+            {t.testimonials.badge}
           </span>
           <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight">
-            What Our Patients Say
+            {t.testimonials.title}
           </h2>
         </div>
 
@@ -81,16 +53,16 @@ export default function TestimonialsSection() {
 
             {/* Dynamic quote container */}
             <div
-              className="transition-all duration-300 flex-grow flex flex-col justify-center mt-6"
+              className="transition-all duration-300 flex-grow flex flex-col justify-center mt-6 text-left"
               style={{ opacity: opacity / 100, transform: `translateY(${(100 - opacity) / 15}px)` }}
             >
               <p className="font-display italic text-[1.4rem] sm:text-[1.6rem] text-primary-dark leading-relaxed mb-6 font-medium">
-                &ldquo;{featuredQuotes[currentIndex].text}&rdquo;
+                &ldquo;{featuredQuotes[currentIndex]?.text}&rdquo;
               </p>
               
               <div className="flex flex-col">
                 <span className="font-sans text-sm font-semibold text-text-muted">
-                  {featuredQuotes[currentIndex].attribution}
+                  {featuredQuotes[currentIndex]?.attribution}
                 </span>
                 
                 {/* 5 Gold Stars */}
@@ -115,7 +87,7 @@ export default function TestimonialsSection() {
                   marginTop: idx > 0 ? "-16px" : "0px",
                 }}
               >
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3 text-left">
                   {/* Star Rating */}
                   <div className="flex gap-0.5 text-accent">
                     {[...Array(5)].map((_, i) => (

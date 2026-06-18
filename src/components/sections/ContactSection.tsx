@@ -1,15 +1,17 @@
 "use client";
 
 import { MapPin, Phone, Mail, ArrowRight, MessageSquare } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactSection() {
+  const { t, language } = useLanguage();
+  
   const phoneNumber = "919876543210";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
   const handleBookClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // Normally would trigger a form or modal, here we scroll to contact top or alert
-    alert("Thank you! Please call or message us via WhatsApp to book a slot directly.");
+    alert(t.contact.bookingAlert);
   };
 
   return (
@@ -20,8 +22,8 @@ export default function ContactSection() {
           
           {/* Left Column: Address and Map (5/12 width) */}
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight">
-              Visit the Clinic
+            <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight text-left">
+              {t.contact.title}
             </h2>
             
             {/* Address Card */}
@@ -29,10 +31,13 @@ export default function ContactSection() {
               <div className="flex gap-3 items-start text-left">
                 <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                 <div className="font-sans text-sm">
-                  <strong className="text-primary-dark block mb-1">Niramay Women&apos;s Clinic</strong>
+                  <strong className="text-primary-dark block mb-1">{t.common.clinicName}</strong>
                   <span className="text-text-muted">
-                    402, Medical Enclave, Link Road,<br />
-                    Andheri West, Mumbai &mdash; 400053
+                    {language === "kn" ? (
+                      <>೪೦೨, ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್,<br />ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
+                    ) : (
+                      <>402, Medical Enclave, Link Road,<br />Andheri West, Mumbai &mdash; 400053</>
+                    )}
                   </span>
                 </div>
               </div>
@@ -67,43 +72,45 @@ export default function ContactSection() {
             </div>
 
             {/* Directions link */}
-            <a
-              href="https://maps.google.com/?q=Niramay+Women's+Clinic+Andheri+West+Mumbai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-primary hover:text-primary-light font-sans text-sm font-bold transition-all"
-            >
-              Get Directions <ArrowRight className="w-4 h-4" />
-            </a>
+            <div className="text-left">
+              <a
+                href="https://maps.google.com/?q=Niramay+Women's+Clinic+Andheri+West+Mumbai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-primary hover:text-primary-light font-sans text-sm font-bold transition-all"
+              >
+                {t.contact.directions} <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Right Column: Timings and Booking Form (7/12 width) */}
           <div className="lg:col-span-7 space-y-6 w-full">
-            <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight">
-              Book Your Consultation
+            <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight text-left">
+              {t.contact.bookingTitle}
             </h2>
 
             {/* Timings Card */}
             <div className="bg-white border border-primary/5 p-6 rounded-2xl shadow-sm text-left">
               <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4">
-                Clinic Timings
+                {t.contact.timingsLabel}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <span className="font-display text-lg font-bold text-primary-dark block mb-1">
-                    Monday &ndash; Saturday
+                    {t.contact.weekdays}
                   </span>
                   <div className="space-y-1 font-sans text-sm text-text-muted">
-                    <p><span className="font-semibold text-primary">Morning:</span> 9:00 AM &ndash; 1:00 PM</p>
-                    <p><span className="font-semibold text-primary">Evening:</span> 5:00 PM &ndash; 8:00 PM</p>
+                    <p><span className="font-semibold text-primary">{t.contact.morning}:</span> {language === "kn" ? "೯:೦೦ ರಿಂದ ಮಧ್ಯಾಹ್ನ ೧:೦೦" : "9:00 AM – 1:00 PM"}</p>
+                    <p><span className="font-semibold text-primary">{t.contact.evening}:</span> {language === "kn" ? "೫:೦０ ರಿಂದ ರಾತ್ರಿ ೮:೦೦" : "5:00 PM – 8:00 PM"}</p>
                   </div>
                 </div>
                 <div>
                   <span className="font-display text-lg font-bold text-red-600 block mb-1">
-                    Sunday
+                    {t.contact.sunday}
                   </span>
                   <p className="font-sans text-sm text-text-muted italic">
-                    Closed (Emergency Calls Only)
+                    {t.contact.sundayClosed}
                   </p>
                 </div>
               </div>
@@ -113,28 +120,28 @@ export default function ContactSection() {
             <div className="flex flex-col gap-4">
               <button
                 onClick={handleBookClick}
-                className="w-full py-4 px-6 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light transition-all text-center"
+                className="w-full py-4 px-6 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light transition-all text-center cursor-pointer"
               >
-                Book Appointment
+                {t.contact.bookBtn}
               </button>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 px-6 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-750 transition-all text-center flex items-center justify-center gap-2"
+                className="w-full py-4 px-6 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-750 transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5 fill-current" />
-                WhatsApp Now
+                {t.common.whatsappNow}
               </a>
             </div>
 
             {/* Small notes below */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 pt-2">
               <span className="font-sans text-xs font-semibold text-text-muted flex items-center justify-center gap-1.5">
-                <span className="text-accent">✦</span> Typically responds within 2 hours
+                <span className="text-accent">✦</span> {t.contact.note1}
               </span>
               <span className="font-sans text-xs font-semibold text-text-muted flex items-center justify-center gap-1.5">
-                <span className="text-accent">✦</span> In-person &amp; teleconsultation available
+                <span className="text-accent">✦</span> {t.contact.note2}
               </span>
             </div>
           </div>

@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function WhatsAppFAB() {
+  const { t } = useLanguage();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function WhatsAppFAB() {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`w-11 h-11 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-primary-light hover:translate-y-[-2px] ${
+        className={`w-11 h-11 bg-primary text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-primary-light hover:translate-y-[-2px] cursor-pointer ${
           showScrollTop
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-4 scale-75 pointer-events-none"
@@ -49,8 +51,8 @@ export default function WhatsAppFAB() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 group"
-        aria-label="Message Dr. Santosh Kulkarni on WhatsApp"
+        className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+        aria-label={t.whatsappFAB.ariaLabel}
       >
         {/* WhatsApp Custom SVG Icon */}
         <svg

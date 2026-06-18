@@ -3,29 +3,31 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
-
-const images = [
-  {
-    src: "/images/headshot_clinic.jpeg",
-    alt: "Dr. Santosh Kulkarni consulting patient in clinic",
-    title: "Clinical Practice Setting",
-  },
-  {
-    src: "/images/headshot_navy.jpeg",
-    alt: "Dr. Santosh Kulkarni formal professional headshot",
-    title: "Dr. Santosh Kulkarni Headshot",
-  },
-  {
-    src: "/images/clinical_scrubs_patients.jpeg",
-    alt: "Dr. Santosh Kulkarni performing advanced gynaecological consultations",
-    title: "Patient Consultation Settings",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function GallerySection() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const images = [
+    {
+      src: "/images/headshot_clinic.jpeg",
+      alt: t.gallery.items[0]?.alt,
+      title: t.gallery.items[0]?.title,
+    },
+    {
+      src: "/images/headshot_navy.jpeg",
+      alt: t.gallery.items[1]?.alt,
+      title: t.gallery.items[1]?.title,
+    },
+    {
+      src: "/images/clinical_scrubs_patients.jpeg",
+      alt: t.gallery.items[2]?.alt,
+      title: t.gallery.items[2]?.title,
+    },
+  ];
 
   const openLightbox = (index: number) => {
     setPhotoIndex(index);
@@ -64,10 +66,10 @@ export default function GallerySection() {
         {/* Section Header */}
         <div className="mb-12 text-left max-w-2xl">
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4 block">
-            A GLIMPSE INTO OUR PRACTICE
+            {t.gallery.badge}
           </span>
           <p className="font-sans text-sm text-white/70">
-            Explore our warm, patient-first clinic and professional settings.
+            {t.gallery.subtitle}
           </p>
         </div>
 
@@ -153,8 +155,8 @@ export default function GallerySection() {
           <button
             ref={closeButtonRef}
             onClick={() => setIsOpen(false)}
-            className="absolute top-6 right-6 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/5 transition-all focus:outline-none focus:ring-2 focus:ring-accent"
-            aria-label="Close lightbox"
+            className="absolute top-6 right-6 text-white/80 hover:text-white p-2 rounded-full hover:bg-white/5 transition-all focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
+            aria-label={t.gallery.closeLabel}
           >
             <X className="w-8 h-8" />
           </button>

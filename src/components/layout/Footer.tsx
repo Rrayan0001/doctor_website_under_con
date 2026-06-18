@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { Star, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t, language } = useLanguage();
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
     e.preventDefault();
     const targetElement = document.querySelector(anchor);
@@ -31,15 +34,15 @@ export default function Footer() {
             </div>
             <div className="flex flex-col">
               <span className="font-display text-lg font-bold text-white tracking-tight leading-none">
-                Dr. Santosh Kulkarni
+                {t.common.doctorName}
               </span>
               <span className="font-sans text-[9px] font-semibold text-white/50 tracking-wider uppercase mt-1 leading-none">
-                Gynecologist & Women&apos;s Health
+                {t.common.doctorSubtitle}
               </span>
             </div>
           </div>
           <p className="font-sans text-sm text-white/70 leading-relaxed italic max-w-sm">
-            &ldquo;Compassionate women&apos;s healthcare, every stage of life.&rdquo;
+            {t.footer.tagline}
           </p>
           
           {/* Social Icons */}
@@ -83,16 +86,16 @@ export default function Footer() {
         {/* Column 2: Quick Links */}
         <div>
           <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-            Quick Links
+            {t.footer.quickLinks}
           </h4>
           <ul className="grid grid-cols-2 gap-3">
             {[
-              { label: "Home", anchor: "#home" },
-              { label: "About", anchor: "#about" },
-              { label: "Treatments", anchor: "#services" },
-              { label: "Patient Stories", anchor: "#testimonials" },
-              { label: "Gallery", anchor: "#gallery" },
-              { label: "Contact", anchor: "#contact" },
+              { label: t.navbar.home, anchor: "#home" },
+              { label: t.navbar.about, anchor: "#about" },
+              { label: t.navbar.treatments, anchor: "#services" },
+              { label: t.navbar.testimonials, anchor: "#testimonials" },
+              { label: t.navbar.gallery, anchor: "#gallery" },
+              { label: t.navbar.contact, anchor: "#contact" },
             ].map((link) => (
               <li key={link.label}>
                 <a
@@ -111,12 +114,18 @@ export default function Footer() {
         <div className="flex flex-col gap-6">
           <div>
             <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-              Contact Info
+              {t.footer.contactInfo}
             </h4>
             <ul className="flex flex-col gap-3 font-sans text-sm text-white/70">
-              <li className="flex gap-2.5 items-start">
+              <li className="flex gap-2.5 items-start text-left">
                 <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <span>Niramay Women&apos;s Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai &mdash; 400053</span>
+                <span>
+                  {language === "kn" ? (
+                    <>ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ೪೦೨ ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
+                  ) : (
+                    <>Niramay Women&apos;s Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai &mdash; 400053</>
+                  )}
+                </span>
               </li>
               <li className="flex gap-2.5 items-center">
                 <Phone className="w-4 h-4 text-accent flex-shrink-0" />
@@ -131,11 +140,10 @@ export default function Footer() {
           <div>
             <h5 className="font-sans text-xs font-semibold uppercase tracking-wider text-accent mb-3 flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5" />
-              Clinic Hours
+              {t.footer.hoursLabel}
             </h5>
-            <p className="font-sans text-xs text-white/60 leading-relaxed pl-5">
-              Mon&ndash;Sat: 9:00 AM &ndash; 1:00 PM | 5:00 PM &ndash; 8:00 PM<br />
-              Sunday: Closed
+            <p className="font-sans text-xs text-white/60 leading-relaxed pl-5 whitespace-pre-line text-left">
+              {t.footer.hoursText}
             </p>
           </div>
         </div>
@@ -145,10 +153,10 @@ export default function Footer() {
       {/* Bottom Copyright Bar */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
         <p className="font-sans text-xs text-white/50 text-center sm:text-left">
-          &copy; 2025 Niramay Women&apos;s Clinic. All rights reserved.
+          {t.footer.copyright}
         </p>
         <p className="font-sans text-xs text-white/50 text-center sm:text-right">
-          MBBS, MD (OBG) &mdash; Gynecologist & Women&apos;s Health Specialist
+          {t.common.doctorSubtitle}
         </p>
       </div>
     </footer>

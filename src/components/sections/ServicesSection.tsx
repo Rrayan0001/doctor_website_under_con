@@ -1,75 +1,78 @@
 "use client";
 
 import { MessageSquare } from "lucide-react";
-
-const services = [
-  {
-    num: "01",
-    title: "Pregnancy & Antenatal Care",
-    desc: "Complete care through every trimester — scans, health monitoring, and birth planning.",
-    isFeatured: true,
-    gridClass: "md:col-span-2",
-    tag: "Most Requested",
-  },
-  {
-    num: "02",
-    title: "PCOS Treatment",
-    desc: "Evidence-based diagnosis and lifestyle-led treatment plans for hormonal balance.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-  {
-    num: "03",
-    title: "Infertility Evaluation",
-    desc: "Compassionate diagnostic workups, ovulation induction, and follicular monitoring.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-  {
-    num: "04",
-    title: "Laparoscopic Surgery",
-    desc: "Minimally invasive keyhole surgery for fibroids, ovarian cysts, and hysterectomy with fast recovery times.",
-    isFeatured: true,
-    gridClass: "md:row-span-2 md:col-span-1",
-  },
-  {
-    num: "05",
-    title: "General Gynaecology",
-    desc: "Routine preventive checks, Pap smears, contraception advice, and pelvic pain management.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-  {
-    num: "06",
-    title: "Menopause Management",
-    desc: "HRT counseling, bone density tracking, and custom support for perimenopausal symptoms.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-  {
-    num: "07",
-    title: "Menstrual Disorders",
-    desc: "Clinical solutions for heavy bleeding, painful periods, and irregular cycles.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-  {
-    num: "08",
-    title: "High-Risk Pregnancy",
-    desc: "Close medical surveillance for gestational diabetes, hypertension, and multiple pregnancies.",
-    isFeatured: false,
-    gridClass: "md:col-span-2",
-  },
-  {
-    num: "09",
-    title: "Family Planning",
-    desc: "Consultation on modern contraceptive methods including loops, implants, and pills.",
-    isFeatured: false,
-    gridClass: "md:col-span-1",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesSection() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      num: "01",
+      title: t.services.items.s1.title,
+      desc: t.services.items.s1.desc,
+      isFeatured: true,
+      gridClass: "md:col-span-2",
+      tag: t.services.mostRequested,
+    },
+    {
+      num: "02",
+      title: t.services.items.s2.title,
+      desc: t.services.items.s2.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+    {
+      num: "03",
+      title: t.services.items.s3.title,
+      desc: t.services.items.s3.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+    {
+      num: "04",
+      title: t.services.items.s4.title,
+      desc: t.services.items.s4.desc,
+      isFeatured: true,
+      gridClass: "md:row-span-2 md:col-span-1",
+    },
+    {
+      num: "05",
+      title: t.services.items.s5.title,
+      desc: t.services.items.s5.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+    {
+      num: "06",
+      title: t.services.items.s6.title,
+      desc: t.services.items.s6.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+    {
+      num: "07",
+      title: t.services.items.s7.title,
+      desc: t.services.items.s7.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+    {
+      num: "08",
+      title: t.services.items.s8.title,
+      desc: t.services.items.s8.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-2",
+    },
+    {
+      num: "09",
+      title: t.services.items.s9.title,
+      desc: t.services.items.s9.desc,
+      isFeatured: false,
+      gridClass: "md:col-span-1",
+    },
+  ];
+
   const phoneNumber = "919876543210";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
 
@@ -80,13 +83,13 @@ export default function ServicesSection() {
         {/* Left-aligned Header */}
         <div className="mb-16 text-left max-w-2xl">
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
-            TREATMENTS
+            {t.services.badge}
           </span>
-          <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-4">
-            Comprehensive Care,<br />Every Stage of Life
+          <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-4 whitespace-pre-line">
+            {t.services.title}
           </h2>
           <p className="font-sans text-base text-text-muted leading-relaxed">
-            From routine check-ups to complex surgical procedures &mdash; all under one roof.
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -123,7 +126,7 @@ export default function ServicesSection() {
 
               {/* Service title and details */}
               <div className={`flex flex-col h-full justify-between relative z-10 ${service.tag ? "mt-0" : "mt-4"}`}>
-                <div>
+                <div className="text-left">
                   <h3
                     className={`font-display text-xl font-bold mb-3 ${
                       service.isFeatured ? "text-white" : "text-primary-dark"
@@ -148,20 +151,20 @@ export default function ServicesSection() {
         <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 bg-bg rounded-2xl border border-primary/5">
           <div className="text-left">
             <h4 className="font-display text-lg font-bold text-primary-dark mb-1">
-              Not sure which treatment is right for you?
+              {t.services.bannerTitle}
             </h4>
             <p className="font-sans text-sm text-text-muted">
-              Connect with Dr. Kulkarni&apos;s team on WhatsApp for quick guidance.
+              {t.services.bannerDesc}
             </p>
           </div>
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 flex-shrink-0"
+            className="px-6 py-3 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 flex-shrink-0 whitespace-nowrap cursor-pointer"
           >
             <MessageSquare className="w-4.5 h-4.5 fill-current" />
-            WhatsApp Consultation
+            {t.common.whatsappConsultation}
           </a>
         </div>
 

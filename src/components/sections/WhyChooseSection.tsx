@@ -1,25 +1,12 @@
 "use client";
 
-const pillars = [
-  {
-    title: "Evidence-Based Medicine",
-    desc: "Every diagnosis follows the latest international clinical guidelines — no guesswork, no shortcuts.",
-  },
-  {
-    title: "Patient-First Communication",
-    desc: "Dr. Kulkarni takes time to explain every step clearly, ensuring patients feel confident in their decisions.",
-  },
-  {
-    title: "On-Time, Every Time",
-    desc: "Appointments are respected. No long waiting room surprises — your time and comfort are valued.",
-  },
-  {
-    title: "Safe, Private Environment",
-    desc: "A warm, hygienic, judgment-free clinic space designed with women's absolute comfort in mind.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function WhyChooseSection() {
+  const { t } = useLanguage();
+
+  const pillars = t.whyChoose.pillars;
+
   return (
     <section className="py-20 bg-gradient-to-br from-primary-dark to-primary text-white relative overflow-hidden scroll-mt-20">
       
@@ -32,10 +19,10 @@ export default function WhyChooseSection() {
         {/* Centered White Section Header */}
         <div className="mb-16 text-center max-w-xl mx-auto">
           <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
-            WHY CHOOSE US
+            {t.whyChoose.badge}
           </span>
           <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-white leading-tight">
-            Why Thousands of Women Trust Dr. Kulkarni
+            {t.whyChoose.title}
           </h2>
         </div>
 

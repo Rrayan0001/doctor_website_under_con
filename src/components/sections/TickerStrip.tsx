@@ -1,17 +1,21 @@
 "use client";
 
-const tickerItems = [
-  "Pregnancy Care",
-  "PCOS Treatment",
-  "Infertility",
-  "Laparoscopic Surgery",
-  "Menopause",
-  "High-Risk Pregnancy",
-  "Menstrual Disorders",
-  "Family Planning",
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TickerStrip() {
+  const { t } = useLanguage();
+
+  const tickerItems = [
+    t.ticker.pregnancy,
+    t.ticker.pcos,
+    t.ticker.infertility,
+    t.ticker.laparoscopy,
+    t.ticker.menopause,
+    t.ticker.highRisk,
+    t.ticker.menstrual,
+    t.ticker.familyPlanning,
+  ];
+
   return (
     <div
       id="ticker"

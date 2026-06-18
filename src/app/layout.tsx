@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -62,7 +63,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} scroll-smooth`}
     >
       <body className="font-sans bg-bg text-text antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

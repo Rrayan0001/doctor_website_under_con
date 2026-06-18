@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Calendar, MessageSquare, Star } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 // CountUp component using requestAnimationFrame
 function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
@@ -58,6 +59,7 @@ function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?:
 }
 
 export default function HeroSection() {
+  const { t, language } = useLanguage();
   const heroRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -87,7 +89,7 @@ export default function HeroSection() {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative min-h-[100dvh] pt-24 pb-12 flex flex-col justify-between overflow-hidden bg-bg"
+      className="relative min-h-[100dvh] pt-24 pb-12 flex flex-col justify-between overflow-hidden bg-bg text-left"
     >
       {/* Soft cursor-following glow (Hero only) */}
       {isHovered && (
@@ -107,18 +109,16 @@ export default function HeroSection() {
         
         {/* Left Column: Content (55% width on large screens) */}
         <div className="w-full lg:w-[55%] flex flex-col items-start text-left animate-clip-up">
-          <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4">
-            TRUSTED WOMEN&apos;S HEALTHCARE · MUMBAI
+          <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
+            {t.hero.trustTag}
           </span>
           <h1 className="font-display text-[2.1rem] xs:text-[2.6rem] sm:text-[3.5rem] lg:text-[4.5rem] xl:text-[5rem] font-bold text-primary-dark leading-[1.1] mb-6">
-            Expert Care for<br />
-            Every Stage of<br />
-            a Woman&apos;s Life.
+            {t.hero.titleLine1}<br />
+            {t.hero.titleLine2}<br />
+            {t.hero.titleLine3}
           </h1>
           <p className="font-sans text-[1rem] sm:text-[1.125rem] text-text-muted leading-relaxed mb-8 max-w-xl">
-            Dr. Santosh Kulkarni, MBBS, MD (OBG) — providing compassionate,
-            evidence-based gynecology and obstetrics for over 15 years.
-            Trusted by 10,000+ women across Karnataka and Maharashtra.
+            {t.hero.description}
           </p>
           
           {/* CTAs */}
@@ -126,18 +126,18 @@ export default function HeroSection() {
             <a
               href="#contact"
               onClick={handleBookClick}
-              className="px-8 py-4 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all text-center"
+              className="px-8 py-4 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all text-center whitespace-nowrap"
             >
-              Book Consultation
+              {t.common.bookConsultation}
             </a>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 border border-primary/30 hover:border-primary text-primary font-sans font-semibold rounded-full hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+              className="px-8 py-4 border border-primary/30 hover:border-primary text-primary font-sans font-semibold rounded-full hover:bg-primary/5 transition-all flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <MessageSquare className="w-5 h-5 text-emerald-600 fill-emerald-600/10" />
-              WhatsApp Doctor
+              {t.common.whatsappDoctor}
             </a>
           </div>
         </div>
@@ -164,17 +164,17 @@ export default function HeroSection() {
           {/* Floating Badges */}
           <div className="absolute left-[-20px] top-[15%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float">
             <span className="text-accent">✦</span>
-            <span className="font-sans text-xs font-bold text-primary-dark">High-Risk Pregnancy Specialist</span>
+            <span className="font-sans text-xs font-bold text-primary-dark">{t.hero.badgePregnancy}</span>
           </div>
           
           <div className="absolute right-[-10px] top-[45%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float-delayed" style={{ animationDelay: "1.5s" }}>
             <span className="text-accent">✦</span>
-            <span className="font-sans text-xs font-bold text-primary-dark">Fellowship &mdash; AIIMS</span>
+            <span className="font-sans text-xs font-bold text-primary-dark">{t.hero.badgeFellowship}</span>
           </div>
 
           <div className="absolute left-[10px] bottom-[10%] bg-white/95 border border-primary/10 shadow-md py-2 px-4 rounded-full flex items-center gap-2 z-20 animate-float" style={{ animationDelay: "0.8s" }}>
             <span className="text-accent">✦</span>
-            <span className="font-sans text-xs font-bold text-primary-dark">FOGSI Member</span>
+            <span className="font-sans text-xs font-bold text-primary-dark">{t.hero.badgeFogsi}</span>
           </div>
         </div>
       </div>
@@ -183,10 +183,10 @@ export default function HeroSection() {
       <div className="hidden lg:block w-full max-w-7xl mx-auto px-6 md:px-8 mt-12 relative z-10">
         <div className="bg-white/90 backdrop-blur-md border border-primary/10 rounded-2xl shadow-md px-10 py-6 grid grid-cols-4 divide-x divide-primary/10">
           {[
-            { value: 15, suffix: "+", label: "Years Experience", decimals: 0 },
-            { value: 10000, suffix: "+", label: "Women Treated", decimals: 0 },
-            { value: 4.9, suffix: "/5", label: "Patient Rating", decimals: 1 },
-            { value: 500, suffix: "+", label: "Reviews", decimals: 0 },
+            { value: 15, suffix: "+", label: t.common.yearsExperience, decimals: 0 },
+            { value: 10000, suffix: "+", label: t.common.womenTreated, decimals: 0 },
+            { value: 4.9, suffix: "/5", label: t.common.patientRating, decimals: 1 },
+            { value: 500, suffix: "+", label: t.common.reviews, decimals: 0 },
           ].map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center px-6 first:pl-0 last:pr-0 text-center">
               <span className="font-display text-4xl font-bold text-primary mb-1">
@@ -204,9 +204,9 @@ export default function HeroSection() {
       <div className="lg:hidden w-full max-w-md mx-auto px-6 mt-8 relative z-10">
         <div className="bg-white border border-primary/10 shadow-md rounded-2xl p-5 grid grid-cols-3 divide-x divide-primary/10">
           {[
-            { value: 15, suffix: "+", line1: "Years", line2: "Experience", decimals: 0 },
-            { value: 10000, suffix: "+", line1: "Women", line2: "Treated", decimals: 0 },
-            { value: 4.9, suffix: "", line1: "Patient", line2: "Rating", decimals: 1 },
+            { value: 15, suffix: "+", line1: t.hero.stats.years, line2: t.hero.stats.experience, decimals: 0 },
+            { value: 10000, suffix: "+", line1: t.hero.stats.women, line2: t.hero.stats.treated, decimals: 0 },
+            { value: 4.9, suffix: "", line1: t.hero.stats.patient, line2: t.hero.stats.rating, decimals: 1 },
           ].map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center px-1 text-center">
               <span className="font-display text-[1.25rem] sm:text-2xl font-bold text-primary mb-0.5">
