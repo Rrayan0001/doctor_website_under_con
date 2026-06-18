@@ -5,26 +5,38 @@ import { Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function TestimonialsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opacity, setOpacity] = useState(100);
 
-  const featuredQuotes = t.testimonials.featured;
-  const cards = t.testimonials.cards;
+  const featuredQuotes = t.testimonials.featured || [];
+  const cards = t.testimonials.cards || [];
+
+  // Reset index on language change to prevent NaN/out-of-bounds state during hydration
+  useEffect(() => {
+    setCurrentIndex(0);
+    setOpacity(100);
+  }, [language]);
 
   useEffect(() => {
+    if (!featuredQuotes || featuredQuotes.length === 0) return;
     const interval = setInterval(() => {
       // Fade out
       setOpacity(0);
       setTimeout(() => {
-        // Change text
-        setCurrentIndex((prev) => (prev + 1) % featuredQuotes.length);
+        // Change text with robust index wrap check
+        setCurrentIndex((prev) => {
+          if (isNaN(prev) || prev >= featuredQuotes.length - 1) return 0;
+          return prev + 1;
+        });
         // Fade in
         setOpacity(100);
       }, 400);
     }, 5000);
     return () => clearInterval(interval);
   }, [featuredQuotes.length]);
+
+  const currentQuote = featuredQuotes[currentIndex] || featuredQuotes[0] || { text: "", attribution: "" };
 
   return (
     <section id="testimonials" className="py-20 bg-bg scroll-mt-20 relative overflow-hidden">
@@ -57,12 +69,12 @@ export default function TestimonialsSection() {
               style={{ opacity: opacity / 100, transform: `translateY(${(100 - opacity) / 15}px)` }}
             >
               <p className="font-display italic text-[1.4rem] sm:text-[1.6rem] text-primary-dark leading-relaxed mb-6 font-medium">
-                &ldquo;{featuredQuotes[currentIndex]?.text}&rdquo;
+                &ldquo;{currentQuote.text}&rdquo;
               </p>
               
               <div className="flex flex-col">
                 <span className="font-sans text-sm font-semibold text-text-muted">
-                  {featuredQuotes[currentIndex]?.attribution}
+                  {currentQuote.attribution}
                 </span>
                 
                 {/* 5 Gold Stars */}
