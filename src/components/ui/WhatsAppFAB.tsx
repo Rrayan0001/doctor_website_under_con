@@ -28,7 +28,7 @@ export default function WhatsAppFAB() {
   };
 
   // Pre-filled WhatsApp message
-  const phoneNumber = "919876543210";
+  const phoneNumber = "919480422318";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
   return (

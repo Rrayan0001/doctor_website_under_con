@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function ContactSection() {
   const { t, language } = useLanguage();
   
-  const phoneNumber = "919876543210";
+  const phoneNumber = "919480422318";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20check%20availability%20for%20a%20consultation.`;
 
   const handleBookClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,8 +46,8 @@ export default function ContactSection() {
 
               <div className="flex gap-3 items-center text-left border-t border-primary/5 pt-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+919876543210" className="font-sans text-sm text-text-muted hover:text-primary transition-colors">
-                  +91 98765 43210
+                <a href="tel:+919480422318" className="font-sans text-sm text-text-muted hover:text-primary transition-colors">
+                  +91 94804 22318
                 </a>
               </div>
 
