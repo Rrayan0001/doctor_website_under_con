@@ -357,7 +357,7 @@ body {
 
 @media (min-width: 1024px) {
   .services-grid-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
