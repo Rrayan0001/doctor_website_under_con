@@ -27,7 +27,7 @@ export default function ContactSection() {
             </h2>
             
             {/* Address Card */}
-            <div className="bg-white border border-primary/5 p-6 rounded-2xl shadow-sm space-y-4">
+            <div className="glass-card border border-primary/5 p-6 rounded-2xl space-y-4 card-hover">
               <div className="flex gap-3 items-start text-left">
                 <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                 <div className="font-sans text-sm">
@@ -93,7 +93,7 @@ export default function ContactSection() {
             </h2>
 
             {/* Timings Card */}
-            <div className="bg-white border border-primary/5 p-6 rounded-2xl shadow-sm text-left">
+            <div className="glass-card border border-primary/5 p-6 rounded-2xl text-left card-hover">
               <h3 className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4">
                 {t.contact.timingsLabel}
               </h3>
@@ -122,7 +122,7 @@ export default function ContactSection() {
             <div className="flex flex-col gap-4">
               <button
                 onClick={handleBookClick}
-                className="w-full py-4 px-6 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light transition-all text-center cursor-pointer"
+                className="w-full py-4 px-6 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light transition-all text-center cursor-pointer btn-primary btn-ripple"
               >
                 {t.contact.bookBtn}
               </button>
@@ -130,7 +130,7 @@ export default function ContactSection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 px-6 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-750 transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-4 px-6 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-700 transition-all text-center flex items-center justify-center gap-2 cursor-pointer btn-ripple whatsapp-pulse"
               >
                 <MessageSquare className="w-5 h-5 fill-current" />
                 {t.common.whatsappNow}

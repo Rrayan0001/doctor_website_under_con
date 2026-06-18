@@ -54,7 +54,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={idx}
-                className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item ${
+                className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item reveal-up ${
                   idx === 8 ? "services-grid-item--full" : ""
                 } ${
                   service.isFeatured

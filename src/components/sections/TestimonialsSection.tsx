@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Featured Quote Display (5/12 width) */}
-          <div className="lg:col-span-5 bg-white border border-primary/5 rounded-2xl p-8 sm:p-10 shadow-sm relative min-h-[320px] flex flex-col justify-between">
+          <div className="lg:col-span-5 glass-card rounded-2xl p-8 sm:p-10 relative min-h-[320px] flex flex-col justify-between">
             
             {/* Giant quotation mark in Cormorant */}
             <span className="absolute top-2 left-6 font-display text-[8rem] font-bold text-primary opacity-15 leading-none select-none pointer-events-none">
@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
             {cards.map((card, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-primary/5 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 group hover:-translate-y-1"
+                className="glass-card border border-primary/5 p-6 rounded-2xl card-hover group"
                 style={{
                   zIndex: 10 + idx,
                   marginTop: idx > 0 ? "-16px" : "0px",

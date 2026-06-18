@@ -10,12 +10,15 @@ import GallerySection from "@/components/sections/GallerySection";
 import ContactSection from "@/components/sections/ContactSection";
 import WhatsAppFAB from "@/components/ui/WhatsAppFAB";
 import SplashScreen from "@/components/ui/SplashScreen";
+import ScrollRevealObserver from "@/components/ui/ScrollRevealObserver";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Welcome splash screen */}
       <SplashScreen />
+      {/* Scroll reveal observer — activates CSS animations on scroll */}
+      <ScrollRevealObserver />
       {/* Sticky frosted Navbar */}
       <Navbar />
 

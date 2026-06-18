@@ -166,7 +166,7 @@ export default function HeroSection() {
         <div className="w-full lg:w-[45%] flex justify-center relative animate-fade-in" style={{ animationDelay: "0.3s" }}>
           
           {/* Subtle radial teal glow behind photo */}
-          <div className="absolute w-[450px] h-[450px] bg-primary/12 rounded-full blur-[80px] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
+          <div className="absolute w-[450px] h-[450px] bg-primary/12 rounded-full blur-[80px] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 hero-glow-animate" />
           
           <div className="relative z-10 w-full max-w-[400px] aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border border-primary/5 bg-[#faf8f4] group">
             <Image
@@ -201,7 +201,7 @@ export default function HeroSection() {
 
       {/* Desktop Bottom Stats Bar */}
       <div className="hidden lg:block w-full max-w-7xl mx-auto px-6 md:px-8 mt-12 relative z-10">
-        <div className="bg-white/90 backdrop-blur-md border border-primary/10 rounded-2xl shadow-md px-10 py-6 grid grid-cols-4 divide-x divide-primary/10">
+        <div className="stats-glass rounded-2xl px-10 py-6 grid grid-cols-4 divide-x divide-primary/10">
           {[
             { value: 15, suffix: "+", label: t.common.yearsExperience, decimals: 0 },
             { value: 10000, suffix: "+", label: t.common.womenTreated, decimals: 0 },

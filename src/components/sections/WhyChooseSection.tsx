@@ -8,11 +8,11 @@ export default function WhyChooseSection() {
   const pillars = t.whyChoose.pillars;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-dark to-primary text-white relative overflow-hidden scroll-mt-20">
+    <section className="py-20 animated-gradient-bg text-white relative overflow-hidden scroll-mt-20">
       
-      {/* Subtle background glow elements */}
-      <div className="absolute w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] top-[20%] left-[-100px] pointer-events-none" />
-      <div className="absolute w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px] bottom-[10%] right-[-50px] pointer-events-none" />
+      {/* Drifting glow orbs */}
+      <div className="absolute w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] top-[20%] left-[-100px] pointer-events-none orb-animate-1" />
+      <div className="absolute w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px] bottom-[10%] right-[-50px] pointer-events-none orb-animate-2" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
