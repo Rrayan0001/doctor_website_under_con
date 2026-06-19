@@ -24,7 +24,10 @@ export default function Home() {
         {/* Hero Area */}
         <section className="hero-section animate-fade-in-up delay-1">
           <div className="construction-highlight">
-            <span>Under Construction by</span> <strong>Kreo Softwares</strong>
+            <span>Under Construction by</span>{" "}
+            <a href="https://kreosoftwares.in" target="_blank" rel="noopener noreferrer">
+              <strong>Kreo Softwares</strong>
+            </a>
           </div>
           <span className="hero-tag">Women's Care Sanctuary</span>
           <h1 className="hero-title">Expert Care for Every Stage of a Woman's Life</h1>
