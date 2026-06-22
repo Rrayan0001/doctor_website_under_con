@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { ScrollReveal } from "@/components/ui/ScrollAnimations";
 
 export default function GallerySection() {
   const { t } = useLanguage();
@@ -61,83 +62,97 @@ export default function GallerySection() {
       {/* Background visual detail */}
       <div className="absolute w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] top-[10%] left-[-100px] pointer-events-none" />
 
+      {/* Ambient floating particles */}
+      <div className="ambient-particle w-2 h-2 bg-accent/20 top-[15%] right-[12%]" style={{ animationDelay: "0s", animationDuration: "10s" }} />
+      <div className="ambient-particle w-3 h-3 bg-primary/15 bottom-[25%] left-[20%]" style={{ animationDelay: "4s", animationDuration: "14s" }} />
+
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="mb-12 text-left max-w-2xl">
-          <span className="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4 block">
-            {t.gallery.badge}
-          </span>
-          <p className="font-sans text-sm text-white/70">
-            {t.gallery.subtitle}
-          </p>
+          <ScrollReveal variant="fade-up" delay={0}>
+            <span className="font-sans text-xs font-bold uppercase tracking-widest text-white mb-4 block">
+              {t.gallery.badge}
+            </span>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" delay={100}>
+            <p className="font-sans text-sm text-white/70">
+              {t.gallery.subtitle}
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Mosaic Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-2 max-w-5xl mx-auto">
           
           {/* Large Left Image (Spans 2 rows, 7 columns wide) */}
-          <div
-            onClick={() => openLightbox(0)}
-            className="md:col-span-7 md:row-span-2 relative aspect-[3/4] md:aspect-auto md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl group cursor-pointer border border-white/5"
-          >
-            <Image
-              src={images[0].src}
-              alt={images[0].alt}
-              fill
-              className="object-cover object-center transition-all duration-500 group-hover:scale-103"
-              sizes="(max-w-768px) 100vw, 600px"
-              loading="lazy"
-            />
-            {/* Hover visual moment overlay */}
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
-                <ZoomIn className="w-6 h-6" />
+          <ScrollReveal variant="fade-right" duration={1000} delay={0} className="md:col-span-7 md:row-span-2">
+            <div
+              onClick={() => openLightbox(0)}
+              className="relative aspect-[3/4] md:aspect-auto md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
+            >
+              <Image
+                src={images[0].src}
+                alt={images[0].alt}
+                fill
+                className="object-cover object-center transition-all duration-500 group-hover:scale-103"
+                sizes="(max-w-768px) 100vw, 600px"
+                loading="lazy"
+              />
+              {/* Hover visual moment overlay */}
+              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                  <ZoomIn className="w-6 h-6" />
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Top Right Image (5 columns wide) */}
-          <div
-            onClick={() => openLightbox(1)}
-            className="md:col-span-5 relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5"
-          >
-            <Image
-              src={images[1].src}
-              alt={images[1].alt}
-              fill
-              className="object-cover object-center transition-all duration-500 group-hover:scale-103"
-              sizes="(max-w-768px) 100vw, 400px"
-              loading="lazy"
-            />
-            {/* Hover visual moment overlay */}
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
-                <ZoomIn className="w-6 h-6" />
+          <ScrollReveal variant="fade-left" duration={900} delay={200} className="md:col-span-5">
+            <div
+              onClick={() => openLightbox(1)}
+              className="relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
+            >
+              <Image
+                src={images[1].src}
+                alt={images[1].alt}
+                fill
+                className="object-cover object-center transition-all duration-500 group-hover:scale-103"
+                sizes="(max-w-768px) 100vw, 400px"
+                loading="lazy"
+              />
+              {/* Hover visual moment overlay */}
+              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                  <ZoomIn className="w-6 h-6" />
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Bottom Right Image (5 columns wide) */}
-          <div
-            onClick={() => openLightbox(2)}
-            className="md:col-span-5 relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5"
-          >
-            <Image
-              src={images[2].src}
-              alt={images[2].alt}
-              fill
-              className="object-cover transition-all duration-500 group-hover:scale-103"
-              sizes="(max-w-768px) 100vw, 400px"
-              loading="lazy"
-            />
-            {/* Hover visual moment overlay */}
-            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white">
-                <ZoomIn className="w-6 h-6" />
+          <ScrollReveal variant="fade-left" duration={900} delay={350} className="md:col-span-5">
+            <div
+              onClick={() => openLightbox(2)}
+              className="relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
+            >
+              <Image
+                src={images[2].src}
+                alt={images[2].alt}
+                fill
+                className="object-cover transition-all duration-500 group-hover:scale-103"
+                sizes="(max-w-768px) 100vw, 400px"
+                loading="lazy"
+              />
+              {/* Hover visual moment overlay */}
+              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                  <ZoomIn className="w-6 h-6" />
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 

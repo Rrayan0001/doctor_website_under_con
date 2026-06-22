@@ -82,11 +82,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? "frosted-glass py-3 shadow-sm"
             : "bg-transparent py-5 border-b border-transparent"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
           {/* Logo brand area: Custom inline SVG uterus/ovary SK logo */}
@@ -127,10 +126,9 @@ export default function Navbar() {
                     onClick={(e) => handleLinkClick(e, link.anchor)}
                     className={`font-sans text-sm font-semibold transition-colors relative py-1 whitespace-nowrap
                       after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-primary after:transition-all
-                      ${
-                        isActive
-                          ? "text-primary after:w-full"
-                          : "text-text hover:text-primary after:w-0 hover:after:w-full"
+                      ${isActive
+                        ? "text-primary after:w-full"
+                        : "text-text hover:text-primary after:w-0 hover:after:w-full"
                       }`}
                   >
                     {link.label}
@@ -143,31 +141,28 @@ export default function Navbar() {
             <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-xs">
               <button
                 onClick={() => setLanguage("en")}
-                className={`px-2 py-1 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "en"
+                className={`px-2 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "en"
                     ? "bg-primary text-white font-bold shadow-sm"
                     : "text-text hover:text-primary font-medium"
-                }`}
+                  }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage("kn")}
-                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "kn"
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "kn"
                     ? "bg-primary text-white font-bold shadow-sm"
                     : "text-text hover:text-primary font-medium"
-                }`}
+                  }`}
               >
                 ಕನ್ನಡ
               </button>
               <button
                 onClick={() => setLanguage("hi")}
-                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "hi"
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "hi"
                     ? "bg-primary text-white font-bold shadow-sm"
                     : "text-text hover:text-primary font-medium"
-                }`}
+                  }`}
               >
                 हिंदी
               </button>
@@ -189,36 +184,33 @@ export default function Navbar() {
             <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-[10px]">
               <button
                 onClick={() => setLanguage("en")}
-                className={`px-1.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "en"
+                className={`px-1.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "en"
                     ? "bg-primary text-white font-bold"
                     : "text-text hover:text-primary"
-                }`}
+                  }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage("kn")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "kn"
+                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "kn"
                     ? "bg-primary text-white font-bold"
                     : "text-text hover:text-primary"
-                }`}
+                  }`}
               >
                 ಕನ್ನಡ
               </button>
               <button
                 onClick={() => setLanguage("hi")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${
-                  language === "hi"
+                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "hi"
                     ? "bg-primary text-white font-bold"
                     : "text-text hover:text-primary"
-                }`}
+                  }`}
               >
                 हिंदी
               </button>
             </div>
-            
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-text hover:text-primary transition-colors focus:outline-none"
@@ -232,17 +224,15 @@ export default function Navbar() {
 
       {/* Mobile Drawer Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-primary-dark/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 bg-primary-dark/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
       {/* Mobile Navigation Drawer Overlay */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-[300px] z-50 bg-bg shadow-2xl p-8 flex flex-col justify-between transition-transform duration-300 md:hidden ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 bottom-0 w-[300px] z-50 bg-bg shadow-2xl p-8 flex flex-col justify-between transition-transform duration-300 md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex flex-col">
           {/* Close button in Drawer */}
@@ -282,10 +272,9 @@ export default function Navbar() {
                   href={link.anchor}
                   onClick={(e) => handleLinkClick(e, link.anchor)}
                   className={`font-sans text-base font-semibold transition-colors py-2 border-b border-primary/5 text-left
-                    ${
-                      isActive
-                        ? "text-primary border-b-primary font-bold"
-                        : "text-text hover:text-primary"
+                    ${isActive
+                      ? "text-primary border-b-primary font-bold"
+                      : "text-text hover:text-primary"
                     }`}
                 >
                   {link.label}

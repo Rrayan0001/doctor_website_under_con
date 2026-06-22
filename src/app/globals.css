@@ -409,3 +409,442 @@ body {
 .services-grid-item--full {
   grid-column: 1 / -1;
 }
+
+/* Mobile-specific adjustments for the services grid (max-width: 1023px) */
+@media (max-width: 1023px) {
+  /* Featured card overrides (odd-numbered cards on mobile, e.g. 1st, 3rd, 5th, 7th, 9th) */
+  .services-grid-item.mobile-featured {
+    background: linear-gradient(135deg, #0a4f52 0%, #071e22 100%) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .services-grid-item.mobile-featured::before {
+    content: '' !important;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200, 153, 74, 0.08) 0%, transparent 60%) !important;
+    pointer-events: none;
+    display: block !important;
+  }
+  
+  .services-grid-item.mobile-featured::after {
+    content: '' !important;
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200, 153, 74, 0.12) 0%, transparent 70%) !important;
+    pointer-events: none;
+    display: block !important;
+  }
+
+  .services-grid-item.mobile-featured .service-icon-container {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  .services-grid-item.mobile-featured:hover .service-icon-container {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+  
+  .services-grid-item.mobile-featured .service-icon {
+    color: #e8c07a !important; /* text-accent-light */
+  }
+  
+  .services-grid-item.mobile-featured .service-number {
+    color: rgba(232, 192, 122, 0.7) !important; /* text-accent-light/70 */
+  }
+  
+  .services-grid-item.mobile-featured .service-arrow {
+    color: #e8c07a !important;
+  }
+  
+  .services-grid-item.mobile-featured .service-title {
+    color: #ffffff !important;
+  }
+  
+  .services-grid-item.mobile-featured .service-desc {
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  /* Light card overrides (even-numbered cards on mobile, e.g. 2nd, 4th, 6th, 8th) */
+  .services-grid-item:not(.mobile-featured) {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #1a1a1a !important;
+  }
+  
+  .services-grid-item:not(.mobile-featured):hover {
+    background: #ffffff !important;
+  }
+  
+  .services-grid-item:not(.mobile-featured)::before,
+  .services-grid-item:not(.mobile-featured)::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .services-grid-item:not(.mobile-featured) .service-icon-container {
+    background-color: rgba(10, 79, 82, 0.06) !important;
+    border: 1px solid rgba(10, 79, 82, 0.08) !important;
+  }
+  
+  .services-grid-item:not(.mobile-featured):hover .service-icon-container {
+    background-color: rgba(10, 79, 82, 0.1) !important;
+    border-color: rgba(10, 79, 82, 0.15) !important;
+  }
+  
+  .services-grid-item:not(.mobile-featured) .service-icon {
+    color: #0a4f52 !important; /* text-primary */
+  }
+  
+  .services-grid-item:not(.mobile-featured) .service-number {
+    color: #9a9a9a !important; /* text-text-faint */
+  }
+  
+  .services-grid-item:not(.mobile-featured) .service-arrow {
+    color: #0a4f52 !important;
+  }
+  
+  .services-grid-item:not(.mobile-featured) .service-title {
+    color: #071e22 !important; /* text-primary-dark */
+  }
+  
+  .services-grid-item:not(.mobile-featured):hover .service-title {
+    color: #0a4f52 !important; /* text-primary */
+  }
+  
+  .services-grid-item:not(.mobile-featured) .service-desc {
+    color: #5a5a5a !important; /* text-text-muted */
+  }
+}
+
+/* Hover glow overlay rules */
+.services-grid-item .service-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: linear-gradient(to bottom right, rgba(10, 79, 82, 0.03), transparent);
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .services-grid-item:not(.featured-service-card):hover .service-glow {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .services-grid-item:not(.mobile-featured):hover .service-glow {
+    opacity: 1 !important;
+  }
+}
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL ANIMATION UTILITIES
+   ═══════════════════════════════════════ */
+
+/* Clip-path based reveals for ScrollReveal component */
+.sr-clip-up-hidden {
+  clip-path: inset(100% 0 0 0);
+  opacity: 0;
+}
+.sr-clip-up-visible {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+.sr-clip-left-hidden {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+.sr-clip-left-visible {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+/* Bounce-in uses a special spring cubic-bezier */
+.sr-bounce-transition {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* ═══════════════════════════════════════
+   NATIVE SCROLL-DRIVEN ANIMATIONS
+   (Progressive Enhancement — Chrome 115+, Safari 26+)
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    /* Slide-up + fade for sections */
+    @keyframes sda-slide-up {
+      from {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+    }
+
+    @keyframes sda-slide-up-exit {
+      to {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+    }
+
+    /* Scale-in effect */
+    @keyframes sda-scale-in {
+      from {
+        opacity: 0;
+        scale: 0.8;
+      }
+    }
+
+    /* Horizontal slide for alternating layout */
+    @keyframes sda-slide-left {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+    }
+
+    @keyframes sda-slide-right {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+    }
+
+    /* Apply to all major sections */
+    .sda-section-reveal {
+      animation: sda-slide-up auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+
+    .sda-scale-reveal {
+      animation: sda-scale-in auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+
+    .sda-slide-left-reveal {
+      animation: sda-slide-left auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+
+    .sda-slide-right-reveal {
+      animation: sda-slide-right auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 5% cover 30%;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════
+   SHIMMER / SHEEN EFFECT ON CARDS
+   ═══════════════════════════════════════ */
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.shimmer-card:hover::after {
+  animation: shimmer-sweep 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ═══════════════════════════════════════
+   HEARTBEAT PULSE (for icons / badges)
+   ═══════════════════════════════════════ */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  56% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════
+   FLOATING PARTICLES / AMBIENT DOTS
+   ═══════════════════════════════════════ */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px) scale(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-15px) translateX(-10px) scale(0.95);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-40px) translateX(8px) scale(1.05);
+    opacity: 0.65;
+  }
+}
+
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-float 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ═══════════════════════════════════════
+   GLOW PULSE FOR CTA BUTTONS
+   ═══════════════════════════════════════ */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(10, 79, 82, 0.2), 0 0 20px rgba(10, 79, 82, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(10, 79, 82, 0.35), 0 0 40px rgba(10, 79, 82, 0.2);
+  }
+}
+
+.glow-pulse-btn {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════
+   GOLDEN GRADIENT TEXT ANIMATION
+   ═══════════════════════════════════════ */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient-text {
+  background: linear-gradient(
+    90deg,
+    #c8994a 0%,
+    #e8c07a 25%,
+    #c8994a 50%,
+    #e8c07a 75%,
+    #c8994a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s linear infinite;
+}
+
+/* ═══════════════════════════════════════
+   SECTION DIVIDER WAVE
+   ═══════════════════════════════════════ */
+@keyframes wave-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.wave-divider {
+  position: relative;
+  overflow: hidden;
+  height: 60px;
+}
+
+.wave-divider svg {
+  position: absolute;
+  bottom: 0;
+  min-width: 200%;
+  animation: wave-drift 12s linear infinite;
+}
+
+/* ═══════════════════════════════════════
+   TESTIMONIAL CARD STACK LIFT
+   ═══════════════════════════════════════ */
+.testimonial-card-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              z-index 0s 0s;
+}
+
+.testimonial-card-lift:hover {
+  transform: translateY(-12px) scale(1.02) !important;
+  box-shadow: 0 20px 50px rgba(10, 79, 82, 0.15) !important;
+  z-index: 50 !important;
+}
+
+/* ═══════════════════════════════════════
+   GALLERY IMAGE REVEAL
+   ═══════════════════════════════════════ */
+@keyframes gallery-clip-reveal {
+  from {
+    clip-path: inset(15% 15% 15% 15%);
+    opacity: 0.6;
+    filter: brightness(0.7) saturate(0.3);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .gallery-reveal-item {
+      animation: gallery-clip-reveal auto linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION FALLBACK
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat,
+  .ambient-particle,
+  .glow-pulse-btn,
+  .animated-gradient-text,
+  .shimmer-card::after {
+    animation: none !important;
+  }
+
+  .testimonial-card-lift:hover {
+    transform: none !important;
+  }
+}
+
