@@ -106,8 +106,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#071e22] text-white/70 relative h-fit rounded-3xl overflow-hidden m-8 border border-primary/10">
-      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+    <footer className="bg-[#071e22] text-white/70 relative h-fit rounded-3xl overflow-hidden m-4 sm:m-6 md:m-8 border border-primary/10">
+      <div className="max-w-7xl mx-auto p-8 sm:p-10 md:p-14 z-40 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4 text-left">
@@ -241,7 +241,7 @@ export default function Footer() {
       </div>
 
       {/* Text hover effect */}
-      <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36">
+      <div className="flex h-[12rem] sm:h-[18rem] md:h-[24rem] lg:h-[30rem] -mt-16 sm:-mt-24 md:-mt-36 lg:-mt-52 -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-36 overflow-hidden">
         <TextHoverEffect text="DR. SANTOSH" className="z-50" />
       </div>
 

@@ -38,12 +38,32 @@ export const TextHoverEffect = ({
     setCursor({ x: e.clientX, y: e.clientY });
   };
 
+  const handleTouchMove = (e: React.TouchEvent<SVGSVGElement>) => {
+    if (e.touches && e.touches[0]) {
+      setCursor({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<SVGSVGElement>) => {
+    setHovered(true);
+    if (e.touches && e.touches[0]) {
+      setCursor({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setHovered(false);
+  };
+
   return (
     <svg
       ref={svgRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       className={`w-full h-full select-none ${className}`}
       viewBox="0 0 1000 200"
       xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +102,7 @@ export const TextHoverEffect = ({
         fill="url(#textHoverReveal)"
         className="font-display font-bold text-7xl sm:text-8xl fill-transparent stroke-accent stroke-[1.2px] transition-opacity duration-300"
         style={{
-          opacity: hovered ? 1 : 0,
+          opacity: hovered ? 1 : 0.15,
         }}
       >
         {text}
