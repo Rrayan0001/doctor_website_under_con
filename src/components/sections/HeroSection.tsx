@@ -5,59 +5,7 @@ import Image from "next/image";
 import { Calendar, MessageSquare, Star } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { MagneticButton } from "@/components/ui/ScrollAnimations";
-
-// CountUp component using requestAnimationFrame
-function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const end = value;
-    const duration = 1500; // 1.5 seconds
-    const startTime = performance.now();
-
-    function animate(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const current = easeProgress * (end - start) + start;
-      setCount(current);
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    }
-    requestAnimationFrame(animate);
-  }, [inView, value]);
-
-  return (
-    <span ref={ref}>
-      {count.toFixed(decimals)}
-      {suffix}
-    </span>
-  );
-}
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function HeroSection() {
   const { t, language } = useLanguage();
@@ -118,15 +66,17 @@ export default function HeroSection() {
           <span className="font-sans text-[10px] xs:text-xs font-bold uppercase tracking-[0.2em] text-accent mb-3 block">
             {t.hero.trustTag}
           </span>
-          <h1 className={`font-display font-bold text-primary-dark mb-4 leading-[1.15] lg:leading-[1.18] ${
+          <h1 className={`font-display text-primary-dark mb-4 leading-[1.15] lg:leading-[1.18] ${
             language === "en"
               ? "text-[1.85rem] xs:text-[2.25rem] sm:text-[3rem] lg:text-[4.5rem] xl:text-[5rem]"
-              : "text-[1.65rem] xs:text-[2.05rem] sm:text-[2.6rem] lg:text-[3.8rem] xl:text-[4.2rem]"
+              : "text-[1.65rem] xs:text-[2.05rem] sm:text-[2.6rem] lg:text-[3.8rem] xl:text-[4.2rem] font-bold"
           }`}>
             {language === "en" ? (
-              <>
-                Expert Care for<br className="hidden sm:inline" /> Every Stage of<br className="hidden sm:inline" /> a Woman&apos;s Life.
-              </>
+              <span className="font-semibold block">
+                Exceptional Care at<br />
+                <span className="text-accent font-bold">Every Stage</span> of a<br />
+                <span className="text-accent italic font-bold">Woman&apos;s</span> Life
+              </span>
             ) : language === "kn" ? (
               <>
                 ಮಹಿಳೆಯ ಜೀವನದ<br className="hidden sm:inline" /> ಪ್ರತಿಯೊಂದು ಹಂತದಲ್ಲೂ<br className="hidden sm:inline" /> ಸೂಕ್ತ ಆರೋಗ್ಯ ರಕ್ಷಣೆ.
@@ -236,7 +186,7 @@ export default function HeroSection() {
           ].map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center px-6 first:pl-0 last:pr-0 text-center">
               <span className="font-display text-4xl font-bold text-primary mb-1">
-                <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
               </span>
               <span className="font-sans text-xs font-medium text-text-muted uppercase tracking-wider">
                 {stat.label}
@@ -256,7 +206,7 @@ export default function HeroSection() {
           ].map((stat, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center px-1 text-center">
               <span className="font-display text-[1.25rem] sm:text-2xl font-bold text-primary mb-0.5">
-                <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
               </span>
               <span className="font-sans text-[10px] font-bold text-text-muted mt-1 leading-none">{stat.line1}</span>
               <span className="font-sans text-[9px] text-text-muted/70 mt-0.5 leading-none">{stat.line2}</span>

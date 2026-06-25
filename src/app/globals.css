@@ -521,6 +521,12 @@ body {
   }
 }
 
+/* Custom override for 01 card title to be gold */
+.services-grid-item .service-title-gold,
+.services-grid-item.mobile-featured .service-title-gold {
+  color: var(--color-accent-light) !important;
+}
+
 /* Hover glow overlay rules */
 .services-grid-item .service-glow {
   position: absolute;
@@ -847,4 +853,55 @@ body {
     transform: none !important;
   }
 }
+
+/* ═══════════════════════════════════════
+   PREMIUM ANIMATIONS (MARQUEE & PARALLAX)
+   ═══════════════════════════════════════ */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-33.3333%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-loop {
+  animation: marquee 30s linear infinite;
+}
+
+@supports (animation-timeline: view()) {
+  @keyframes parallax-bg-slide {
+    from {
+      transform: translateY(-8%);
+    }
+    to {
+      transform: translateY(8%);
+    }
+  }
+
+  @keyframes parallax-fg-slide {
+    from {
+      transform: translateY(4%);
+    }
+    to {
+      transform: translateY(-4%);
+    }
+  }
+
+  .parallax-bg {
+    animation: parallax-bg-slide linear both;
+    animation-timeline: --section-scroll;
+    animation-range: entry 0% exit 100%;
+  }
+
+  .parallax-fg {
+    animation: parallax-fg-slide linear both;
+    animation-timeline: --section-scroll;
+    animation-range: entry 0% exit 100%;
+  }
+}
+
 

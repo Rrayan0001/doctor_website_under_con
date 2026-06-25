@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { CountUp } from "countup.js";
 import { Stethoscope, Heart, Baby, Star, LucideIcon } from "lucide-react";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 interface StatItemProps {
   number: number;
@@ -13,50 +12,8 @@ interface StatItemProps {
 }
 
 function StatCounterItem({ number, suffix, label, icon: Icon, decimals = 0 }: StatItemProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const countSpanRef = useRef<HTMLSpanElement>(null);
-  const [inView, setInView] = useState(false);
-  const countUpInstance = useRef<CountUp | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (inView && countSpanRef.current) {
-      countUpInstance.current = new CountUp(countSpanRef.current, number, {
-        startVal: 0,
-        duration: 2.2,
-        decimalPlaces: decimals,
-        useEasing: true,
-        useGrouping: true,
-      });
-
-      if (!countUpInstance.current.error) {
-        countUpInstance.current.start();
-      } else {
-        console.error(countUpInstance.current.error);
-      }
-    }
-  }, [inView, number, decimals]);
-
   return (
     <div
-      ref={containerRef}
       className="flex flex-col items-center text-center py-2 px-3 md:py-3 md:px-4 transition-all duration-300 hover:scale-[1.05] stat-card-glow rounded-card relative z-10"
     >
       {/* Icon */}
@@ -66,8 +23,7 @@ function StatCounterItem({ number, suffix, label, icon: Icon, decimals = 0 }: St
 
       {/* Number */}
       <div className="font-display text-2xl sm:text-3xl font-bold text-white mb-0.5 flex items-center justify-center">
-        <span ref={countSpanRef}>0</span>
-        <span className="gradient-text-gold">{suffix}</span>
+        <AnimatedCounter value={number} suffix={suffix} decimals={decimals} />
       </div>
 
       {/* Label */}

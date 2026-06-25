@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
+import CascadeText from "@/components/ui/CascadeText";
 
 export default function Navbar() {
   const { language, t, setLanguage } = useLanguage();
@@ -168,14 +170,16 @@ export default function Navbar() {
               </button>
             </div>
 
-            <a
+            <motion.a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "#contact")}
+              initial="initial"
+              whileHover="hovered"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-sans text-sm font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all transform hover:-translate-y-[1px] whitespace-nowrap"
             >
               <Calendar className="w-4 h-4" />
-              {t.navbar.bookBtn}
-            </a>
+              <CascadeText text={t.navbar.bookBtn} />
+            </motion.a>
           </div>
 
           {/* Mobile Actions: Language Toggle & Menu Button */}
@@ -285,14 +289,16 @@ export default function Navbar() {
         </div>
 
         {/* Drawer CTA */}
-        <a
+        <motion.a
           href="#contact"
           onClick={(e) => handleLinkClick(e, "#contact")}
+          initial="initial"
+          whileHover="hovered"
           className="w-full text-center py-3 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
         >
           <Calendar className="w-4 h-4" />
-          {t.navbar.bookBtn}
-        </a>
+          <CascadeText text={t.navbar.bookBtn} />
+        </motion.a>
       </div>
     </>
   );

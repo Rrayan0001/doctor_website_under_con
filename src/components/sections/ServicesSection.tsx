@@ -3,6 +3,7 @@
 import { MessageSquare, Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal, MagneticButton } from "@/components/ui/ScrollAnimations";
+import MouseGlowTracker from "@/components/ui/MouseGlowTracker";
 
 const SERVICE_ICONS = [Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users];
 
@@ -66,8 +67,9 @@ export default function ServicesSection() {
               const isMobileFeatured = idx % 2 === 0;
 
               return (
-                <div
+                <MouseGlowTracker
                   key={idx}
+                  glowColor={service.isFeatured ? "rgba(255, 255, 255, 0.08)" : "rgba(212, 175, 55, 0.08)"}
                   className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item ${idx === 8 ? "services-grid-item--full" : ""
                     } ${isMobileFeatured ? "mobile-featured" : ""
                     } ${service.isFeatured
@@ -113,10 +115,13 @@ export default function ServicesSection() {
                       </div>
 
                       <h3
-                        className={`font-display text-lg sm:text-xl font-bold leading-snug mb-2 service-title ${service.isFeatured
-                            ? "text-white"
-                            : "text-primary-dark group-hover:text-primary transition-colors duration-200"
-                          }`}
+                        className={`font-display text-lg sm:text-xl font-bold leading-snug mb-2 service-title ${
+                          service.num === "01"
+                            ? "service-title-gold text-accent-light"
+                            : service.isFeatured
+                              ? "text-white"
+                              : "text-primary-dark group-hover:text-primary transition-colors duration-200"
+                        }`}
                       >
                         {service.title}
                       </h3>
@@ -129,7 +134,7 @@ export default function ServicesSection() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </MouseGlowTracker>
               );
             })}
           </div>

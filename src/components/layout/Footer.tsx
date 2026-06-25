@@ -1,8 +1,53 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
-import { Star, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Star, Clock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
+import { motion } from "framer-motion";
+import CascadeText from "@/components/ui/CascadeText";
+
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  size?: number | string;
+}
+
+// Inline SVGs for social media icons due to pruned lucide-react package
+const InstagramIcon = ({ size = 20, ...props }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const FacebookIcon = ({ size = 20, ...props }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
 
 export default function Footer() {
   const { t, language } = useLanguage();
@@ -15,152 +60,192 @@ export default function Footer() {
     }
   };
 
+  // Footer links structure using the website's translations
+  const footerLinks = [
+    {
+      title: t.footer.quickLinks,
+      links: [
+        { label: t.navbar.home, href: "#home" },
+        { label: t.navbar.about, href: "#about" },
+        { label: t.navbar.treatments, href: "#services" },
+        { label: t.navbar.testimonials, href: "#testimonials" },
+        { label: t.navbar.gallery, href: "#gallery" },
+        { label: t.navbar.contact, href: "#contact" },
+        { label: "Showcase ✦", href: "/showcase", isExternal: true },
+      ],
+    },
+  ];
+
+  // Contact info data of the clinic
+  const contactInfo = [
+    {
+      icon: <Mail size={18} className="text-accent flex-shrink-0" />,
+      text: "contact@dr-santosh.com",
+      href: "mailto:contact@dr-santosh.com",
+    },
+    {
+      icon: <Phone size={18} className="text-accent flex-shrink-0" />,
+      text: "+91 98765 43210",
+      href: "tel:+919876543210",
+    },
+    {
+      icon: <MapPin size={18} className="text-accent flex-shrink-0 mt-0.5" />,
+      text: language === "kn"
+        ? "ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ೪೦೨ ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩"
+        : language === "hi"
+        ? "निरामय क्लिनिक, 402 मेडिकल एन्क्लेव, लिंक रोड, अंधेरी वेस्ट, मुंबई — 400053"
+        : "Niramay Women's Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai — 400053",
+    },
+  ];
+
+  // Social media icons
+  const socialLinks = [
+    { icon: <InstagramIcon size={20} />, label: "Instagram", href: "https://instagram.com" },
+    { icon: <FacebookIcon size={20} />, label: "Facebook", href: "https://facebook.com" },
+    { icon: <Star size={20} />, label: "Google Reviews", href: "https://google.com" },
+  ];
+
   return (
-    <footer className="bg-primary-dark text-white/80 pt-16 pb-8 border-t border-primary/10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12 relative z-10">
-        
-        {/* Column 1: SVG Logo & Tagline */}
-        <div className="flex flex-col gap-5">
-          <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 w-10 h-10 relative">
-              <Image
-                src="/logo.png"
-                alt="Niramay Women's Clinic Logo"
-                fill
-                className="object-contain"
-                sizes="40px"
-                loading="lazy"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display text-lg font-bold text-white tracking-tight leading-none">
-                {t.common.doctorName}
-              </span>
-              <span className="font-sans text-[9px] font-semibold text-white/50 tracking-wider uppercase mt-1 leading-none">
-                {t.common.doctorSubtitle}
-              </span>
-            </div>
-          </div>
-          <p className="font-sans text-sm text-white/70 leading-relaxed italic max-w-sm">
-            {t.footer.tagline}
-          </p>
-          
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-2">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 text-white/70 hover:text-accent hover:bg-white/10 flex items-center justify-center transition-all"
-              aria-label="Follow on Instagram"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 text-white/70 hover:text-accent hover:bg-white/10 flex items-center justify-center transition-all"
-              aria-label="Follow on Facebook"
-            >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
-              </svg>
-            </a>
-            <a
-              href="https://google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 text-white/70 hover:text-accent hover:bg-white/10 flex items-center justify-center transition-all"
-              aria-label="Read Google Reviews"
-            >
-              <Star className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-
-        {/* Column 2: Quick Links */}
-        <div>
-          <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-            {t.footer.quickLinks}
-          </h4>
-          <ul className="grid grid-cols-2 gap-3">
-            {[
-              { label: t.navbar.home, anchor: "#home" },
-              { label: t.navbar.about, anchor: "#about" },
-              { label: t.navbar.treatments, anchor: "#services" },
-              { label: t.navbar.testimonials, anchor: "#testimonials" },
-              { label: t.navbar.gallery, anchor: "#gallery" },
-              { label: t.navbar.contact, anchor: "#contact" },
-            ].map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.anchor}
-                  onClick={(e) => handleLinkClick(e, link.anchor)}
-                  className="font-sans text-sm text-white/70 hover:text-white transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 3: Contact Info + Hours */}
-        <div className="flex flex-col gap-6">
-          <div>
-            <h4 className="font-sans text-sm font-semibold uppercase tracking-wider text-accent mb-6">
-              {t.footer.contactInfo}
-            </h4>
-            <ul className="flex flex-col gap-3 font-sans text-sm text-white/70">
-              <li className="flex gap-2.5 items-start text-left">
-                <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <span>
-                  {language === "kn" ? (
-                    <>ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ೪೦೨ ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
-                  ) : language === "hi" ? (
-                    <>निरामय महिला क्लिनिक, 402 मेडिकल एन्क्लेव, लिंक रोड, अंधेरी वेस्ट, मुंबई &mdash; 400053</>
-                  ) : (
-                    <>Niramay Women&apos;s Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai &mdash; 400053</>
-                  )}
+    <footer className="bg-[#071e22] text-white/70 relative h-fit rounded-3xl overflow-hidden m-8 border border-primary/10">
+      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
+          {/* Brand section */}
+          <div className="flex flex-col space-y-4 text-left">
+            <div className="flex items-center space-x-3">
+              <div className="flex-shrink-0 w-10 h-10 relative">
+                <Image
+                  src="/logo.png"
+                  alt="Niramay Women's Clinic Logo"
+                  fill
+                  className="object-contain"
+                  sizes="40px"
+                  loading="lazy"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white text-lg font-bold tracking-tight leading-none font-display">
+                  {t.common.doctorName}
                 </span>
-              </li>
-              <li className="flex gap-2.5 items-center">
-                <Phone className="w-4 h-4 text-accent flex-shrink-0" />
-                <span>+91 98765 43210</span>
-              </li>
-              <li className="flex gap-2.5 items-center">
-                <Mail className="w-4 h-4 text-accent flex-shrink-0" />
-                <span>contact@dr-santosh.com</span>
-              </li>
-            </ul>
+                <span className="text-accent text-[9px] font-semibold tracking-wider uppercase mt-1 leading-none font-sans">
+                  {t.common.doctorSubtitle}
+                </span>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed text-white/60 font-sans italic mt-2">
+              {t.footer.tagline}
+            </p>
           </div>
-          <div>
-            <h5 className="font-sans text-xs font-semibold uppercase tracking-wider text-accent mb-3 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5" />
+
+          {/* Footer link sections */}
+          {footerLinks.map((section) => (
+            <div key={section.title} className="text-left">
+              <h4 className="text-white text-lg font-semibold mb-6 font-sans">
+                {section.title}
+              </h4>
+              <ul className="space-y-3 font-sans text-sm">
+                {section.links.map((link) => (
+                  <li key={link.label} className="relative">
+                    {link.isExternal ? (
+                      <motion.a
+                        href={link.href}
+                        initial="initial"
+                        whileHover="hovered"
+                        className="text-accent hover:text-accent-light font-semibold transition-colors duration-300 inline-block"
+                      >
+                        <CascadeText text={link.label} />
+                      </motion.a>
+                    ) : (
+                      <motion.a
+                        href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.href)}
+                        initial="initial"
+                        whileHover="hovered"
+                        className="hover:text-accent text-white/70 transition-colors duration-300 inline-block"
+                      >
+                        <CascadeText text={link.label} />
+                      </motion.a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {/* Clinic Hours */}
+          <div className="text-left">
+            <h4 className="text-white text-lg font-semibold mb-6 font-sans flex items-center gap-1.5">
+              <Clock size={16} className="text-accent animate-heartbeat" />
               {t.footer.hoursLabel}
-            </h5>
-            <p className="font-sans text-xs text-white/60 leading-relaxed pl-5 whitespace-pre-line text-left">
+            </h4>
+            <p className="font-sans text-sm text-white/60 leading-relaxed whitespace-pre-line">
               {t.footer.hoursText}
             </p>
           </div>
+
+          {/* Contact section */}
+          <div className="text-left">
+            <h4 className="text-white text-lg font-semibold mb-6 font-sans">
+              {t.footer.contactInfo}
+            </h4>
+            <ul className="space-y-4 font-sans text-sm">
+              {contactInfo.map((item, i) => (
+                <li key={i} className="flex items-start space-x-3">
+                  {item.icon}
+                  {item.href ? (
+                    <motion.a
+                      href={item.href}
+                      initial="initial"
+                      whileHover="hovered"
+                      className="hover:text-accent text-white/70 transition-colors inline-block"
+                    >
+                      <CascadeText text={item.text} />
+                    </motion.a>
+                  ) : (
+                    <span className="text-white/70 font-sans">
+                      {item.text}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
+        <hr className="border-t border-white/10 my-8" />
+
+        {/* Footer bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
+          {/* Social icons */}
+          <div className="flex space-x-6 text-white/45">
+            {socialLinks.map(({ icon, label, href }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                whileHover={{ scale: 1.18, rotate: 8, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                className="hover:text-accent transition-colors inline-block"
+              >
+                {icon}
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <p className="text-center md:text-left text-xs text-white/50">
+            &copy; {new Date().getFullYear()} {t.common.clinicName}. All rights reserved.
+          </p>
+        </div>
       </div>
 
-      {/* Bottom Copyright Bar */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
-        <p className="font-sans text-xs text-white/50 text-center sm:text-left">
-          {t.footer.copyright}
-        </p>
-        <p className="font-sans text-xs text-white/50 text-center sm:text-right">
-          {t.common.doctorSubtitle}
-        </p>
+      {/* Text hover effect */}
+      <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36">
+        <TextHoverEffect text="DR. SANTOSH" className="z-50" />
       </div>
+
+      <FooterBackgroundGradient />
     </footer>
   );
 }

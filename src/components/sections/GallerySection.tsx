@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal } from "@/components/ui/ScrollAnimations";
+import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 
 export default function GallerySection() {
   const { t } = useLanguage();
@@ -156,6 +157,18 @@ export default function GallerySection() {
 
         </div>
 
+      </div>
+
+      {/* Infinite Image Marquee Slider */}
+      <div className="mt-16 border-t border-white/5 pt-12 w-full">
+        <ScrollReveal variant="fade-up" delay={100}>
+          <h3 className="font-display text-xl sm:text-2xl font-semibold text-accent text-center mb-8 uppercase tracking-widest">
+            Gallery Reel
+          </h3>
+        </ScrollReveal>
+        <ScrollReveal variant="fade-up" delay={200}>
+          <InfiniteMarquee items={images} speed={35} />
+        </ScrollReveal>
       </div>
 
       {/* Accessible Full-Screen Lightbox Modal */}

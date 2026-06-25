@@ -5,59 +5,8 @@ import Image from "next/image";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal, TiltCard } from "@/components/ui/ScrollAnimations";
-
-// CountUp component using requestAnimationFrame
-function CountUp({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const end = value;
-    const duration = 1500; // 1.5 seconds
-    const startTime = performance.now();
-
-    function animate(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const current = easeProgress * (end - start) + start;
-      setCount(current);
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    }
-    requestAnimationFrame(animate);
-  }, [inView, value]);
-
-  return (
-    <span ref={ref}>
-      {count.toFixed(decimals)}
-      {suffix}
-    </span>
-  );
-}
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import MouseGlowTracker from "@/components/ui/MouseGlowTracker";
 
 export default function AboutSection() {
   const { t } = useLanguage();
@@ -94,22 +43,24 @@ export default function AboutSection() {
 
             {/* Credentials Card Below Photo */}
             <ScrollReveal variant="fade-up" delay={300} className="mt-6 w-full max-w-[340px]">
-              <div className="bg-white border border-primary/5 shadow-md p-5 rounded-xl shimmer-card">
-                <ul className="flex flex-col gap-2.5">
-                  {credentials.map((item, idx) => (
-                    <ScrollReveal key={idx} variant="fade-left" delay={idx * 100 + 400}>
-                      <li className="flex items-start gap-2.5 text-left">
-                        <span className="w-4 h-4 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check className="w-3 h-3 stroke-[3]" />
-                        </span>
-                        <span className="font-sans text-[11px] sm:text-xs font-semibold text-text-muted leading-tight">
-                          {item}
-                        </span>
-                      </li>
-                    </ScrollReveal>
-                  ))}
-                </ul>
-              </div>
+              <MouseGlowTracker>
+                <div className="bg-white border border-primary/5 shadow-md p-5 rounded-xl shimmer-card">
+                  <ul className="flex flex-col gap-2.5">
+                    {credentials.map((item, idx) => (
+                      <ScrollReveal key={idx} variant="fade-left" delay={idx * 100 + 400}>
+                        <li className="flex items-start gap-2.5 text-left">
+                          <span className="w-4 h-4 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="w-3 h-3 stroke-[3]" />
+                          </span>
+                          <span className="font-sans text-[11px] sm:text-xs font-semibold text-text-muted leading-tight">
+                            {item}
+                          </span>
+                        </li>
+                      </ScrollReveal>
+                    ))}
+                  </ul>
+                </div>
+              </MouseGlowTracker>
             </ScrollReveal>
           </ScrollReveal>
 
@@ -146,14 +97,16 @@ export default function AboutSection() {
               ].map((stat, idx) => (
                 <ScrollReveal key={idx} variant="scale-up" delay={400 + idx * 120}>
                   <TiltCard intensity={5}>
-                    <div className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col shimmer-card">
-                      <span className="font-display text-xl sm:text-3xl font-bold text-primary mb-1">
-                        <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
-                      </span>
-                      <span className="font-sans text-xs font-medium text-text-muted">
-                        {stat.label}
-                      </span>
-                    </div>
+                    <MouseGlowTracker>
+                      <div className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col shimmer-card h-full justify-center">
+                        <span className="font-display text-xl sm:text-3xl font-bold text-primary mb-1">
+                          <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
+                        </span>
+                        <span className="font-sans text-xs font-medium text-text-muted">
+                          {stat.label}
+                        </span>
+                      </div>
+                    </MouseGlowTracker>
                   </TiltCard>
                 </ScrollReveal>
               ))}
