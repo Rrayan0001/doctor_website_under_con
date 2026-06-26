@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Star, Clock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
+import SSKLogo from "@/components/ui/SSKLogo";
 import { motion } from "framer-motion";
 import CascadeText from "@/components/ui/CascadeText";
 
@@ -112,15 +113,8 @@ export default function Footer() {
           {/* Brand section */}
           <div className="flex flex-col space-y-4 text-left">
             <div className="flex items-center space-x-3">
-              <div className="flex-shrink-0 w-10 h-10 relative">
-                <Image
-                  src="/logo.png"
-                  alt="Niramay Women's Clinic Logo"
-                  fill
-                  className="object-contain"
-                  sizes="40px"
-                  loading="lazy"
-                />
+              <div className="flex-shrink-0 w-10 h-10 text-accent">
+                <SSKLogo />
               </div>
               <div className="flex flex-col">
                 <span className="text-white text-lg font-bold tracking-tight leading-none font-display">

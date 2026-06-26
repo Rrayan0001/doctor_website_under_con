@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import SSKLogo from "@/components/ui/SSKLogo";
 import { motion } from "framer-motion";
 import CascadeText from "@/components/ui/CascadeText";
 
@@ -96,15 +97,8 @@ export default function Navbar() {
             onClick={(e) => handleLinkClick(e, "#home")}
             className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="flex-shrink-0 w-10 h-10 relative transition-transform group-hover:scale-105">
-              <Image
-                src="/logo.png"
-                alt="Niramay Women's Clinic Logo"
-                fill
-                className="object-contain"
-                sizes="40px"
-                priority
-              />
+            <div className="flex-shrink-0 w-10 h-10 text-primary transition-transform group-hover:scale-105">
+              <SSKLogo />
             </div>
             <div className="flex flex-col">
               <span className="font-display text-base sm:text-lg font-bold text-primary tracking-tight leading-none">
