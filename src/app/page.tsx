@@ -15,11 +15,9 @@ import WhatsAppFAB from "@/components/ui/WhatsAppFAB";
 import SplashScreen from "@/components/ui/SplashScreen";
 import CandlestickBackground from "@/components/ui/CandlestickBackground";
 import ScrollParallax from "@/components/ui/ScrollParallax";
-import { Sparkles, Sliders } from "lucide-react";
 
 export default function Home() {
   const [showCandles, setShowCandles] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen relative">
@@ -70,45 +68,7 @@ export default function Home() {
       {/* Primary dark Footer */}
       <Footer />
 
-      {/* Floating Interactive Settings panel for Showcase */}
-      <div className="fixed bottom-6 left-6 z-[999] flex flex-col items-start gap-3">
-        {showSettings && (
-          <div className="bg-[#071e22]/95 backdrop-blur-md border border-[#c8994a]/30 p-4 rounded-2xl shadow-xl w-64 text-left animate-fade-in flex flex-col gap-3">
-            <h4 className="font-display text-sm font-bold text-[#faf8f4] tracking-wide border-b border-[#c8994a]/20 pb-2">
-              Animation Controls
-            </h4>
-            <div className="flex items-center justify-between text-xs text-[#faf8f4]/80">
-              <span>Financial Chart Background</span>
-              <button
-                onClick={() => setShowCandles(!showCandles)}
-                className={`w-10 h-5 rounded-full p-0.5 transition-colors duration-300 ${
-                  showCandles ? "bg-[#c8994a]" : "bg-white/20"
-                }`}
-              >
-                <div
-                  className={`w-4 h-4 rounded-full bg-[#071e22] transition-transform duration-300 ${
-                    showCandles ? "translate-x-5" : "translate-x-0"
-                  }`}
-                />
-              </button>
-            </div>
-            <a
-              href="/showcase"
-              className="mt-2 text-center text-xs font-semibold text-[#071e22] bg-[#c8994a] hover:bg-[#e8c07a] py-2 px-4 rounded-full transition-all flex items-center justify-center gap-1.5"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              View Animations Showcase
-            </a>
-          </div>
-        )}
-        <button
-          onClick={() => setShowSettings(!showSettings)}
-          className="w-12 h-12 rounded-full bg-[#0a4f52] border border-[#c8994a]/30 text-[#faf8f4] flex items-center justify-center shadow-lg hover:bg-[#1a7a7e] hover:border-[#c8994a] transition-all cursor-pointer"
-          aria-label="Toggle settings panel"
-        >
-          <Sliders className="w-5 h-5 text-accent" />
-        </button>
-      </div>
+
 
       {/* Floating interactive components */}
       <WhatsAppFAB />
