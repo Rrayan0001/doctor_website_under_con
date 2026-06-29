@@ -24,8 +24,8 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen lg:h-screen w-full flex flex-col lg:flex-row overflow-hidden bg-bg"
     >
-      {/* LEFT SECTION (Text content + Golden background) */}
-      <div className="w-full lg:w-1/2 min-h-[55vh] lg:min-h-screen bg-[#b09838] flex flex-col justify-start lg:justify-center items-center px-6 sm:px-16 lg:px-24 pt-24 pb-16 lg:py-0 text-center relative overflow-hidden">
+      {/* LEFT SECTION (Text content + Brand teal background) */}
+      <div className="w-full lg:w-1/2 min-h-[55vh] lg:min-h-screen bg-[#0a4f52] flex flex-col justify-start lg:justify-center items-center px-6 sm:px-16 lg:px-24 pt-24 pb-16 lg:py-0 text-center relative overflow-hidden">
         {/* Textured background overlay blending with clinical office image */}
         <div
           className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
