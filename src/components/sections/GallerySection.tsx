@@ -6,6 +6,8 @@ import { X, ZoomIn } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal } from "@/components/ui/ScrollAnimations";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
+import { Reorder } from "framer-motion";
+import { CardStack } from "@/components/ui/CardStack";
 
 export default function GallerySection() {
   const { t } = useLanguage();
@@ -29,12 +31,46 @@ export default function GallerySection() {
       alt: t.gallery.items[2]?.alt,
       title: t.gallery.items[2]?.title,
     },
+    {
+      src: "/gallery1.png",
+      alt: t.gallery.items[3]?.alt,
+      title: t.gallery.items[3]?.title,
+    },
+    {
+      src: "/gallery2.png",
+      alt: t.gallery.items[4]?.alt,
+      title: t.gallery.items[4]?.title,
+    },
   ];
 
   const openLightbox = (index: number) => {
     setPhotoIndex(index);
     setIsOpen(true);
   };
+
+  const [galleryImages, setGalleryImages] = useState(() =>
+    images.map((img, idx) => ({
+      id: `img_${idx}`,
+      src: img.src,
+      alt: img.alt,
+      title: img.title,
+    }))
+  );
+
+  const [activeImage, setActiveImage] = useState<{ index: number; tick: number } | undefined>(undefined);
+
+  useEffect(() => {
+    setGalleryImages((prev) =>
+      prev.map((img, idx) => {
+        const orig = images.find((i) => i.src === img.src) || images[idx];
+        return {
+          ...img,
+          alt: orig.alt,
+          title: orig.title,
+        };
+      })
+    );
+  }, [t]);
 
   // Lightbox key down listener (Escape key) and focus trapping
   useEffect(() => {
@@ -83,77 +119,111 @@ export default function GallerySection() {
           </ScrollReveal>
         </div>
 
-        {/* Mosaic Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 max-w-5xl mx-auto">
+        {/* Card Stack & Thumbnails Row */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-16 max-w-4xl mx-auto py-8">
           
-          {/* Large Left Image (Spans 2 rows, 7 columns wide) */}
-          <ScrollReveal variant="fade-right" duration={1000} delay={0} className="md:col-span-7 md:row-span-2">
-            <div
-              onClick={() => openLightbox(0)}
-              className="relative aspect-[3/4] md:aspect-auto md:h-[500px] lg:h-[550px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
-            >
-              <Image
-                src={images[0].src}
-                alt={images[0].alt}
-                fill
-                className="object-cover object-center transition-all duration-500 group-hover:scale-103"
-                sizes="(max-w-768px) 100vw, 600px"
-                loading="lazy"
+          {/* Card Stack Wrapper */}
+          <ScrollReveal variant="fade-right" duration={1000} delay={0} className="relative flex justify-center items-center">
+            <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center min-h-[480px] w-[320px] sm:w-[340px] md:w-[360px] gap-4">
+              <CardStack
+                images={galleryImages}
+                activeIndex={activeImage}
+                offset={10}
+                scaleStep={0.06}
+                dimStep={0.15}
+                stiffness={170}
+                damping={26}
+                aspectRatio="3/4"
+                borderRadius={16}
+                width={250}
               />
-              {/* Hover visual moment overlay */}
-              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                  <ZoomIn className="w-6 h-6" />
-                </div>
-              </div>
+              
+              {/* Fullscreen Zoom button */}
+              <button
+                onClick={() => {
+                  const actualIndex = images.findIndex((img) => img.src === galleryImages[0].src);
+                  openLightbox(actualIndex >= 0 ? actualIndex : 0);
+                }}
+                className="mt-4 px-4 py-2 border border-white/10 hover:border-white/30 text-white rounded-full bg-white/5 hover:bg-white/10 transition-all flex items-center gap-2 text-xs font-semibold cursor-pointer"
+              >
+                <ZoomIn className="w-4 h-4" />
+                View Fullscreen
+              </button>
             </div>
           </ScrollReveal>
 
-          {/* Top Right Image (5 columns wide) */}
-          <ScrollReveal variant="fade-left" duration={900} delay={200} className="md:col-span-5">
-            <div
-              onClick={() => openLightbox(1)}
-              className="relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
-            >
-              <Image
-                src={images[1].src}
-                alt={images[1].alt}
-                fill
-                className="object-cover object-center transition-all duration-500 group-hover:scale-103"
-                sizes="(max-w-768px) 100vw, 400px"
-                loading="lazy"
-              />
-              {/* Hover visual moment overlay */}
-              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                  <ZoomIn className="w-6 h-6" />
-                </div>
-              </div>
+          {/* Reorder Thumbnails Strip (Desktop/Tablet) */}
+          <ScrollReveal variant="fade-left" duration={1000} delay={200} className="hidden sm:block">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col items-center gap-4">
+              <span className="font-sans text-[11px] font-bold text-accent tracking-wider uppercase">
+                Drag to Reorder Stack
+              </span>
+              <Reorder.Group
+                axis="y"
+                values={galleryImages}
+                onReorder={setGalleryImages}
+                className="flex flex-col gap-4"
+                style={{ listStyle: "none", margin: 0, padding: 0 }}
+              >
+                {galleryImages.map((img, index) => (
+                  <Reorder.Item
+                    key={img.id}
+                    value={img}
+                    className="relative group shrink-0"
+                    style={{ listStyle: "none" }}
+                  >
+                    <div
+                      className="w-[80px] h-[100px] rounded-lg overflow-hidden bg-[#1d1d1d] cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-accent transition-colors relative"
+                      onClick={() => {
+                        setActiveImage({ index, tick: Date.now() });
+                      }}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover pointer-events-none"
+                        sizes="80px"
+                      />
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span className="text-[10px] text-white font-sans bg-black/40 px-1.5 py-0.5 rounded">
+                          Bring Front
+                        </span>
+                      </div>
+                    </div>
+                  </Reorder.Item>
+                ))}
+              </Reorder.Group>
             </div>
           </ScrollReveal>
 
-          {/* Bottom Right Image (5 columns wide) */}
-          <ScrollReveal variant="fade-left" duration={900} delay={350} className="md:col-span-5">
-            <div
-              onClick={() => openLightbox(2)}
-              className="relative aspect-[4/3] md:h-[246px] lg:h-[271px] overflow-hidden rounded-xl group cursor-pointer border border-white/5 gallery-reveal-item"
-            >
-              <Image
-                src={images[2].src}
-                alt={images[2].alt}
-                fill
-                className="object-cover transition-all duration-500 group-hover:scale-103"
-                sizes="(max-w-768px) 100vw, 400px"
-                loading="lazy"
-              />
-              {/* Hover visual moment overlay */}
-              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                  <ZoomIn className="w-6 h-6" />
-                </div>
+          {/* Simple Thumbnails Strip (Mobile) */}
+          <div className="block sm:hidden w-full">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col items-center gap-3 max-w-[300px] mx-auto">
+              <span className="font-sans text-[10px] font-bold text-accent tracking-wider uppercase">
+                Tap image to view
+              </span>
+              <div className="flex flex-row gap-3">
+                {galleryImages.map((img, index) => (
+                  <div
+                    key={img.id}
+                    className="w-[70px] h-[90px] rounded-lg overflow-hidden bg-[#1d1d1d] border-2 border-transparent active:border-accent transition-colors relative cursor-pointer"
+                    onClick={() => {
+                      setActiveImage({ index, tick: Date.now() });
+                    }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover pointer-events-none"
+                      sizes="70px"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          </ScrollReveal>
+          </div>
 
         </div>
 

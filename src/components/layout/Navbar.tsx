@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, Calendar } from "lucide-react";
+import { Menu, X, Calendar, Sun, Moon } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import CascadeText from "@/components/ui/CascadeText";
 
 export default function Navbar() {
   const { language, t, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -170,6 +172,15 @@ export default function Navbar() {
               </button>
             </div>
 
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-all cursor-pointer text-primary"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+
             <motion.a
               href="#contact"
               onClick={(e) => handleLinkClick(e, "#contact")}
@@ -182,42 +193,11 @@ export default function Navbar() {
             </motion.a>
           </div>
 
-          {/* Mobile Actions: Language Toggle & Menu Button */}
-          <div className="flex md:hidden items-center gap-3">
-            {/* Mobile Language Selector */}
-            <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-[10px]">
-              <button
-                onClick={() => setLanguage("en")}
-                className={`px-1.5 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "en"
-                    ? "bg-primary text-white font-bold"
-                    : "text-text hover:text-primary"
-                  }`}
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLanguage("kn")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "kn"
-                    ? "bg-primary text-white font-bold"
-                    : "text-text hover:text-primary"
-                  }`}
-              >
-                ಕನ್ನಡ
-              </button>
-              <button
-                onClick={() => setLanguage("hi")}
-                className={`px-2 py-0.5 rounded-full transition-all duration-200 cursor-pointer ${language === "hi"
-                    ? "bg-primary text-white font-bold"
-                    : "text-text hover:text-primary"
-                  }`}
-              >
-                हिंदी
-              </button>
-            </div>
-
+          {/* Mobile Actions: Only Menu Button to prevent clutter */}
+          <div className="flex md:hidden items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-text hover:text-primary transition-colors focus:outline-none"
+              className="p-2 text-text hover:text-primary transition-colors focus:outline-none cursor-pointer"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -288,17 +268,62 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Drawer CTA */}
-        <motion.a
-          href="#contact"
-          onClick={(e) => handleLinkClick(e, "#contact")}
-          initial="initial"
-          whileHover="hovered"
-          className="w-full text-center py-3 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all inline-flex items-center justify-center gap-2"
-        >
-          <Calendar className="w-4 h-4" />
-          <CascadeText text={t.navbar.bookBtn} />
-        </motion.a>
+        {/* Drawer Footer Actions (Language and Theme) */}
+        <div className="flex flex-col gap-5 mt-auto pt-6 border-t border-primary/5">
+          <div className="flex items-center justify-between gap-4">
+            {/* Drawer Language Selector */}
+            <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-xs">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-2 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "en"
+                    ? "bg-primary text-white font-bold shadow-sm"
+                    : "text-text hover:text-primary font-medium"
+                  }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage("kn")}
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "kn"
+                    ? "bg-primary text-white font-bold shadow-sm"
+                    : "text-text hover:text-primary font-medium"
+                  }`}
+              >
+                ಕನ್ನಡ
+              </button>
+              <button
+                onClick={() => setLanguage("hi")}
+                className={`px-2.5 py-1 rounded-full transition-all duration-200 cursor-pointer ${language === "hi"
+                    ? "bg-primary text-white font-bold shadow-sm"
+                    : "text-text hover:text-primary font-medium"
+                  }`}
+              >
+                हिंदी
+              </button>
+            </div>
+
+            {/* Drawer Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-all cursor-pointer text-primary"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+          </div>
+
+          {/* Drawer CTA */}
+          <motion.a
+            href="#contact"
+            onClick={(e) => handleLinkClick(e, "#contact")}
+            initial="initial"
+            whileHover="hovered"
+            className="w-full text-center py-3 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-light hover:shadow-lg transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <Calendar className="w-4 h-4" />
+            <CascadeText text={t.navbar.bookBtn} />
+          </motion.a>
+        </div>
       </div>
     </>
   );

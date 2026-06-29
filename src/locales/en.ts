@@ -188,6 +188,14 @@ export const en = {
       {
         alt: "Dr. Santosh Kulkarni performing advanced gynaecological consultations",
         title: "Patient Consultation Settings",
+      },
+      {
+        alt: "Dr. Santosh Kulkarni at his consultation desk in Niramay Women's Clinic",
+        title: "Doctor's Consultation Desk",
+      },
+      {
+        alt: "Dr. Santosh Kulkarni sitting in his clinic office",
+        title: "Doctor's Office Setting",
       }
     ],
     closeLabel: "Close lightbox"
