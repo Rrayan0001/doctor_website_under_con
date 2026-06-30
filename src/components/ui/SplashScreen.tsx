@@ -116,56 +116,17 @@ export default function SplashScreen({ durationMs = 4300, onComplete }: SplashSc
             transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="relative flex size-[min(50vw,250px)] min-h-40 min-w-40 items-center justify-center">
+              {/* Elegant golden glow behind the logo image */}
+              <div className="absolute w-[180px] h-[180px] bg-[#d8b24a]/15 rounded-full blur-[40px] pointer-events-none z-0" />
+              
               <motion.img
                 src="/bg_logo.png"
-                alt="SK monogram logo reference"
-                className="absolute inset-[10%] h-4/5 w-4/5 object-contain opacity-0 mix-blend-screen"
-                animate={{ opacity: [0, 0.1, 0.2] }}
-                transition={{ delay: 1.05, duration: 1.4, ease: "easeOut" }}
+                alt="Niramay Women's Clinic Logo"
+                className="relative z-10 h-[85%] w-[85%] object-contain drop-shadow-[0_8px_32px_rgba(216,178,74,0.35)]"
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
               />
-              <svg viewBox="0 0 240 240" className="absolute inset-0 h-full w-full overflow-visible" role="img" aria-hidden="true">
-                <defs>
-                  <filter id="gold-glow" x="-60%" y="-60%" width="220%" height="220%">
-                    <feGaussianBlur stdDeviation="3.2" result="blur" />
-                    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.88 0 1 0 0 0.62 0 0 1 0 0.18 0 0 0 0.85 0" result="glow" />
-                    <feMerge>
-                      <feMergeNode in="glow" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  <linearGradient id="liquid-gold" x1="25%" y1="0%" x2="85%" y2="100%">
-                    <stop offset="0%" stopColor="#fff2b6" />
-                    <stop offset="45%" stopColor={GOLD} />
-                    <stop offset="100%" stopColor="#9a6b18" />
-                  </linearGradient>
-                </defs>
-                <motion.circle
-                  cx="120"
-                  cy="120"
-                  r="93"
-                  fill="none"
-                  stroke="url(#liquid-gold)"
-                  strokeWidth="2.8"
-                  strokeLinecap="round"
-                  filter="url(#gold-glow)"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.55, ease: EASE }}
-                  transform="rotate(-90 120 120)"
-                />
-                <motion.path
-                  d="M46 151 C53 176 88 176 90 137 C93 99 48 103 54 70 C57 45 88 45 94 71 M94 151 C101 176 136 176 138 137 C141 99 96 103 102 70 C105 45 136 45 142 71 M161 55 L161 180 M162 122 L191 61 M163 122 L200 180"
-                  fill="none"
-                  stroke="url(#liquid-gold)"
-                  strokeWidth="5.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  filter="url(#gold-glow)"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ delay: 0.22, duration: 1.75, ease: EASE }}
-                />
-              </svg>
             </div>
 
             <SplitRevealName />

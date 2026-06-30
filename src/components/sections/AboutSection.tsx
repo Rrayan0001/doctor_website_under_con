@@ -32,7 +32,7 @@ export default function AboutSection() {
               {/* Main Image Card */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-primary/5 bg-[#faf8f4]">
                 <Image
-                  src="/images/headshot_navy.jpeg"
+                  src="/images/headshot_clinic.jpeg"
                   alt={t.common.doctorName}
                   fill
                   className="object-cover object-top"

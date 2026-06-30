@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -43,50 +42,7 @@ const InstagramIcon = ({ size = 16 }: { size?: number }) => (
 
 export default function ContactSection() {
   const { t, language } = useLanguage();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
-  const handleServiceToggle = (service: string) => {
-    if (selectedServices.includes(service)) {
-      setSelectedServices(selectedServices.filter((s) => s !== service));
-    } else {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email || !message) {
-      alert(
-        language === "kn"
-          ? "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಕಡ್ಡಾಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ."
-          : language === "hi"
-          ? "कृपया सभी आवश्यक फ़ील्ड भरें।"
-          : "Please fill in all required fields."
-      );
-      return;
-    }
-    alert(t.contact.bookingAlert);
-    setName("");
-    setEmail("");
-    setMessage("");
-    setSelectedServices([]);
-  };
-
-  // Service check options adapted for gynecologist clinic
-  const servicesList = [
-    t.services.items.s1.title, // Pregnancy Care
-    t.services.items.s2.title, // PCOS Treatment
-    t.services.items.s3.title, // Infertility Evaluation
-    t.services.items.s4.title, // Laparoscopic Surgery
-    t.services.items.s5.title, // General Gynaecology
-    t.services.items.s6.title, // Menopause Support
-    t.services.items.s8.title, // High-Risk Pregnancy
-    language === "kn" ? "ವಾಡಿಕೆಯ ತಪಾಸಣೆ" : language === "hi" ? "नियमित जांच" : "Routine Check-up",
-    language === "kn" ? "ಇತರೆ" : language === "hi" ? "अन्य" : "Other",
-  ];
 
   // Splitting left title into rows to match reference image layout
   const titleWords =
@@ -205,150 +161,20 @@ export default function ContactSection() {
             </ul>
           </div>
 
-          {/* Right Column: Contact form container */}
-          <div className="lg:col-span-7 w-full">
-            <ScrollReveal variant="fade-left" delay={200} duration={1000}>
-              <div className="bg-[#071e22]/90 border border-white/10 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-2xl relative">
-                
-                {/* Form header */}
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-6 border-b border-white/10">
-                  <div className="text-left">
-                    <h3 className="font-display text-lg sm:text-xl font-bold tracking-wide text-white flex items-center gap-1.5">
-                      {language === "kn" ? "ಇಂದೇ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ! ✨" : language === "hi" ? "आज ही हमसे संपर्क करें! ✨" : "REACH OUT TO US TODAY! ✨"}
-                    </h3>
-                    <p className="text-xs text-white/60 font-sans mt-1">
-                      {language === "kn" ? "ನಮಗೆ ಇಮೇಲ್ ಮಾಡಿ: " : language === "hi" ? "हमें ईमेल करें: " : "Mail us at "}{" "}
-                      <a href="mailto:contact@dr-santosh.com" className="text-accent hover:underline font-semibold transition-all">
-                        contact@dr-santosh.com
-                      </a>
-                    </p>
-                  </div>
-
-                  {/* Or Social Links */}
-                  <div className="flex items-center space-x-3 self-start sm:self-center">
-                    <span className="text-[10px] font-bold text-white/40 tracking-widest">OR</span>
-                    <a
-                      href="https://facebook.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-accent hover:border-accent transition-colors"
-                      aria-label="Facebook"
-                    >
-                      <FacebookIcon size={16} />
-                    </a>
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-accent hover:border-accent transition-colors"
-                      aria-label="Instagram"
-                    >
-                      <InstagramIcon size={16} />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Form Body */}
-                <form onSubmit={handleSubmit} className="pt-6 space-y-6 text-left">
-                  <span className="text-white/40 text-[9px] font-bold tracking-widest mb-1 block uppercase font-sans">
-                    {language === "kn" ? "ನಮಗೆ ಸಂದೇಶ ಕಳುಹಿಸಿ" : language === "hi" ? "हमें संदेश भेजें" : "LEAVE US A BRIEF MESSAGE"}
-                  </span>
-
-                  {/* Two-column Input Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="text-accent text-[9px] font-bold tracking-widest mb-2 block uppercase font-sans">
-                        {language === "kn" ? "ನಿಮ್ಮ ಹೆಸರು" : language === "hi" ? "आपका नाम" : "YOUR NAME"}
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder={language === "kn" ? "ನಿಮ್ಮ ಹೆಸರು" : language === "hi" ? "आपका नाम" : "Your name"}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white font-sans text-sm placeholder-white/30 focus:outline-none focus:border-accent/50 w-full transition-all"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-accent text-[9px] font-bold tracking-widest mb-2 block uppercase font-sans">
-                        {language === "kn" ? "ಇಮೇಲ್ ವಿಳಾಸ" : language === "hi" ? "ईमेल पता" : "EMAIL"}
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        placeholder={language === "kn" ? "ಇಮೇಲ್" : language === "hi" ? "ईमेल" : "Email"}
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white font-sans text-sm placeholder-white/30 focus:outline-none focus:border-accent/50 w-full transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Textarea concern */}
-                  <div>
-                    <label className="text-accent text-[9px] font-bold tracking-widest mb-2 block uppercase font-sans">
-                      {language === "kn" ? "ಆರೋಗ್ಯ ಕಾಳಜಿ ಅಥವಾ ವಿಚಾರಣೆ..." : language === "hi" ? "स्वास्थ्य चिंता या पूछताछ..." : "BRIEFLY DESCRIBE YOUR HEALTH CONCERN OR INQUIRY..."}
-                    </label>
-                    <textarea
-                      required
-                      placeholder={language === "kn" ? "ನಿಮ್ಮ ಕಾಳಜಿಯನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ವಿವರಿಸಿ..." : language === "hi" ? "अपनी चिंता का संक्षेप में वर्णन करें..." : "Briefly describe your concern..."}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      className="bg-transparent border border-white/10 rounded-xl px-4 py-3 text-white font-sans text-sm placeholder-white/30 focus:outline-none focus:border-accent/50 w-full h-28 resize-none transition-all"
-                    />
-                  </div>
-
-                  {/* I'm looking for / Interested in */}
-                  <div>
-                    <label className="text-accent text-[9px] font-bold tracking-widest mb-3 block uppercase font-sans">
-                      {language === "kn" ? "ನಾನು ಆಸಕ್ತಿ ಹೊಂದಿದ್ದೇನೆ..." : language === "hi" ? "मैं इसमें रुचि रखता हूँ..." : "I'M INTERESTED IN..."}
-                    </label>
-                    
-                    {/* Grid of checkbox selections */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-2 text-white/80 font-sans text-sm">
-                      {servicesList.map((service, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center space-x-3 cursor-pointer group select-none"
-                        >
-                          <div
-                            onClick={() => handleServiceToggle(service)}
-                            className={`w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
-                              selectedServices.includes(service)
-                                ? "border-accent bg-accent/20"
-                                : "border-white/30 group-hover:border-white/60"
-                            }`}
-                          >
-                            {selectedServices.includes(service) && (
-                              <div className="w-2.5 h-2.5 rounded-full bg-accent" />
-                            )}
-                          </div>
-                          <span
-                            onClick={() => handleServiceToggle(service)}
-                            className={`text-xs sm:text-sm transition-colors ${
-                              selectedServices.includes(service) ? "text-white font-semibold" : "text-white/70 group-hover:text-white"
-                            }`}
-                          >
-                            {service}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="pt-4">
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.015 }}
-                      whileTap={{ scale: 0.985 }}
-                      className="w-full py-4 px-6 bg-accent hover:bg-accent-light text-primary-dark font-sans font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-lg hover:shadow-accent/20 cursor-pointer text-center"
-                    >
-                      {language === "kn" ? "ಸಂದೇಶ ಕಳುಹಿಸಿ" : language === "hi" ? "संदेश भेजें" : "SEND A MESSAGE"}
-                    </motion.button>
-                  </div>
-
-                </form>
+          {/* Right Column: Google Maps iframe */}
+          <div className="lg:col-span-7 w-full h-[450px]">
+            <ScrollReveal variant="fade-left" delay={200} duration={1000} className="w-full h-full">
+              <div className="w-full h-full bg-[#071e22]/90 border border-white/10 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl p-2">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.757049845778!2d72.82798687598818!3d19.119424050730438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9e17b8f9e6d%3A0x3f5d5cfc02b28c89!2sLink+Rd%2C+Andheri+West%2C+Mumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, borderRadius: "1.25rem" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Niramay Women's Clinic Location Map"
+                />
               </div>
             </ScrollReveal>
           </div>
