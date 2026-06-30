@@ -38,7 +38,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 export const metadata: Metadata = {
   metadataBase: new URL("https://santosh-doctor.vercel.app"),
   title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-  description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
+  description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
   keywords: [
     "gynecologist",
     "obstetrician",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
+    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: [
       {
         url: "/images/headshot_navy.jpeg",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
-    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Mumbai.",
+    description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: ["/images/headshot_navy.jpeg"],
   },
 };

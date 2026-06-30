@@ -61,15 +61,15 @@ export default function ContactSection() {
           <strong className="text-white block mb-0.5">{t.common.clinicName}</strong>
           <span className="block mb-1 text-white/80">
             {language === "kn" ? (
-              <>೪೦೨, ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩</>
+              <>ಆರ್. ಎನ್. ಶೆಟ್ಟಿ ಸ್ಟೇಡಿಯಂ ಹಿಂದೆ, ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಹತ್ತಿರ, ರಾಜ್ ನಗರ, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮</>
             ) : language === "hi" ? (
-              <>402, मेडिकल एन्क्लेव, लिंक रोड, अंधेरी वेस्ट, मुंबई &mdash; 400053</>
+              <>आर. एन. शेट्टी स्टेडियम के पीछे, के. सी. पार्क पोस्ट ऑफिस के पास, राज नगर, धारवाड़, कर्नाटक 580008</>
             ) : (
-              <>402, Medical Enclave, Link Road, Andheri West, Mumbai &mdash; 400053</>
+              <>behind R N Shetty Stadium, near K C Park Post Office, Raj Nagar, Dharwad, Karnataka 580008</>
             )}
           </span>
           <a
-            href="https://maps.google.com/?q=Niramay+Women's+Clinic+Andheri+West+Mumbai"
+            href="https://maps.google.com/?q=behind+R+N+Shetty+Stadium+near+K+C+Park+Post+Office+Raj+Nagar+Dharwad+Karnataka+580008"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:text-accent-light hover:underline text-xs font-bold inline-flex items-center gap-1 transition-colors"
@@ -82,8 +82,8 @@ export default function ContactSection() {
     {
       icon: <Phone className="w-5 h-5 text-accent" />,
       content: (
-        <a href="tel:+919480422318" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
-          +91 94804 22318
+        <a href="tel:+918105074067" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
+          +91 81050 74067
         </a>
       ),
     },
@@ -166,7 +166,7 @@ export default function ContactSection() {
             <ScrollReveal variant="fade-left" delay={200} duration={1000} className="w-full h-full">
               <div className="w-full h-full bg-[#071e22]/90 border border-white/10 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl p-2">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.757049845778!2d72.82798687598818!3d19.119424050730438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9e17b8f9e6d%3A0x3f5d5cfc02b28c89!2sLink+Rd%2C+Andheri+West%2C+Mumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://maps.google.com/maps?q=behind+R+N+Shetty+Stadium+near+K+C+Park+Post+Office+Raj+Nagar+Dharwad+Karnataka+580008&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, borderRadius: "1.25rem" }}

@@ -22,7 +22,7 @@ export default function ServicesSection() {
     { num: "09", title: t.services.items.s9.title, desc: t.services.items.s9.desc, isFeatured: false },
   ];
 
-  const phoneNumber = "919480422318";
+  const phoneNumber = "918105074067";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
 
   return (

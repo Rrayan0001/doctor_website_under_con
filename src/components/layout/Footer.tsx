@@ -90,16 +90,16 @@ export default function Footer() {
     },
     {
       icon: <Phone size={18} className="text-accent flex-shrink-0" />,
-      text: "+91 98765 43210",
-      href: "tel:+919876543210",
+      text: "+91 81050 74067",
+      href: "tel:+918105074067",
     },
     {
       icon: <MapPin size={18} className="text-accent flex-shrink-0 mt-0.5" />,
       text: language === "kn"
-        ? "ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ೪೦೨ ಮೆಡಿಕಲ್ ಎನ್‌ಕ್ಲೇವ್, ಲಿಂಕ್ ರೋಡ್, ಅಂಧೇರಿ ವೆಸ್ಟ್, ಮುಂಬೈ — ೪೦೦೦೫೩"
+        ? "ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ಆರ್. ಎನ್. ಶೆಟ್ಟಿ ಸ್ಟೇಡಿಯಂ ಹಿಂದೆ, ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಹತ್ತಿರ, ರಾಜ್ ನಗರ, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮"
         : language === "hi"
-        ? "निरामय क्लिनिक, 402 मेडिकल एन्क्लेव, लिंक रोड, अंधेरी वेस्ट, मुंबई — 400053"
-        : "Niramay Women's Clinic, 402 Medical Enclave, Link Road, Andheri West, Mumbai — 400053",
+        ? "निरामय क्लिनिक, आर. एन. शेट्टी स्टेडियम के पीछे, के. सी. पार्क पोस्ट ऑफिस के पास, राज नगर, धारवाड़, कर्नाटक 580008"
+        : "Niramay Women's Clinic, behind R N Shetty Stadium, near K C Park Post Office, Raj Nagar, Dharwad, Karnataka 580008",
     },
   ];
 
