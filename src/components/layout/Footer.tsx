@@ -245,14 +245,13 @@ export default function Footer() {
             </span>
             <span className="hidden md:inline text-white/30">|</span>
             <span>
-              Developed by{" "}
               <a
                 href="https://kreosoftwares.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:text-accent-light font-semibold hover:underline transition-all"
               >
-                KREO
+                Developed by KREO
               </a>
             </span>
           </div>
