@@ -60,8 +60,14 @@ export default function Footer() {
     }
   };
 
+  interface FooterLink {
+    label: string;
+    href: string;
+    isExternal?: boolean;
+  }
+
   // Footer links structure using the website's translations
-  const footerLinks = [
+  const footerLinks: { title: string; links: FooterLink[] }[] = [
     {
       title: t.footer.quickLinks,
       links: [
@@ -71,7 +77,6 @@ export default function Footer() {
         { label: t.navbar.testimonials, href: "#testimonials" },
         { label: t.navbar.gallery, href: "#gallery" },
         { label: t.navbar.contact, href: "#contact" },
-        { label: "Showcase ✦", href: "/showcase", isExternal: true },
       ],
     },
   ];
