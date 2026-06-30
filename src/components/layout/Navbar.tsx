@@ -2,15 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, Calendar, Sun, Moon } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import CascadeText from "@/components/ui/CascadeText";
 
 export default function Navbar() {
   const { language, t, setLanguage } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -172,14 +170,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-all cursor-pointer text-primary"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
 
             <motion.a
               href="#contact"
@@ -270,7 +260,7 @@ export default function Navbar() {
 
         {/* Drawer Footer Actions (Language and Theme) */}
         <div className="flex flex-col gap-5 mt-auto pt-6 border-t border-primary/5">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-center gap-4">
             {/* Drawer Language Selector */}
             <div className="flex items-center bg-primary/5 border border-primary/10 rounded-full p-0.5 text-xs">
               <button
@@ -301,15 +291,6 @@ export default function Navbar() {
                 हिंदी
               </button>
             </div>
-
-            {/* Drawer Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-all cursor-pointer text-primary"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
           </div>
 
           {/* Drawer CTA */}

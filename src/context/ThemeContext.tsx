@@ -1,8 +1,7 @@
 "use client";
-
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark";
+type Theme = "light";
 
 interface ThemeContextType {
   theme: Theme;
@@ -12,38 +11,23 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Load theme from localStorage on mount, defaulting to light mode (bright mode)
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      setTheme("light");
-    }
+    // Clear any previously saved theme preferences and default to light mode
+    localStorage.removeItem("theme");
+    
+    // Explicitly remove the dark class from the root html element
+    document.documentElement.classList.remove("dark");
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-    
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [theme, mounted]);
-
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    // No-op: theme toggle feature is disabled
   };
 
-  // Prevent flash of incorrect theme by only rendering children after mount
+  // Prevent flash by only rendering children after mount
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
