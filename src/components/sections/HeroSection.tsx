@@ -17,83 +17,152 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, []);
 
-
-
   return (
     <section
       id="home"
-      className="relative min-h-screen lg:h-screen w-full flex flex-col lg:flex-row overflow-hidden bg-bg"
+      className="relative w-full overflow-hidden bg-bg"
     >
-      {/* LEFT SECTION (Text content + Golden background) */}
-      <div className="w-full lg:w-1/2 min-h-[55vh] lg:min-h-screen bg-[#b09838] flex flex-col justify-start lg:justify-center items-center px-6 sm:px-16 lg:px-24 pt-24 pb-16 lg:py-0 text-center relative overflow-hidden">
-        {/* Textured background overlay blending with clinical office image */}
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{ backgroundImage: "url('/images/clinical_scrubs_patients.jpeg')" }}
-        />
+      {/* ===================== MOBILE LAYOUT (< lg) ===================== */}
+      {/* Full-bleed photo with gradient overlay and text on top */}
+      <div className="lg:hidden relative w-full min-h-screen flex flex-col justify-end">
 
-        {/* Large Faint Initials Watermark in background */}
-        <div className="absolute -bottom-12 sm:-bottom-16 left-1/2 -translate-x-1/2 select-none pointer-events-none font-signature text-[8rem] xs:text-[10rem] sm:text-[14rem] md:text-[18rem] lg:text-[22rem] text-white/5 whitespace-nowrap leading-none z-0">
-          SK
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 flex flex-col items-center">
-          {/* Signature Title (Dr. Santosh Kulkarni) */}
-          <motion.h1
-            initial={{ opacity: 0, y: 35 }}
-            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
-            className="font-signature text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] text-white leading-none tracking-normal select-none mb-2 cursor-default"
-          >
-            {t.common.doctorName}
-          </motion.h1>
-
-          {/* Subtitle (BOARD CERTIFIED GYNECOLOGIST & OBSTETRICIAN) */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-sans text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold uppercase tracking-[0.2em] xs:tracking-[0.25em] text-white/80 mb-6 lg:mb-8 cursor-default"
-          >
-            {language === "en" ? "BOARD CERTIFIED GYNECOLOGIST & OBSTETRICIAN" : t.common.doctorSubtitle.toUpperCase()}
-          </motion.p>
-
-          {/* Localized bio paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="font-sans text-xs xs:text-sm sm:text-base text-white/95 leading-relaxed max-w-md md:max-w-lg mb-8 lg:mb-12 cursor-default"
-          >
-            {t.hero.description}
-          </motion.p>
-
-
-        </div>
-      </div>
-
-      {/* RIGHT SECTION (Doctor Portrait grayscale full-bleed) */}
-      <div className="w-full lg:w-1/2 flex-grow h-[40vh] min-h-[320px] lg:h-screen lg:min-h-0 relative overflow-hidden bg-zinc-200">
+        {/* Background portrait image — full-bleed */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={startAnim ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }}
-          transition={{ duration: 1.4, delay: 0.4 }}
-          className="w-full h-full relative"
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={startAnim ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.06 }}
+          transition={{ duration: 1.4, delay: 0.2 }}
+          className="absolute inset-0 w-full h-full"
         >
           <Image
             src="/images/headshot_navy.jpeg"
             alt={t.common.doctorName}
             fill
             priority
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-center filter grayscale contrast-[1.08] brightness-[0.98] transition-all duration-700 hover:scale-[1.02]"
+            sizes="100vw"
+            className="object-cover object-top filter grayscale contrast-[1.05] brightness-[0.95]"
           />
-          {/* Subtle gradient overlay to darken the bottom of portrait */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
         </motion.div>
 
+        {/* Strong gradient: transparent at top → solid gold/dark at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f10]/95 via-[#0d1f10]/40 to-transparent pointer-events-none" />
 
+        {/* Golden gradient accent strip at bottom-left */}
+        <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-[#7a5c00]/70 via-[#b09838]/20 to-transparent pointer-events-none" />
+
+        {/* Text content — pinned to bottom of screen */}
+        <div className="relative z-10 px-6 pb-10 pt-48 text-left flex flex-col gap-3">
+          
+          {/* Eyebrow badge */}
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-accent/90 font-sans"
+          >
+            ✦ {language === "en" ? "GYNECOLOGIST & WOMEN'S HEALTH SPECIALIST" : t.common.doctorSubtitle.toUpperCase()}
+          </motion.span>
+
+          {/* Doctor name — large signature font */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 1.1, delay: 0.55 }}
+            className="font-signature text-[3.8rem] leading-[0.95] text-white select-none cursor-default"
+          >
+            {t.common.doctorName}
+          </motion.h1>
+
+          {/* Divider */}
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={startAnim ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="w-16 h-[2px] bg-accent origin-left"
+          />
+
+          {/* Bio paragraph */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.8, delay: 1.05 }}
+            className="font-sans text-sm text-white/85 leading-relaxed max-w-xs cursor-default"
+          >
+            {t.hero.description}
+          </motion.p>
+        </div>
+      </div>
+
+      {/* ===================== DESKTOP LAYOUT (≥ lg) ===================== */}
+      {/* Side-by-side split: golden left, photo right */}
+      <div className="hidden lg:flex flex-row h-screen">
+
+        {/* LEFT SECTION (Text content + Golden background) */}
+        <div className="w-1/2 min-h-screen bg-[#b09838] flex flex-col justify-center items-center px-24 text-center relative overflow-hidden">
+          {/* Textured background overlay blending with clinical office image */}
+          <div
+            className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
+            style={{ backgroundImage: "url('/images/clinical_scrubs_patients.jpeg')" }}
+          />
+
+          {/* Large Faint Initials Watermark in background */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 select-none pointer-events-none font-signature text-[22rem] text-white/5 whitespace-nowrap leading-none z-0">
+            SK
+          </div>
+
+          {/* Content Container */}
+          <div className="relative z-10 flex flex-col items-center">
+            {/* Signature Title */}
+            <motion.h1
+              initial={{ opacity: 0, y: 35 }}
+              animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 35 }}
+              transition={{ duration: 1.2, delay: 0.2 }}
+              className="font-signature text-[7.5rem] text-white leading-none tracking-normal select-none mb-2 cursor-default"
+            >
+              {t.common.doctorName}
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-white/80 mb-8 cursor-default"
+            >
+              {language === "en" ? "BOARD CERTIFIED GYNECOLOGIST & OBSTETRICIAN" : t.common.doctorSubtitle.toUpperCase()}
+            </motion.p>
+
+            {/* Bio paragraph */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="font-sans text-base text-white/95 leading-relaxed max-w-lg mb-12 cursor-default"
+            >
+              {t.hero.description}
+            </motion.p>
+          </div>
+        </div>
+
+        {/* RIGHT SECTION (Doctor Portrait grayscale full-bleed) */}
+        <div className="w-1/2 h-screen relative overflow-hidden bg-zinc-200">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={startAnim ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }}
+            transition={{ duration: 1.4, delay: 0.4 }}
+            className="w-full h-full relative"
+          >
+            <Image
+              src="/images/headshot_navy.jpeg"
+              alt={t.common.doctorName}
+              fill
+              priority
+              sizes="50vw"
+              className="object-cover object-center filter grayscale contrast-[1.08] brightness-[0.98] transition-all duration-700 hover:scale-[1.02]"
+            />
+            {/* Subtle gradient overlay to darken the bottom of portrait */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
