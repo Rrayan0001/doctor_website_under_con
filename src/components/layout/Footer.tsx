@@ -219,7 +219,7 @@ export default function Footer() {
         <hr className="border-t border-white/10 my-8" />
 
         {/* Footer bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
+        <div className="relative z-[60] flex flex-col md:flex-row justify-between items-center text-sm space-y-4 md:space-y-0">
           {/* Social icons */}
           <div className="flex space-x-6 text-white/45">
             {socialLinks.map(({ icon, label, href }) => (
@@ -246,7 +246,7 @@ export default function Footer() {
             <span className="hidden md:inline text-white/30">|</span>
             <span>
               <a
-                href="https://kreosoftwares.in"
+                href="https://www.kreosoftwares.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:text-accent-light font-semibold hover:underline transition-all"
@@ -260,7 +260,7 @@ export default function Footer() {
 
       {/* Text hover effect */}
       <div className="flex h-[12rem] sm:h-[18rem] md:h-[24rem] lg:h-[30rem] -mt-16 sm:-mt-24 md:-mt-36 lg:-mt-52 -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-36 overflow-hidden">
-        <TextHoverEffect text="DR. SANTOSH" className="z-50" />
+        <TextHoverEffect text="DR. SANTOSH" className="z-10" />
       </div>
 
       <FooterBackgroundGradient />
