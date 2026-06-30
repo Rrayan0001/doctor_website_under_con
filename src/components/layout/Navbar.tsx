@@ -94,7 +94,11 @@ export default function Navbar() {
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, "#home")}
-            className="flex items-center gap-3 group cursor-pointer"
+            className={`flex items-center gap-2.5 group cursor-pointer transition-all duration-300 ${
+              isScrolled
+                ? "bg-transparent p-0 border-transparent shadow-none"
+                : "bg-white/80 backdrop-blur-md pl-2 pr-4 py-1.5 rounded-2xl border border-white/60 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+            }`}
           >
             <div className="flex-shrink-0 w-10 h-10 relative transition-transform group-hover:scale-105">
               <Image
