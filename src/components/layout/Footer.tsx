@@ -239,9 +239,23 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-center md:text-left text-xs text-white/50">
-            &copy; {new Date().getFullYear()} {t.common.clinicName}. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-2 text-center md:text-left text-xs text-white/50">
+            <span>
+              &copy; {new Date().getFullYear()} {t.common.clinicName}. All rights reserved.
+            </span>
+            <span className="hidden md:inline text-white/30">|</span>
+            <span>
+              Developed by{" "}
+              <a
+                href="https://kreosoftwares.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-accent-light font-semibold hover:underline transition-all"
+              >
+                KREO
+              </a>
+            </span>
+          </div>
         </div>
       </div>
 
