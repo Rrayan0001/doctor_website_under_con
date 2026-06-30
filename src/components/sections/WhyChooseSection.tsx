@@ -41,8 +41,8 @@ export default function WhyChooseSection() {
         {/* Centered White Section Header */}
         <div className="mb-16 text-center max-w-2xl mx-auto">
           <ScrollReveal variant="fade-down" delay={0}>
-            <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block animated-gradient-text">
-              {t.whyChoose.badge}
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest text-accent bg-accent/8 border border-accent/20 mb-5 select-none shadow-[0_2px_8px_rgba(200,153,74,0.08)]">
+              ✦ {t.whyChoose.badge}
             </span>
           </ScrollReveal>
           <ScrollReveal variant="blur-in" delay={150} duration={1000}>

@@ -48,14 +48,8 @@ export default function InfiniteMarquee({
               sizes="(max-w-768px) 250px, 320px"
               className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105"
             />
-            {/* Overlay gradient darkens on hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-40 group-hover:opacity-85 transition-opacity duration-[700ms] ease-out flex flex-col justify-end p-4 z-10">
-              {item.title && (
-                <p className="font-display text-base sm:text-lg font-bold text-white tracking-wider translate-y-2 group-hover:translate-y-0 transition-transform duration-[700ms] ease-out">
-                  {item.title}
-                </p>
-              )}
-            </div>
+            {/* Ambient hover overlay */}
+            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-[700ms] ease-out z-10" />
           </div>
         ))}
       </div>

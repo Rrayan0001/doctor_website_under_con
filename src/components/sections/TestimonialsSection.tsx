@@ -19,8 +19,8 @@ export default function TestimonialsSection() {
         {/* Section Label */}
         <div className="mb-12 text-left">
           <ScrollReveal variant="fade-up" delay={0}>
-            <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block animated-gradient-text">
-              {t.testimonials.badge}
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest text-accent bg-accent/8 border border-accent/20 mb-5 select-none shadow-[0_2px_8px_rgba(200,153,74,0.08)]">
+              ✦ {t.testimonials.badge}
             </span>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" delay={150} duration={900}>

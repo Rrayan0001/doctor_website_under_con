@@ -126,8 +126,8 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-10 text-left">
             <ScrollReveal variant="fade-right" delay={0} duration={900}>
               <div>
-                <span className="font-sans text-xs font-bold uppercase tracking-widest text-accent mb-4 block">
-                  {t.navbar.contact}
+                <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest text-accent bg-accent/8 border border-accent/20 mb-5 select-none shadow-[0_2px_8px_rgba(200,153,74,0.08)]">
+                  ✦ {t.navbar.contact}
                 </span>
                 <h2 className="font-display text-[2.5rem] sm:text-[3.2rem] lg:text-[3.8rem] font-bold text-white leading-none tracking-tight">
                   {titleWords.map((word, idx) => (
