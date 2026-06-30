@@ -47,7 +47,7 @@ export default function ServicesSection() {
               </span>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" delay={150} duration={900}>
-              <h2 className="font-display text-[2.2rem] sm:text-[3.2rem] font-bold text-primary-dark leading-tight whitespace-pre-line">
+              <h2 className="font-display text-[2.5rem] sm:text-[3.6rem] lg:text-[4rem] font-bold text-primary-dark leading-tight whitespace-pre-line">
                 {t.services.title}
               </h2>
             </ScrollReveal>

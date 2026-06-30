@@ -46,7 +46,7 @@ export default function WhyChooseSection() {
             </span>
           </ScrollReveal>
           <ScrollReveal variant="blur-in" delay={150} duration={1000}>
-            <h2 className="font-display text-[2.5rem] sm:text-[3.5rem] font-bold text-white leading-tight mb-4">
+            <h2 className="font-display text-[2.8rem] sm:text-[3.8rem] lg:text-[4.2rem] font-bold text-white leading-tight mb-4">
               {t.whyChoose.title}
             </h2>
             <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mt-6" />

@@ -72,7 +72,7 @@ export default function AboutSection() {
               </span>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" delay={200}>
-              <h2 className="font-display text-[1.8rem] sm:text-[3rem] font-bold text-primary-dark leading-tight mb-6 whitespace-pre-line">
+              <h2 className="font-display text-[2.2rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight mb-6 whitespace-pre-line">
                 {t.about.title}
               </h2>
             </ScrollReveal>

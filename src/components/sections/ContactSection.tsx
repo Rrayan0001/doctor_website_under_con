@@ -57,7 +57,7 @@ export default function ContactSection() {
     {
       icon: <MapPin className="w-5 h-5 text-accent" />,
       content: (
-        <div className="text-left font-sans text-sm sm:text-base">
+        <div className="text-left font-sans text-sm sm:text-base leading-relaxed">
           <strong className="text-white block mb-0.5">{t.common.clinicName}</strong>
           <span className="block mb-1 text-white/80">
             {language === "kn" ? (
@@ -98,7 +98,7 @@ export default function ContactSection() {
     {
       icon: <Clock className="w-5 h-5 text-accent" />,
       content: (
-        <div className="text-left font-sans text-sm sm:text-base text-white/80">
+        <div className="text-left font-sans text-sm sm:text-base text-white/80 leading-relaxed">
           <span className="block font-bold text-white mb-0.5">{t.contact.timingsLabel}</span>
           <span className="text-xs sm:text-sm">
             {t.contact.weekdays}: {language === "kn" ? "೯:೦೦ - ೧:೦೦ | ೫:೦೦ - ೮:೦೦" : language === "hi" ? "9:00 - 1:00 | 5:00 - 8:00" : "9:00 AM – 1:00 PM | 5:00 PM – 8:00 PM"}
@@ -129,9 +129,9 @@ export default function ContactSection() {
                 <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
                   ✦ {t.navbar.contact}
                 </span>
-                <h2 className="font-display text-[2.5rem] sm:text-[3.2rem] lg:text-[3.8rem] font-bold text-white leading-none tracking-tight">
+                <h2 className="font-display text-[2.8rem] sm:text-[3.6rem] lg:text-[4.2rem] font-bold text-white leading-none tracking-tight">
                   {titleWords.map((word, idx) => (
-                    <span key={idx} className="block mt-1">
+                    <span key={idx} className="block mt-3">
                       {word}
                     </span>
                   ))}
@@ -140,7 +140,7 @@ export default function ContactSection() {
             </ScrollReveal>
 
             {/* List elements */}
-            <ul className="space-y-6">
+            <ul className="space-y-8">
               {contactItems.map((item, idx) => (
                 <ScrollReveal
                   key={idx}

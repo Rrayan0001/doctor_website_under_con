@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
             </span>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" delay={150} duration={900}>
-            <h2 className="font-display text-[2.2rem] sm:text-[3rem] font-bold text-primary-dark leading-tight">
+            <h2 className="font-display text-[2.5rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight">
               {t.testimonials.title}
             </h2>
           </ScrollReveal>
