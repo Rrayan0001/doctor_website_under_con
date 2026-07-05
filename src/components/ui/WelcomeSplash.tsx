@@ -104,10 +104,10 @@ export default function WelcomeSplash({ onComplete }: { onComplete?: () => void 
               />
             </svg>
             <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-[0.1em] text-accent uppercase text-center">
-              Dr. Santosh Kulkarni
+              Dr. Santoshi Kulkarni
             </h1>
             <p className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#faf8f4]/60 mt-2 text-center">
-              Gynecologist &amp; Women&apos;s Health Specialist
+              Obstetrics, Gynaecology &amp; Infertility Specialist
             </p>
           </motion.div>
         </motion.div>

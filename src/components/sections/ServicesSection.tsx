@@ -1,11 +1,24 @@
 "use client";
 
-import { MessageSquare, Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users } from "lucide-react";
+import { MessageSquare, Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users, Sparkles, Calendar } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal, MagneticButton } from "@/components/ui/ScrollAnimations";
 import MouseGlowTracker from "@/components/ui/MouseGlowTracker";
 
-const SERVICE_ICONS = [Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users];
+const SERVICE_ICONS = [
+  Stethoscope, // s1: General Gynaecology
+  Baby,        // s2: Pregnancy & Antenatal Care
+  ShieldPlus,  // s3: Normal & C-Section Delivery
+  Activity,    // s4: PCOS / PCOD Treatment
+  Heart,       // s5: Infertility Evaluation & Treatment
+  Calendar,    // s6: Menstrual Disorders
+  Sun,         // s7: Menopause Management
+  Users,       // s8: Family Planning & Contraception
+  ShieldPlus,  // s9: High-Risk Pregnancy
+  Scissors,    // s10: Laparoscopic Surgery
+  Stethoscope, // s11: Fibroids & Ovarian Cysts
+  Sparkles,    // s12: Sustainable Menstruation Practices
+];
 
 export default function ServicesSection() {
   const { t } = useLanguage();
@@ -19,11 +32,14 @@ export default function ServicesSection() {
     { num: "06", title: t.services.items.s6.title, desc: t.services.items.s6.desc, isFeatured: false },
     { num: "07", title: t.services.items.s7.title, desc: t.services.items.s7.desc, isFeatured: false },
     { num: "08", title: t.services.items.s8.title, desc: t.services.items.s8.desc, isFeatured: true },
-    { num: "09", title: t.services.items.s9.title, desc: t.services.items.s9.desc, isFeatured: false },
+    { num: "09", title: t.services.items.s9.title, desc: t.services.items.s9.desc, isFeatured: true },
+    { num: "10", title: t.services.items.s10.title, desc: t.services.items.s10.desc, isFeatured: false },
+    { num: "11", title: t.services.items.s11.title, desc: t.services.items.s11.desc, isFeatured: false },
+    { num: "12", title: t.services.items.s12.title, desc: t.services.items.s12.desc, isFeatured: true },
   ];
 
   const phoneNumber = "918105074067";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santoshi%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
 
   return (
     <section id="services" className="py-24 bg-[#faf8f4] scroll-mt-20 relative overflow-hidden">
@@ -70,8 +86,8 @@ export default function ServicesSection() {
                 <MouseGlowTracker
                   key={idx}
                   glowColor={service.isFeatured ? "rgba(255, 255, 255, 0.08)" : "rgba(212, 175, 55, 0.08)"}
-                  className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item ${idx === 8 ? "services-grid-item--full" : ""
-                    } ${isMobileFeatured ? "mobile-featured" : ""
+                  className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item ${
+                    isMobileFeatured ? "mobile-featured" : ""
                     } ${service.isFeatured
                       ? "featured-service-card text-white"
                       : "bg-white/70 hover:bg-white"

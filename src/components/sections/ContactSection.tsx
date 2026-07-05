@@ -61,15 +61,15 @@ export default function ContactSection() {
           <strong className="text-white block mb-0.5">{t.common.clinicName}</strong>
           <span className="block mb-1 text-white/80">
             {language === "kn" ? (
-              <>ಆರ್. ಎನ್. ಶೆಟ್ಟಿ ಸ್ಟೇಡಿಯಂ ಹಿಂದೆ, ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಹತ್ತಿರ, ರಾಜ್ ನಗರ, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮</>
+              <>ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಎದುರು, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮</>
             ) : language === "hi" ? (
-              <>आर. एन. शेट्टी स्टेडियम के पीछे, के. सी. पार्क पोस्ट ऑफिस के पास, राज नगर, धारवाड़, कर्नाटक 580008</>
+              <>के. सी. पार्क पोस्ट ऑफिस के सामने, धारवाड़, कर्नाटक 580008</>
             ) : (
-              <>behind R N Shetty Stadium, near K C Park Post Office, Raj Nagar, Dharwad, Karnataka 580008</>
+              <>Opp. K. C. Park Post Office, Dharwad, Karnataka 580008</>
             )}
           </span>
           <a
-            href="https://maps.google.com/?q=behind+R+N+Shetty+Stadium+near+K+C+Park+Post+Office+Raj+Nagar+Dharwad+Karnataka+580008"
+            href="https://maps.google.com/?q=Tavargeri+Nursing+Home+Pvt+Ltd+Opp+K+C+Park+Post+Office+Dharwad"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:text-accent-light hover:underline text-xs font-bold inline-flex items-center gap-1 transition-colors"
@@ -82,16 +82,24 @@ export default function ContactSection() {
     {
       icon: <Phone className="w-5 h-5 text-accent" />,
       content: (
-        <a href="tel:+918105074067" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
-          +91 81050 74067
-        </a>
+        <div className="flex flex-col gap-1 text-white/80 font-sans text-xs sm:text-sm">
+          <a href="tel:+918105074067" className="hover:text-accent transition-colors">
+            +91 81050 74067 (Primary & WhatsApp)
+          </a>
+          <a href="tel:+9108362747603" className="hover:text-accent transition-colors">
+            0836-2747603
+          </a>
+          <a href="tel:+9108362448359" className="hover:text-accent transition-colors">
+            0836-2448359
+          </a>
+        </div>
       ),
     },
     {
       icon: <Mail className="w-5 h-5 text-accent" />,
       content: (
-        <a href="mailto:contact@dr-santosh.com" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
-          contact@dr-santosh.com
+        <a href="mailto:santoshikulkarni815@gmail.com" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
+          santoshikulkarni815@gmail.com
         </a>
       ),
     },
@@ -101,7 +109,9 @@ export default function ContactSection() {
         <div className="text-left font-sans text-sm sm:text-base text-white/80 leading-relaxed">
           <span className="block font-bold text-white mb-0.5">{t.contact.timingsLabel}</span>
           <span className="text-xs sm:text-sm">
-            {t.contact.weekdays}: {language === "kn" ? "೯:೦೦ - ೧:೦೦ | ೫:೦೦ - ೮:೦೦" : language === "hi" ? "9:00 - 1:00 | 5:00 - 8:00" : "9:00 AM – 1:00 PM | 5:00 PM – 8:00 PM"}
+            {t.contact.weekdays}: {language === "kn" ? "೧೨:೦೦ - ೭:೦೦" : language === "hi" ? "12:00 - 7:00" : "12:00 PM – 7:00 PM"}
+            <br />
+            {language === "kn" ? "ಶನಿವಾರ" : language === "hi" ? "शनिवार" : "Saturday"}: {language === "kn" ? "೧೨:೦೦ - ೩:೦೦" : language === "hi" ? "12:00 - 3:00" : "12:00 PM – 3:00 PM"}
             <br />
             <span className="text-red-400 font-semibold">{t.contact.sunday}: {t.contact.sundayClosed}</span>
           </span>
@@ -166,14 +176,14 @@ export default function ContactSection() {
             <ScrollReveal variant="fade-left" delay={200} duration={1000} className="w-full h-full">
               <div className="w-full h-full bg-[#071e22]/90 border border-white/10 backdrop-blur-md rounded-3xl overflow-hidden shadow-2xl p-2">
                 <iframe
-                  src="https://maps.google.com/maps?q=behind+R+N+Shetty+Stadium+near+K+C+Park+Post+Office+Raj+Nagar+Dharwad+Karnataka+580008&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Tavargeri+Nursing+Home+Pvt+Ltd+Opp+K+C+Park+Post+Office+Dharwad&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, borderRadius: "1.25rem" }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Niramay Women's Clinic Location Map"
+                  title="Tavargeri Nursing Home Pvt Ltd Location Map"
                 />
               </div>
             </ScrollReveal>

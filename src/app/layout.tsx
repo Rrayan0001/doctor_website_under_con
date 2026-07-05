@@ -37,7 +37,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://santosh-doctor.vercel.app"),
-  title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
+  title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
   description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
   keywords: [
     "gynecologist",
@@ -47,25 +47,26 @@ export const metadata: Metadata = {
     "infertility specialist",
     "laparoscopic surgery",
     "women's health",
-    "Dr. Santosh Kulkarni",
-    "gynecologist clinic"
+    "Dr. Santoshi Kulkarni",
+    "gynecologist clinic",
+    "Tavargeri Nursing Home Dharwad"
   ],
   openGraph: {
-    title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
+    title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
     description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: [
       {
         url: "/images/headshot_navy.jpeg",
         width: 768,
         height: 1284,
-        alt: "Dr. Santosh Kulkarni - Gynecologist & Women's Health Specialist",
+        alt: "Dr. Santoshi Kulkarni - Obstetrics, Gynaecology & Infertility Specialist",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Santosh Kulkarni | Gynecologist & Women's Health Specialist",
+    title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
     description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: ["/images/headshot_navy.jpeg"],
   },

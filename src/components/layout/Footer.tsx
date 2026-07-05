@@ -85,21 +85,26 @@ export default function Footer() {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-accent flex-shrink-0" />,
-      text: "contact@dr-santosh.com",
-      href: "mailto:contact@dr-santosh.com",
+      text: "santoshikulkarni815@gmail.com",
+      href: "mailto:santoshikulkarni815@gmail.com",
     },
     {
       icon: <Phone size={18} className="text-accent flex-shrink-0" />,
-      text: "+91 81050 74067",
+      text: "+91 81050 74067 (Primary & WhatsApp)",
       href: "tel:+918105074067",
+    },
+    {
+      icon: <Phone size={18} className="text-accent flex-shrink-0" />,
+      text: "0836-2747603 / 2448359",
+      href: "tel:+9108362747603",
     },
     {
       icon: <MapPin size={18} className="text-accent flex-shrink-0 mt-0.5" />,
       text: language === "kn"
-        ? "ನಿರಾಮಯ್ ಮಹಿಳಾ ಕ್ಲಿನಿಕ್, ಆರ್. ಎನ್. ಶೆಟ್ಟಿ ಸ್ಟೇಡಿಯಂ ಹಿಂದೆ, ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಹತ್ತಿರ, ರಾಜ್ ನಗರ, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮"
+        ? "ತವರಗೇರಿ ನರ್ಸಿಂಗ್ ಹೋಮ್ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್, ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಎದುರು, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮"
         : language === "hi"
-        ? "निरामय क्लिनिक, आर. एन. शेट्टी स्टेडियम के पीछे, के. सी. पार्क पोस्ट ऑफिस के पास, राज नगर, धारवाड़, कर्नाटक 580008"
-        : "Niramay Women's Clinic, behind R N Shetty Stadium, near K C Park Post Office, Raj Nagar, Dharwad, Karnataka 580008",
+        ? "तवरगेरी नर्सिंग होम प्राइवेट लिमिटेड, के. सी. पार्क पोस्ट ऑफिस के सामने, धारवाड़, कर्नाटक 580008"
+        : "Tavargeri Nursing Home Pvt Ltd, Opp. K. C. Park Post Office, Dharwad, Karnataka 580008",
     },
   ];
 
@@ -120,7 +125,7 @@ export default function Footer() {
               <div className="flex-shrink-0 w-10 h-10 relative">
                 <Image
                   src="/bg_logo.png"
-                  alt="Niramay Women's Clinic Logo"
+                  alt="Tavargeri Nursing Home Pvt Ltd Logo"
                   fill
                   className="object-contain"
                   sizes="40px"
@@ -260,7 +265,7 @@ export default function Footer() {
 
       {/* Text hover effect */}
       <div className="flex h-[12rem] sm:h-[18rem] md:h-[24rem] lg:h-[30rem] -mt-16 sm:-mt-24 md:-mt-36 lg:-mt-52 -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-36 overflow-hidden">
-        <TextHoverEffect text="DR. SANTOSH" className="z-10" />
+        <TextHoverEffect text="DR. SANTOSHI" className="z-10" />
       </div>
 
       <FooterBackgroundGradient />
