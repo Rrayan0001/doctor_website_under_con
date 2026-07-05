@@ -103,7 +103,7 @@ export default function Navbar() {
             <div className="flex-shrink-0 w-10 h-10 relative transition-transform group-hover:scale-105">
               <Image
                 src="/bg_logo.png"
-                alt="Niramay Women's Clinic Logo"
+                alt="Tavargeri Nursing Home Pvt Ltd Logo"
                 fill
                 className="object-contain"
                 sizes="40px"

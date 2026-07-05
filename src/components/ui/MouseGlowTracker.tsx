@@ -18,9 +18,17 @@ export default function MouseGlowTracker({
   const containerRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+
+  React.useEffect(() => {
+    setIsTouch(
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0
+    );
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
+    if (isTouch || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -30,19 +38,21 @@ export default function MouseGlowTracker({
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseMove={isTouch ? undefined : handleMouseMove}
+      onMouseEnter={isTouch ? undefined : () => setIsHovered(true)}
+      onMouseLeave={isTouch ? undefined : () => setIsHovered(false)}
       className={`relative group overflow-hidden ${className}`}
     >
       {/* absolute pointer-events-none overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500 ease-out z-0"
-        style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(${radius}px circle at ${coords.x}px ${coords.y}px, ${glowColor}, transparent 60%)`,
-        }}
-      />
+      {!isTouch && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 ease-out z-0"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(${radius}px circle at ${coords.x}px ${coords.y}px, ${glowColor}, transparent 60%)`,
+          }}
+        />
+      )}
       <div className="relative z-10 w-full h-full">{children}</div>
     </div>
   );

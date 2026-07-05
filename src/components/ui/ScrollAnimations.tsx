@@ -79,10 +79,23 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Use smaller threshold on mobile so content reveals sooner
+    const activeThreshold = isMobile ? 0.05 : threshold;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -93,29 +106,44 @@ export function ScrollReveal({
           setIsVisible(false);
         }
       },
-      { threshold, rootMargin: "0px 0px -50px 0px" }
+      { threshold: activeThreshold, rootMargin: "0px 0px -30px 0px" }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [threshold, once]);
+  }, [threshold, once, isMobile]);
 
   const styles = VARIANT_STYLES[variant];
   const isBounce = variant === "bounce-in";
+
+  // Lighten animations for mobile (smaller offsets or durations)
+  let fromClass = styles.from;
+  let activeDuration = duration;
+
+  if (isMobile) {
+    activeDuration = Math.min(duration, 500); // Max 500ms transition on mobile for snappiness
+    fromClass = fromClass
+      .replace("translate-y-[60px]", "translate-y-[20px]")
+      .replace("-translate-y-[40px]", "-translate-y-[10px]")
+      .replace("-translate-x-[60px]", "-translate-x-[15px]")
+      .replace("translate-x-[60px]", "translate-x-[15px]")
+      .replace("scale-[0.85]", "scale-[0.95]")
+      .replace("scale-[0.3]", "scale-[0.7]");
+  }
 
   return (
     <div
       ref={ref}
       className={`transition-all ${
         isBounce ? "sr-bounce-transition" : ""
-      } ${isVisible ? styles.to : styles.from} ${className}`}
+      } ${isVisible ? styles.to : fromClass} ${className}`}
       style={{
-        transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`,
+        transitionDuration: `${activeDuration}ms`,
+        transitionDelay: isMobile ? `${Math.min(delay, 100)}ms` : `${delay}ms`, // Cap mobile stagger delays to feel faster
         transitionTimingFunction: isBounce
           ? "cubic-bezier(0.34, 1.56, 0.64, 1)"
           : "cubic-bezier(0.16, 1, 0.3, 1)",
-        willChange: "transform, opacity, filter",
+        willChange: "transform, opacity",
       }}
     >
       {children}
