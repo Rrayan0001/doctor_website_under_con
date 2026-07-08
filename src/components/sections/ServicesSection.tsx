@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users, Sparkles, Calendar } from "lucide-react";
+import { MessageSquare, Baby, Stethoscope, Heart, Scissors, ClipboardList, Sun, Activity, ShieldPlus, Users, Sparkles, Calendar, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollReveal, MagneticButton } from "@/components/ui/ScrollAnimations";
 import MouseGlowTracker from "@/components/ui/MouseGlowTracker";
@@ -38,8 +38,13 @@ export default function ServicesSection() {
     { num: "12", title: t.services.items.s12.title, desc: t.services.items.s12.desc, isFeatured: true },
   ];
 
-  const phoneNumber = "918105074067";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.querySelector("#contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section id="services" className="py-24 bg-[#faf8f4] scroll-mt-20 relative overflow-hidden">
@@ -171,16 +176,15 @@ export default function ServicesSection() {
               </p>
             </div>
             <MagneticButton>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3.5 bg-emerald-600 text-white font-sans font-semibold rounded-full shadow-md hover:bg-emerald-700 hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 flex-shrink-0 whitespace-nowrap cursor-pointer glow-pulse-btn"
-              >
-                <MessageSquare className="w-4 h-4 fill-current" />
-                {t.common.whatsappConsultation}
-              </a>
-            </MagneticButton>
+            <a
+              href="#contact"
+              onClick={handleContactClick}
+              className="px-6 py-3.5 bg-primary text-white font-sans font-semibold rounded-full shadow-md hover:bg-primary-dark hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 flex-shrink-0 whitespace-nowrap cursor-pointer glow-pulse-btn"
+            >
+              <ArrowRight className="w-4 h-4" />
+              {t.common.contactMe}
+            </a>
+          </MagneticButton>
           </div>
         </ScrollReveal>
 

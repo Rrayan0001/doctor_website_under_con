@@ -83,9 +83,6 @@ export default function ContactSection() {
       icon: <Phone className="w-5 h-5 text-accent" />,
       content: (
         <div className="flex flex-col gap-1 text-white/80 font-sans text-xs sm:text-sm">
-          <a href="tel:+918105074067" className="hover:text-accent transition-colors">
-            +91 81050 74067 (Primary & WhatsApp)
-          </a>
           <a href="tel:+9108362747603" className="hover:text-accent transition-colors">
             0836-2747603
           </a>
@@ -93,14 +90,6 @@ export default function ContactSection() {
             0836-2448359
           </a>
         </div>
-      ),
-    },
-    {
-      icon: <Mail className="w-5 h-5 text-accent" />,
-      content: (
-        <a href="mailto:santoshikulkarni815@gmail.com" className="hover:text-accent text-white/80 font-sans text-sm sm:text-base transition-colors">
-          santoshikulkarni815@gmail.com
-        </a>
       ),
     },
     {

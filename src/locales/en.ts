@@ -7,6 +7,7 @@ export const en = {
     whatsappDoctor: "WhatsApp Doctor",
     whatsappConsultation: "WhatsApp Consultation",
     whatsappNow: "WhatsApp Now",
+    contactMe: "Contact Me",
     yearsExperience: "Years Experience",
     patientsTreated: "Patients Treated",
     womenTreated: "Women Treated",
@@ -106,7 +107,7 @@ export const en = {
       },
       s8: {
         title: "Family Planning & Contraception",
-        desc: "Knowledge, attitude, and practice support for modern contraceptive methods.",
+        desc: "Detailed discussion and advice on various birth control options and procedures.",
       },
       s9: {
         title: "High-Risk Pregnancy",
@@ -126,7 +127,7 @@ export const en = {
       }
     },
     bannerTitle: "Not sure which treatment is right for you?",
-    bannerDesc: "Connect with Dr. Kulkarni's team on WhatsApp for quick guidance.",
+    bannerDesc: "Connect with Dr. Kulkarni's team for quick guidance.",
   },
   whyChoose: {
     badge: "WHY CHOOSE US",
@@ -134,7 +135,7 @@ export const en = {
     pillars: [
       {
         title: "Evidence-Based Medicine",
-        desc: "Every diagnosis follows the latest international clinical guidelines — no guesswork, no shortcuts.",
+        desc: "Every diagnosis & management follows the latest international clinical guidelines.",
       },
       {
         title: "Patient-First Communication",

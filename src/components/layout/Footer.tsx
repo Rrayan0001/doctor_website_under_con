@@ -84,16 +84,6 @@ export default function Footer() {
   // Contact info data of the clinic
   const contactInfo = [
     {
-      icon: <Mail size={18} className="text-accent flex-shrink-0" />,
-      text: "santoshikulkarni815@gmail.com",
-      href: "mailto:santoshikulkarni815@gmail.com",
-    },
-    {
-      icon: <Phone size={18} className="text-accent flex-shrink-0" />,
-      text: "+91 81050 74067 (Primary & WhatsApp)",
-      href: "tel:+918105074067",
-    },
-    {
       icon: <Phone size={18} className="text-accent flex-shrink-0" />,
       text: "0836-2747603 / 2448359",
       href: "tel:+9108362747603",

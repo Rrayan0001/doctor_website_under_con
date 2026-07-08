@@ -44,14 +44,14 @@ export default function StatsCounter() {
       decimals: 0,
     },
     {
-      number: 10000,
+      number: 100000,
       suffix: "+",
       label: "Patients Treated",
       icon: Heart,
       decimals: 0,
     },
     {
-      number: 5000,
+      number: 10000,
       suffix: "+",
       label: "Successful Deliveries",
       icon: Baby,
