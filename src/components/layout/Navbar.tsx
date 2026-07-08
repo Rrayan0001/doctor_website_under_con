@@ -228,11 +228,11 @@ export default function Navbar() {
           <div className="mb-10">
             <span className="font-display text-3xl font-bold text-primary block leading-tight">
               {language === "kn" ? (
-                <>ಡಾ. ಸಂತೋಷಿ<br />ಕುಲಕರ್ಣಿ</>
+                <>ಡಾ. ಸಂತೋಷ್<br />ಕುಲಕರ್ಣಿ</>
               ) : language === "hi" ? (
-                <>डॉ. संतोषी<br />कुलकर्णी</>
+                <>डॉ. संतोष<br />कुलकर्णी</>
               ) : (
-                <>Dr. Santoshi<br />Kulkarni</>
+                <>Dr. Santosh<br />Kulkarni</>
               )}
             </span>
             <span className="font-sans text-[10px] text-accent font-bold tracking-widest uppercase mt-2 block">

@@ -128,7 +128,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="font-sans text-sm font-semibold uppercase tracking-[0.25em] text-white/80 mb-8 cursor-default"
             >
-              {language === "en" ? "BOARD CERTIFIED GYNECOLOGIST & OBSTETRICIAN" : t.common.doctorSubtitle.toUpperCase()}
+              {language === "en" ? "DEDICATED TO ENHANCING WOMEN'S HEALTH & COMPREHENSIVE CARE." : t.common.doctorSubtitle.toUpperCase()}
             </motion.p>
 
             {/* Bio paragraph */}

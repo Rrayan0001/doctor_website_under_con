@@ -265,7 +265,7 @@ export default function Footer() {
 
       {/* Text hover effect */}
       <div className="flex h-[12rem] sm:h-[18rem] md:h-[24rem] lg:h-[30rem] -mt-16 sm:-mt-24 md:-mt-36 lg:-mt-52 -mb-10 sm:-mb-16 md:-mb-24 lg:-mb-36 overflow-hidden">
-        <TextHoverEffect text="DR. SANTOSHI" className="z-10" />
+        <TextHoverEffect text="DR. SANTOSH" className="z-10" />
       </div>
 
       <FooterBackgroundGradient />

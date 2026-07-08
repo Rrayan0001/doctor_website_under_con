@@ -1,7 +1,7 @@
 export const en = {
   common: {
-    doctorName: "Dr. Santoshi Kulkarni",
-    doctorSubtitle: "Obstetrics, Gynaecology & Infertility Specialist",
+    doctorName: "Dr. Santosh Kulkarni",
+    doctorSubtitle: "Obstetrician, Gynaecologist & Infertility Specialist",
     clinicName: "Tavargeri Nursing Home Pvt Ltd",
     bookConsultation: "Book Consultation",
     whatsappDoctor: "WhatsApp Doctor",
@@ -29,7 +29,7 @@ export const en = {
     titleLine1: "Expert Care for",
     titleLine2: "Every Stage of",
     titleLine3: "a Woman's Life.",
-    description: "Dr. Santoshi Kulkarni, MBBS, DGO, DNB, Fellowship Gynaec Laparoscopy — providing compassionate, evidence-based gynecology, obstetrics, and infertility care for over 15 years. Trusted by 10,000+ women.",
+    description: "Dr. Santosh Kulkarni, MBBS, DGO, DNB, Fellowship in Gynaec Laparoscopy — providing compassionate, evidence-based gynecology, obstetrics, and infertility care for over 15 years. Trusted by many women.",
     badgePregnancy: "High-Risk Pregnancy Specialist",
     badgeFellowship: "Fellowship Gynaec Laparoscopy",
     badgeFogsi: "DGO from AFMC, Pune",
@@ -55,8 +55,8 @@ export const en = {
   about: {
     badge: "ABOUT THE DOCTOR",
     title: "A Legacy of Compassionate\nWomen's Healthcare",
-    para1: "Dr. Santoshi Kulkarni is a highly experienced Obstetrician, Gynaecologist, and Infertility Specialist with over 15 years of dedicated practice. A native of Hanamsagar, Tq. Kushtagi, Dt. Koppal, she did her schooling at ACO School Ilkal, PUC at JSS College Vidyagiri (Dharwad), MBBS from KIMS-Hubli, DGO from the prestigious Armed Forces Medical College (AFMC) Pune, and DNB from Government Maternity Hospital Puducherry.",
-    para2: "For the past 12 years, she has been serving the community at Tavargeri Nursing Home Pvt Ltd, Dharwad. Known for her patient-first and empathetic approach, she specializes in high-risk pregnancies, infertility treatments, and laparoscopic surgery, while actively promoting sustainable menstruation practices like menstrual cups.",
+    para1: "Dr. Santosh Kulkarni is a highly experienced Obstetrician, Gynaecologist, and Infertility Specialist with over 15 years of dedicated practice. A native of Hanamsagar, Tq. Kushtagi, Dt. Koppal, he did his schooling at ACO School Ilkal, PUC at JSS College Vidyagiri (Dharwad), MBBS from KIMS-Hubli, DGO from the prestigious Armed Forces Medical College (AFMC) Pune, and DNB from Government Maternity Hospital Puducherry.",
+    para2: "For the past 12 years, he has been serving the community at Tavargeri Nursing Home Pvt Ltd, Dharwad. Known for his patient-first and empathetic approach, he specializes in high-risk pregnancies, infertility treatments, and laparoscopic surgery, while actively promoting sustainable menstruation practices.",
     stats: {
       experience: "Years Experience",
       treated: "Patients Treated",
@@ -65,20 +65,20 @@ export const en = {
     },
     credentials: [
       "MBBS — KIMS, Hubli",
-      "DGO — Armed Forces Medical College (AFMC), Pune (AFMC Alumna)",
+      "DGO — Armed Forces Medical College (AFMC), Pune",
       "DNB — Govt Maternity Hospital, Puducherry",
       "Fellowship in Gynaec Laparoscopy",
     ]
   },
   services: {
-    badge: "TREATMENTS",
-    title: "Comprehensive Care,\nEvery Stage of Life",
+    badge: "TREATMENTS OFFERED",
+    title: "Comprehensive Care @ Every Stage of Life",
     subtitle: "From routine check-ups to complex surgical procedures — all under one roof.",
     mostRequested: "Most Requested",
     items: {
       s1: {
         title: "General Gynaecology",
-        desc: "Women's comprehensive health service & preventative checks.",
+        desc: "Women's comprehensive health service & preventive screening checks.",
       },
       s2: {
         title: "Pregnancy & Antenatal Care",
@@ -89,20 +89,20 @@ export const en = {
         desc: "Safe motherhood practices and expert care for standard and surgical delivery.",
       },
       s4: {
-        title: "PCOS / PCOD Treatment",
-        desc: "Evidence-based diagnosis, education, and lifestyle-led treatment plans for hormonal balance.",
+        title: "PCOS / PMOS (Polyendocrine Metabolic Ovarian Syndrome) Treatment",
+        desc: "Evidence-based diagnosis, education, and lifestyle modifications. Weight management and weight loss regimens through scientific evidence based modified nutrition therapy (MNT).",
       },
       s5: {
         title: "Infertility Evaluation & Treatment",
-        desc: "Detailed counselling, proper guidance, and ovulation/follicular monitoring.",
+        desc: "Detailed counselling, proper guidance, ovulation/follicular monitoring and IUI procedures.",
       },
       s6: {
         title: "Menstrual Disorders",
-        desc: "Managing pubertal menstrual problems, heavy bleeding, and irregular cycles.",
+        desc: "Evaluation and management of abnormal uterine bleeding in reproductive & perimenopausal women.",
       },
       s7: {
-        title: "Menopause Management",
-        desc: "Support for peri-menopausal and menopausal problems and their clinical management.",
+        title: "Menopausal Support",
+        desc: "Management of menopausal problems using non hormonal & Hormone Replacement Therapy (HRT)",
       },
       s8: {
         title: "Family Planning & Contraception",
@@ -113,16 +113,16 @@ export const en = {
         desc: "Close medical surveillance to attain a healthy pregnancy and safe outcome.",
       },
       s10: {
-        title: "Laparoscopic Surgery",
-        desc: "Minimally invasive keyhole surgery for fibroids, ovarian cysts, and hysterectomy with less pain.",
+        title: "Hysteroscopic and Laparoscopic Procedures",
+        desc: "Minimally invasive keyhole surgeries for infertility evaluation and treatment, management of ovarian cysts, and hysterectomy with less pain.",
       },
       s11: {
         title: "Fibroids & Ovarian Cysts",
-        desc: "Effective medical and surgical management of uterine fibroids and cysts.",
+        desc: "Effective medical and surgical management of uterine fibroids & other Benign gynaec problems.",
       },
       s12: {
         title: "Sustainable Menstruation Practices",
-        desc: "Promoting menstrual cups, period hygiene education, and sustainable practices.",
+        desc: "Promoting menstrual cups & use of intra uterine devices like mirena for heavy menstrual problems.",
       }
     },
     bannerTitle: "Not sure which treatment is right for you?",
@@ -190,23 +190,23 @@ export const en = {
     subtitle: "Explore our warm, patient-first clinic and professional settings.",
     items: [
       {
-        alt: "Dr. Santoshi Kulkarni consulting patient in clinic",
+        alt: "Dr. Santosh Kulkarni consulting patient in clinic",
         title: "Clinical Practice Setting",
       },
       {
-        alt: "Dr. Santoshi Kulkarni formal professional headshot",
-        title: "Dr. Santoshi Kulkarni Headshot",
+        alt: "Dr. Santosh Kulkarni formal professional headshot",
+        title: "Dr. Santosh Kulkarni Headshot",
       },
       {
-        alt: "Dr. Santoshi Kulkarni performing advanced gynaecological consultations",
+        alt: "Dr. Santosh Kulkarni performing advanced gynaecological consultations",
         title: "Patient Consultation Settings",
       },
       {
-        alt: "Dr. Santoshi Kulkarni at her consultation desk in Tavargeri Nursing Home Pvt Ltd",
+        alt: "Dr. Santosh Kulkarni at his consultation desk in Tavargeri Nursing Home Pvt Ltd",
         title: "Doctor's Consultation Desk",
       },
       {
-        alt: "Dr. Santoshi Kulkarni sitting in her clinic office",
+        alt: "Dr. Santosh Kulkarni sitting in his clinic office",
         title: "Doctor's Office Setting",
       }
     ],
@@ -236,6 +236,6 @@ export const en = {
     copyright: "© 2026 Tavargeri Nursing Home Pvt Ltd. All rights reserved.",
   },
   whatsappFAB: {
-    ariaLabel: "Message Dr. Santoshi Kulkarni on WhatsApp",
+    ariaLabel: "Message Dr. Santosh Kulkarni on WhatsApp",
   }
 };

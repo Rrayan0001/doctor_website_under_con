@@ -39,7 +39,7 @@ export default function ServicesSection() {
   ];
 
   const phoneNumber = "918105074067";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santoshi%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hi%20Dr.%20Santosh%2C%20I%27d%20like%20to%20ask%20about%20your%20services.`;
 
   return (
     <section id="services" className="py-24 bg-[#faf8f4] scroll-mt-20 relative overflow-hidden">

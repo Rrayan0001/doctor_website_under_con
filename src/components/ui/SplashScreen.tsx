@@ -10,7 +10,7 @@ type SplashScreenProps = {
 
 const GOLD = "#d8b24a";
 const EASE: [number, number, number, number] = [0.76, 0, 0.24, 1];
-const NAME_WORDS = ["Dr.", "Santoshi", "Kulkarni"];
+const NAME_WORDS = ["Dr.", "Santosh", "Kulkarni"];
 
 const particles = Array.from({ length: 18 }, (_, index) => ({
   id: index,
@@ -84,7 +84,7 @@ export default function SplashScreen({ durationMs = 4300, onComplete }: SplashSc
           initial={{ clipPath: "inset(0% 0% 0% 0% round 0px)" }}
           exit={{ clipPath: "inset(0% 0% 100% 0% round 0px 0px 40px 40px)" }}
           transition={{ duration: 1.28, ease: EASE }}
-          aria-label="Welcome animation for Dr. Santoshi Kulkarni"
+          aria-label="Welcome animation for Dr. Santosh Kulkarni"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(216,178,74,0.14),transparent_31%),radial-gradient(circle_at_20%_80%,rgba(0,94,94,0.34),transparent_36%),linear-gradient(180deg,#052427_0%,#031315_100%)]" />
           <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(245,221,160,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(245,221,160,0.1)_1px,transparent_1px)] [background-size:72px_72px]" />

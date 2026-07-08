@@ -32,7 +32,7 @@ export default function AboutSection() {
               {/* Main Image Card */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-primary/5 bg-[#faf8f4]">
                 <Image
-                  src="/images/headshot_clinic.jpeg"
+                  src="/images/headshot_about.jpeg"
                   alt={t.common.doctorName}
                   fill
                   className="object-cover object-top"
@@ -91,8 +91,8 @@ export default function AboutSection() {
             <div className="grid grid-cols-2 gap-4 w-full max-w-lg">
               {[
                 { value: 15, suffix: "+", label: t.about.stats.experience, decimals: 0 },
-                { value: 10000, suffix: "+", label: t.about.stats.treated, decimals: 0 },
-                { value: 2000, suffix: "+", label: t.about.stats.deliveries, decimals: 0 },
+                { value: 100000, suffix: "+", label: t.about.stats.treated, decimals: 0 },
+                { value: 10000, suffix: "+", label: t.about.stats.deliveries, decimals: 0 },
                 { value: 4.9, suffix: "/5", label: t.about.stats.rating, decimals: 1 },
               ].map((stat, idx) => (
                 <ScrollReveal key={idx} variant="scale-up" delay={400 + idx * 120}>

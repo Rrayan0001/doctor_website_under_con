@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans, Noto_Sans_Kannada, Noto_Sans_Devanagari, Mr_De_Haviland } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans, Noto_Sans_Kannada, Noto_Sans_Devanagari, Caveat } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
@@ -11,10 +11,10 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const signature = Mr_De_Haviland({
+const signature = Caveat({
   subsets: ["latin"],
   variable: "--font-signature",
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const dmSans = DM_Sans({
@@ -37,7 +37,7 @@ const notoDevanagari = Noto_Sans_Devanagari({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://santosh-doctor.vercel.app"),
-  title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
+  title: "Dr. Santosh Kulkarni | Obstetrician, Gynaecologist & Infertility Specialist",
   description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
   keywords: [
     "gynecologist",
@@ -47,26 +47,26 @@ export const metadata: Metadata = {
     "infertility specialist",
     "laparoscopic surgery",
     "women's health",
-    "Dr. Santoshi Kulkarni",
+    "Dr. Santosh Kulkarni",
     "gynecologist clinic",
     "Tavargeri Nursing Home Dharwad"
   ],
   openGraph: {
-    title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
+    title: "Dr. Santosh Kulkarni | Obstetrician, Gynaecologist & Infertility Specialist",
     description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: [
       {
         url: "/images/headshot_navy.jpeg",
         width: 768,
         height: 1284,
-        alt: "Dr. Santoshi Kulkarni - Obstetrics, Gynaecology & Infertility Specialist",
+        alt: "Dr. Santosh Kulkarni - Obstetrician, Gynaecologist & Infertility Specialist",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Santoshi Kulkarni | Obstetrics, Gynaecology & Infertility Specialist",
+    title: "Dr. Santosh Kulkarni | Obstetrician, Gynaecologist & Infertility Specialist",
     description: "Trusted gynecologist providing compassionate, evidence-based care for pregnancy, fertility, PCOS, menopause, and advanced gynecological treatments in Dharwad.",
     images: ["/images/headshot_navy.jpeg"],
   },
