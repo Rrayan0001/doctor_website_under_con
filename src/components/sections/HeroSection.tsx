@@ -50,14 +50,14 @@ export default function HeroSection() {
         <div className="absolute bottom-0 left-0 right-0 h-[55%] bg-gradient-to-t from-[#7a5c00]/70 via-[#b09838]/20 to-transparent pointer-events-none" />
 
         {/* Text content — pinned to bottom of screen */}
-        <div className="relative z-10 px-6 pb-10 pt-48 text-left flex flex-col gap-3">
+        <div className="relative z-10 px-6 pb-10 pt-48 text-center flex flex-col items-center gap-3 w-full">
           
           {/* Eyebrow badge */}
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-accent/90 font-sans"
+            className="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-accent/90 font-sans text-center"
           >
             ✦ {language === "en" ? "GYNECOLOGIST & WOMEN'S HEALTH SPECIALIST" : t.common.doctorSubtitle.toUpperCase()}
           </motion.span>
@@ -67,7 +67,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 1.1, delay: 0.55 }}
-            className="font-signature text-[3.8rem] leading-[0.95] text-white select-none cursor-default"
+            className="font-signature text-[3.8rem] leading-[0.95] text-white select-none cursor-default text-center"
           >
             {t.common.doctorName}
           </motion.h1>
@@ -77,7 +77,7 @@ export default function HeroSection() {
             initial={{ scaleX: 0, opacity: 0 }}
             animate={startAnim ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="w-16 h-[2px] bg-accent origin-left"
+            className="w-16 h-[2px] bg-accent origin-center"
           />
 
           {/* Bio paragraph */}
@@ -85,7 +85,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={startAnim ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.8, delay: 1.05 }}
-            className="font-sans text-sm text-white/85 leading-relaxed max-w-xs cursor-default"
+            className="font-sans text-sm text-white/85 leading-relaxed max-w-xs cursor-default text-justify"
           >
             {t.hero.description}
           </motion.p>

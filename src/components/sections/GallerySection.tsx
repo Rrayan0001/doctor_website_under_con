@@ -22,14 +22,24 @@ export default function GallerySection() {
       title: t.gallery.items[0]?.title,
     },
     {
-      src: "/images/headshot_navy.jpeg",
-      alt: t.gallery.items[1]?.alt,
-      title: t.gallery.items[1]?.title,
+      src: "/images/original_images/WhatsApp Image 2026-07-09 at 12.15.31 PM (1).jpeg",
+      alt: "Dr. Santosh Kulkarni consultation room",
+      title: "Clinic Consultation Room",
     },
     {
-      src: "/images/clinical_scrubs_patients.jpeg",
-      alt: t.gallery.items[2]?.alt,
-      title: t.gallery.items[2]?.title,
+      src: "/images/original_images/WhatsApp Image 2026-07-09 at 12.15.31 PM (2).jpeg",
+      alt: "Dr. Santosh Kulkarni patient waiting area",
+      title: "Patient Waiting Area",
+    },
+    {
+      src: "/images/original_images/WhatsApp Image 2026-07-09 at 12.15.32 PM (1).jpeg",
+      alt: "Dr. Santosh Kulkarni checkup facility",
+      title: "Checkup Facility",
+    },
+    {
+      src: "/images/original_images/WhatsApp Image 2026-07-09 at 12.15.32 PM.jpeg",
+      alt: "Dr. Santosh Kulkarni clinic entrance",
+      title: "Clinic Facility Entrance",
     },
     {
       src: "/gallery1.png",
@@ -106,14 +116,14 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-12 text-left max-w-2xl">
-          <ScrollReveal variant="fade-up" delay={0}>
-            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
+        <div className="mb-12 text-center flex flex-col items-center max-w-2xl mx-auto">
+          <ScrollReveal variant="fade-up" delay={0} className="w-full flex justify-center">
+            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block text-center">
               ✦ {t.gallery.badge}
             </span>
           </ScrollReveal>
-          <ScrollReveal variant="fade-up" delay={100}>
-            <p className="font-sans text-sm text-white/70">
+          <ScrollReveal variant="fade-up" delay={100} className="w-full">
+            <p className="font-sans text-sm text-white/70 text-justify">
               {t.gallery.subtitle}
             </p>
           </ScrollReveal>
@@ -133,9 +143,9 @@ export default function GallerySection() {
                 dimStep={0.15}
                 stiffness={170}
                 damping={26}
-                aspectRatio="3/4"
+                aspectRatio="4/3"
                 borderRadius={16}
-                width={250}
+                width={280}
               />
               
               {/* Fullscreen Zoom button */}
@@ -173,19 +183,24 @@ export default function GallerySection() {
                     style={{ listStyle: "none" }}
                   >
                     <div
-                      className="w-[80px] h-[100px] rounded-lg overflow-hidden bg-[#1d1d1d] cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-accent transition-colors relative"
+                      className="w-[88px] h-[66px] rounded-lg overflow-hidden bg-[#1d1d1d] cursor-grab active:cursor-grabbing border-2 border-transparent hover:border-accent transition-colors relative"
                       onClick={() => {
                         setActiveImage({ index, tick: Date.now() });
                       }}
                     >
+                      {/* Blurred background */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center filter blur-md scale-110 opacity-30 select-none pointer-events-none"
+                        style={{ backgroundImage: `url(${img.src})` }}
+                      />
                       <Image
                         src={img.src}
                         alt={img.alt}
                         fill
-                        className="object-cover pointer-events-none"
-                        sizes="80px"
+                        className="object-contain pointer-events-none z-10 relative"
+                        sizes="88px"
                       />
-                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-20">
                         <span className="text-[10px] text-white font-sans bg-black/40 px-1.5 py-0.5 rounded">
                           Bring Front
                         </span>
@@ -207,17 +222,22 @@ export default function GallerySection() {
                 {galleryImages.map((img, index) => (
                   <div
                     key={img.id}
-                    className="w-[70px] h-[90px] rounded-lg overflow-hidden bg-[#1d1d1d] border-2 border-transparent active:border-accent transition-colors relative cursor-pointer"
+                    className="w-[76px] h-[57px] rounded-lg overflow-hidden bg-[#1d1d1d] border-2 border-transparent active:border-accent transition-colors relative cursor-pointer"
                     onClick={() => {
                       setActiveImage({ index, tick: Date.now() });
                     }}
                   >
+                    {/* Blurred background */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center filter blur-md scale-110 opacity-30 select-none pointer-events-none"
+                      style={{ backgroundImage: `url(${img.src})` }}
+                    />
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className="object-cover pointer-events-none"
-                      sizes="70px"
+                      className="object-contain pointer-events-none z-10 relative"
+                      sizes="76px"
                     />
                   </div>
                 ))}

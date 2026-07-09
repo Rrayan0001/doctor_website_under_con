@@ -32,7 +32,7 @@ export default function AboutSection() {
               {/* Main Image Card */}
               <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg border border-primary/5 bg-[#faf8f4]">
                 <Image
-                  src="/images/headshot_about.jpeg"
+                  src="/images/original_images/About_us.jpeg"
                   alt={t.common.doctorName}
                   fill
                   className="object-cover object-top"
@@ -65,19 +65,19 @@ export default function AboutSection() {
           </ScrollReveal>
 
           {/* Right Column: Text and Stats (60% width / lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left">
+          <div className="lg:col-span-6 flex flex-col items-center text-center">
             <ScrollReveal variant="fade-up" delay={100}>
               <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
                 ✦ {t.about.badge}
               </span>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" delay={200}>
-              <h2 className="font-display text-[2.2rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight mb-6 whitespace-pre-line">
+              <h2 className="font-display text-[2.2rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight mb-6 whitespace-pre-line text-center">
                 {t.about.title}
               </h2>
             </ScrollReveal>
             <ScrollReveal variant="fade-up" delay={300}>
-              <div className="space-y-4 font-sans text-base text-text-muted leading-relaxed mb-8">
+              <div className="space-y-4 font-sans text-base text-text-muted leading-relaxed mb-8 text-center">
                 <p>
                   {t.about.para1}
                 </p>
@@ -98,7 +98,7 @@ export default function AboutSection() {
                 <ScrollReveal key={idx} variant="scale-up" delay={400 + idx * 120}>
                   <TiltCard intensity={5}>
                     <MouseGlowTracker>
-                      <div className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col shimmer-card h-full justify-center">
+                      <div className="bg-white border border-primary/5 p-4 rounded-2xl shadow-sm flex flex-col items-center text-center shimmer-card h-full justify-center">
                         <span className="font-display text-xl sm:text-3xl font-bold text-primary mb-1">
                           <AnimatedCounter value={stat.value} suffix={stat.suffix} decimals={stat.decimals} />
                         </span>

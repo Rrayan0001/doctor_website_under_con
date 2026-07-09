@@ -155,6 +155,7 @@ export const CardStack = React.memo(function CardStack({
                 touchAction: "none",
                 zIndex: baseZ,
                 transition: "box-shadow 0.3s cubic-bezier(.4,0,.2,1)",
+                backgroundColor: "#121212",
               }}
               animate={{
                 top: `calc(${vi * -offset}%)`,
@@ -178,13 +179,22 @@ export const CardStack = React.memo(function CardStack({
                   : {}
               }
             >
+              {/* Blurred background image for premium frosted glass ratio-filling effect */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center filter blur-xl scale-110 opacity-40 select-none pointer-events-none"
+                style={{ backgroundImage: `url(${src})` }}
+              />
+
+              {/* Contained image ensuring full visibility without cropping */}
               <img
                 src={src}
                 alt={alt || "Card image"}
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: "contain",
+                  position: "relative",
+                  zIndex: 10,
                   pointerEvents: "none",
                   display: "block",
                   transition: "filter 0.3s cubic-bezier(.4,0,.2,1)",

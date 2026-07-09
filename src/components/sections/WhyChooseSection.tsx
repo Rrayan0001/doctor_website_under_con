@@ -69,27 +69,27 @@ export default function WhyChooseSection() {
                     radius={250}
                     className="h-full rounded-2xl border border-white/10 bg-[#071e22]/50 backdrop-blur-md shadow-xl overflow-hidden transition-all duration-300 hover:border-accent/40 hover:-translate-y-2 hover:shadow-[0_10px_35px_rgba(10,79,82,0.4)] group"
                   >
-                    <div className="p-8 flex flex-col items-start justify-between h-full relative overflow-hidden min-h-[300px]">
+                    <div className="p-8 flex flex-col items-center text-center justify-between h-full w-full relative overflow-hidden min-h-[300px]">
                       {/* Glowing Accent Border Top */}
-                      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary-light via-accent to-primary-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary-light via-accent to-primary-light transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
 
                       {/* Watermark Number */}
                       <div className="absolute bottom-4 right-4 text-8xl font-display font-extrabold text-white/[0.02] group-hover:text-accent/[0.05] group-hover:scale-110 transition-all duration-500 select-none pointer-events-none">
                         {`0${idx + 1}`}
                       </div>
 
-                      <div className="w-full">
+                      <div className="w-full flex flex-col items-center">
                         {/* Interactive Animated Icon Container */}
                         <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-accent/10 group-hover:border-accent/30 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-inner">
                           {getIcon(idx)}
                         </div>
 
-                        <h3 className="font-display text-xl font-bold text-white mb-4 leading-snug group-hover:text-accent-light transition-colors duration-300 text-left">
+                        <h3 className="font-display text-xl font-bold text-accent mb-4 leading-snug transition-colors duration-300 text-center">
                           {pillar.title}
                         </h3>
                       </div>
 
-                      <p className="font-sans text-sm text-white/70 leading-relaxed group-hover:text-white/95 transition-colors duration-300 relative z-10 mt-2 text-left">
+                      <p className="font-sans text-sm text-white/60 leading-relaxed group-hover:text-white/85 transition-colors duration-300 relative z-10 mt-2 text-justify">
                         {pillar.desc}
                       </p>
                     </div>

@@ -57,9 +57,9 @@ export default function ContactSection() {
     {
       icon: <MapPin className="w-5 h-5 text-accent" />,
       content: (
-        <div className="text-left font-sans text-sm sm:text-base leading-relaxed">
-          <strong className="text-white block mb-0.5">{t.common.clinicName}</strong>
-          <span className="block mb-1 text-white/80">
+        <div className="text-center font-sans text-sm sm:text-base leading-relaxed">
+          <strong className="text-white block mb-0.5 text-center">{t.common.clinicName}</strong>
+          <span className="block mb-1 text-white/80 text-center">
             {language === "kn" ? (
               <>ಕೆ. ಸಿ. ಪಾರ್ಕ್ ಪೋಸ್ಟ್ ಆಫೀಸ್ ಎದುರು, ಧಾರವಾಡ, ಕರ್ನಾಟಕ ೫೮೦೦೦೮</>
             ) : language === "hi" ? (
@@ -72,7 +72,7 @@ export default function ContactSection() {
             href="https://maps.google.com/?q=Tavargeri+Nursing+Home+Pvt+Ltd+Opp+K+C+Park+Post+Office+Dharwad"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent-light hover:underline text-xs font-bold inline-flex items-center gap-1 transition-colors"
+            className="text-accent hover:text-accent-light hover:underline text-xs font-bold inline-flex items-center justify-center gap-1 transition-colors"
           >
             {t.contact.directions} <ArrowRight className="w-3 h-3" />
           </a>
@@ -82,7 +82,7 @@ export default function ContactSection() {
     {
       icon: <Phone className="w-5 h-5 text-accent" />,
       content: (
-        <div className="flex flex-col gap-1 text-white/80 font-sans text-xs sm:text-sm">
+        <div className="flex flex-col items-center gap-1 text-white/80 font-sans text-xs sm:text-sm text-center">
           <a href="tel:+9108362747603" className="hover:text-accent transition-colors">
             0836-2747603
           </a>
@@ -95,14 +95,14 @@ export default function ContactSection() {
     {
       icon: <Clock className="w-5 h-5 text-accent" />,
       content: (
-        <div className="text-left font-sans text-sm sm:text-base text-white/80 leading-relaxed">
-          <span className="block font-bold text-white mb-0.5">{t.contact.timingsLabel}</span>
-          <span className="text-xs sm:text-sm">
+        <div className="text-center font-sans text-sm sm:text-base text-white/80 leading-relaxed">
+          <span className="block font-bold text-white mb-0.5 text-center">{t.contact.timingsLabel}</span>
+          <span className="text-xs sm:text-sm text-center">
             {t.contact.weekdays}: {language === "kn" ? "೧೨:೦೦ - ೭:೦೦" : language === "hi" ? "12:00 - 7:00" : "12:00 PM – 7:00 PM"}
             <br />
             {language === "kn" ? "ಶನಿವಾರ" : language === "hi" ? "शनिवार" : "Saturday"}: {language === "kn" ? "೧೨:೦೦ - ೩:೦೦" : language === "hi" ? "12:00 - 3:00" : "12:00 PM – 3:00 PM"}
             <br />
-            <span className="text-red-400 font-semibold">{t.contact.sunday}: {t.contact.sundayClosed}</span>
+            <span className="text-red-400 font-semibold text-center">{t.contact.sunday}: {t.contact.sundayClosed}</span>
           </span>
         </div>
       ),
@@ -122,13 +122,13 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Heading and Contact details */}
-          <div className="lg:col-span-5 space-y-10 text-left">
-            <ScrollReveal variant="fade-right" delay={0} duration={900}>
-              <div>
-                <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
+          <div className="lg:col-span-5 space-y-10 flex flex-col items-center text-center">
+            <ScrollReveal variant="fade-up" delay={0} duration={900} className="w-full flex flex-col items-center">
+              <div className="flex flex-col items-center text-center">
+                <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block text-center">
                   ✦ {t.navbar.contact}
                 </span>
-                <h2 className="font-display text-[2.8rem] sm:text-[3.6rem] lg:text-[4.2rem] font-bold text-white leading-none tracking-tight">
+                <h2 className="font-display text-[2.8rem] sm:text-[3.6rem] lg:text-[4.2rem] font-bold text-white leading-none tracking-tight text-center">
                   {titleWords.map((word, idx) => (
                     <span key={idx} className="block mt-3">
                       {word}
@@ -139,19 +139,20 @@ export default function ContactSection() {
             </ScrollReveal>
 
             {/* List elements */}
-            <ul className="space-y-8">
+            <ul className="space-y-8 w-full flex flex-col items-center">
               {contactItems.map((item, idx) => (
                 <ScrollReveal
                   key={idx}
-                  variant="fade-right"
+                  variant="fade-up"
                   delay={100 + idx * 100}
                   duration={800}
+                  className="w-full flex flex-col items-center"
                 >
-                  <li className="flex items-start space-x-4">
-                    <div className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <li className="flex flex-col items-center text-center space-y-3">
+                    <div className="w-10 h-10 rounded-full border border-accent/30 flex items-center justify-center flex-shrink-0">
                       {item.icon}
                     </div>
-                    <div className="flex-1 text-white/80">
+                    <div className="text-white/80 text-center">
                       {item.content}
                     </div>
                   </li>

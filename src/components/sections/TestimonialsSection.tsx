@@ -17,14 +17,14 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Section Label */}
-        <div className="mb-12 text-left">
-          <ScrollReveal variant="fade-up" delay={0}>
-            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
+        <div className="mb-12 text-center flex flex-col items-center">
+          <ScrollReveal variant="fade-up" delay={0} className="w-full flex justify-center">
+            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block text-center">
               ✦ {t.testimonials.badge}
             </span>
           </ScrollReveal>
-          <ScrollReveal variant="fade-up" delay={150} duration={900}>
-            <h2 className="font-display text-[2.5rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight">
+          <ScrollReveal variant="fade-up" delay={150} duration={900} className="w-full">
+            <h2 className="font-display text-[2.5rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-primary-dark leading-tight text-center">
               {t.testimonials.title}
             </h2>
           </ScrollReveal>

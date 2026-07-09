@@ -99,7 +99,7 @@ export const en = {
       },
       s6: {
         title: "Menstrual Disorders",
-        desc: "Evaluation and management of abnormal uterine bleeding in reproductive & perimenopausal women.",
+        desc: "Managing pubertal menstrual problems, heavy bleeding, and irregular cycles. Evaluation and management of abnormal uterine bleeding in reproductive & perimenopausal women.",
       },
       s7: {
         title: "Menopausal Support",

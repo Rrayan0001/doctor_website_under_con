@@ -60,21 +60,19 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div className="max-w-2xl">
-            <ScrollReveal variant="fade-up" delay={0}>
-              <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block">
-                ✦ {t.services.badge}
-              </span>
-            </ScrollReveal>
-            <ScrollReveal variant="fade-up" delay={150} duration={900}>
-              <h2 className="font-display text-[2.5rem] sm:text-[3.6rem] lg:text-[4rem] font-bold text-primary-dark leading-tight whitespace-pre-line">
-                {t.services.title}
-              </h2>
-            </ScrollReveal>
-          </div>
-          <ScrollReveal variant="fade-left" delay={200}>
-            <p className="font-sans text-sm text-text-muted leading-relaxed max-w-xs text-left">
+        <div className="flex flex-col items-center text-center gap-4 mb-16 max-w-3xl mx-auto">
+          <ScrollReveal variant="fade-up" delay={0} className="w-full flex justify-center">
+            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-2 block text-center">
+              ✦ {t.services.badge}
+            </span>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" delay={150} duration={900} className="w-full">
+            <h2 className="font-display text-[2.5rem] sm:text-[3.6rem] lg:text-[4rem] font-bold text-primary-dark leading-tight whitespace-pre-line text-center">
+              {t.services.title}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal variant="fade-up" delay={200} className="w-full">
+            <p className="font-sans text-sm text-text-muted leading-relaxed max-w-xl text-center mx-auto mt-2">
               {t.services.subtitle}
             </p>
           </ScrollReveal>
@@ -90,66 +88,51 @@ export default function ServicesSection() {
               return (
                 <MouseGlowTracker
                   key={idx}
-                  glowColor={service.isFeatured ? "rgba(255, 255, 255, 0.08)" : "rgba(212, 175, 55, 0.08)"}
+                  glowColor="rgba(212, 175, 55, 0.08)"
                   className={`group relative p-7 md:p-9 transition-all duration-300 cursor-default services-grid-item ${
                     isMobileFeatured ? "mobile-featured" : ""
                     } ${service.isFeatured
-                      ? "featured-service-card text-white"
+                      ? "featured-service-card"
                       : "bg-white/70 hover:bg-white"
                     }`}
                 >
                   {/* Hover glow for light cards */}
                   <div className="service-glow" />
 
-                  <div className="relative z-10 flex items-start gap-5">
+                  <div className="relative z-10 flex flex-col items-center text-center h-full">
                     {/* Icon container */}
                     <div
-                      className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 mt-1 service-icon-container ${service.isFeatured
-                          ? "bg-white/10 border border-white/15 group-hover:bg-white/15"
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 mb-5 service-icon-container ${service.isFeatured
+                          ? "bg-accent/10 border border-accent/15 group-hover:bg-accent/15"
                           : "bg-primary/6 border border-primary/8 group-hover:bg-primary/10 group-hover:border-primary/15"
                         }`}
                     >
                       <Icon
-                        className={`w-5 h-5 service-icon ${service.isFeatured ? "text-accent-light" : "text-primary"}`}
+                        className={`w-5 h-5 service-icon ${service.isFeatured ? "text-accent" : "text-primary"}`}
                         strokeWidth={1.5}
                       />
                     </div>
 
                     {/* Text content */}
-                    <div className="flex-grow flex flex-col">
-                      <div className="flex items-center justify-between gap-3 mb-2">
-                        <div className="flex items-center gap-3">
-                          <span
-                            className={`font-sans text-[10px] font-bold tracking-[0.15em] select-none service-number ${service.isFeatured ? "text-accent-light/70" : "text-text-faint"
-                              }`}
-                          >
-                            {service.num}
-                          </span>
-                        </div>
-                        {/* Arrow indicator */}
-                        <span
-                          className={`text-base leading-none opacity-0 group-hover:opacity-100 transition-all duration-200 service-arrow ${service.isFeatured ? "text-accent-light" : "text-primary"
-                            }`}
-                        >
-                          →
-                        </span>
-                      </div>
+                    <div className="flex-grow flex flex-col items-center">
+                      <span
+                        className={`font-sans text-[10px] font-bold tracking-[0.15em] select-none service-number mb-2 ${service.isFeatured ? "text-accent/80" : "text-text-faint"}`}
+                      >
+                        {service.num}
+                      </span>
 
                       <h3
-                        className={`font-display text-lg sm:text-xl font-bold leading-snug mb-2 service-title ${
+                        className={`font-display text-lg sm:text-xl font-bold leading-snug mb-3 service-title ${
                           service.num === "01"
-                            ? "service-title-gold text-accent-light"
-                            : service.isFeatured
-                              ? "text-white"
-                              : "text-primary-dark group-hover:text-primary transition-colors duration-200"
+                            ? "service-title-gold text-accent"
+                            : "text-primary-dark group-hover:text-primary transition-colors duration-200"
                         }`}
                       >
                         {service.title}
                       </h3>
 
                       <p
-                        className={`font-sans text-sm leading-relaxed service-desc ${service.isFeatured ? "text-white/75" : "text-text-muted"
-                          }`}
+                        className="font-sans text-sm leading-relaxed service-desc text-text-muted"
                       >
                         {service.desc}
                       </p>
@@ -163,15 +146,15 @@ export default function ServicesSection() {
 
         {/* Bottom CTA Banner */}
         <ScrollReveal variant="fade-up" delay={200}>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-6 p-7 md:p-8 bg-white border border-primary/8 rounded-2xl shadow-sm shimmer-card">
-            <div className="text-left">
-              <div className="flex items-center gap-2 mb-1">
+          <div className="mt-10 flex flex-col items-center justify-center text-center gap-6 p-7 md:p-8 bg-white border border-primary/8 rounded-2xl shadow-sm shimmer-card max-w-3xl mx-auto">
+            <div className="text-center flex flex-col items-center">
+              <div className="flex items-center gap-2 mb-1 justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-heartbeat" />
                 <h4 className="font-display text-lg font-bold text-primary-dark">
                   {t.services.bannerTitle}
                 </h4>
               </div>
-              <p className="font-sans text-sm text-text-muted pl-3.5">
+              <p className="font-sans text-sm text-text-muted">
                 {t.services.bannerDesc}
               </p>
             </div>

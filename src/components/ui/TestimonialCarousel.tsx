@@ -68,21 +68,21 @@ export default function TestimonialCarousel({ testimonials }: TestimonialCarouse
 
                 <div className="relative z-10">
                   {/* Rating Stars */}
-                  <div className="flex gap-1 mb-4 text-accent">
+                  <div className="flex gap-1 mb-4 text-accent justify-center">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
 
                   {/* Quote content */}
-                  <p className="font-sans text-sm md:text-base text-text-muted leading-relaxed italic mb-6">
+                  <p className="font-sans text-sm md:text-base text-text-muted leading-relaxed italic mb-6 text-justify">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                 </div>
 
                 {/* Attribution footer */}
-                <div className="relative z-10 flex items-center justify-between border-t border-primary/5 pt-4 mt-auto">
-                  <div className="flex flex-col">
+                <div className="relative z-10 flex flex-col items-center border-t border-primary/5 pt-4 mt-auto w-full text-center">
+                  <div className="flex flex-col items-center">
                     <span className="font-display text-base font-bold text-primary-dark">
                       {item.author}
                     </span>

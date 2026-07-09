@@ -244,7 +244,7 @@ export default function Footer() {
                 href="https://www.kreosoftwares.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:text-accent-light font-semibold hover:underline transition-all"
+                className="text-accent hover:text-accent-light font-bold hover:underline transition-all px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/20 hover:bg-accent/15"
               >
                 Developed by KREO
               </a>
