@@ -52,7 +52,7 @@ export default function Home() {
               <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-widest uppercase text-accent animated-gradient-text">
                 Clinical Excellence
               </h2>
-              <p className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#faf8f4]/60 mt-4 max-w-md leading-relaxed">
+              <p className="font-sans text-[10px] sm:text-xs uppercase tracking-wider text-[#faf8f4]/60 mt-4 max-w-2xl leading-relaxed text-center">
                 Providing Compassionate and Advanced Gynecology Treatments
               </p>
             </div>

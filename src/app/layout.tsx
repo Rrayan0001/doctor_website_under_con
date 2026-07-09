@@ -81,8 +81,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${cormorant.variable} ${dmSans.variable} ${notoKannada.variable} ${notoDevanagari.variable} ${signature.variable} scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="font-sans bg-bg text-text antialiased transition-colors duration-300">
+      <body className="font-sans bg-bg text-text antialiased transition-colors duration-300" suppressHydrationWarning>
         <ThemeProvider>
           <LanguageProvider>
             {children}

@@ -72,8 +72,8 @@ export const en = {
     ]
   },
   services: {
-    badge: "TREATMENTS OFFERED",
-    title: "Comprehensive Care @ Every Stage of Life",
+    badge: "TREATMENTS",
+    title: "Comprehensive Care,\nEvery Stage of Life",
     subtitle: "From routine check-ups to complex surgical procedures — all under one roof.",
     mostRequested: "Most Requested",
     items: {
@@ -131,7 +131,7 @@ export const en = {
   },
   whyChoose: {
     badge: "WHY CHOOSE US",
-    title: "Why Thousands of Women Trust Dr. Kulkarni",
+    title: "Why Thousands of Women Trust\nDr. Kulkarni",
     pillars: [
       {
         title: "Evidence-Based Medicine",
@@ -188,6 +188,7 @@ export const en = {
   },
   gallery: {
     badge: "A GLIMPSE INTO OUR PRACTICE",
+    title: "Discover",
     subtitle: "Explore our warm, patient-first clinic and professional settings.",
     items: [
       {

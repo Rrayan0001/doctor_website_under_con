@@ -236,7 +236,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="flex flex-col md:flex-row items-center gap-2 text-center md:text-left text-xs text-white/50">
             <span>
-              &copy; {new Date().getFullYear()} {t.common.clinicName}. All rights reserved.
+              &copy; {new Date().getFullYear()} {t.common.doctorName}. All rights reserved.
             </span>
             <span className="hidden md:inline text-white/30">|</span>
             <span>

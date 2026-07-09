@@ -116,25 +116,25 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-12 text-center flex flex-col items-center max-w-2xl mx-auto">
+        <div className="mb-10 text-center flex flex-col items-center max-w-2xl mx-auto gap-2">
           <ScrollReveal variant="fade-up" delay={0} className="w-full flex justify-center">
-            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-4 block text-center">
+            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-1 block text-center">
               ✦ {t.gallery.badge}
             </span>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" delay={100} className="w-full">
-            <p className="font-sans text-sm text-white/70 text-justify">
-              {t.gallery.subtitle}
-            </p>
+            <h2 className="font-display text-[2.5rem] sm:text-[3.4rem] lg:text-[3.8rem] font-bold text-accent animated-gradient-text leading-tight text-center">
+              {t.gallery.title || "Discover"}
+            </h2>
           </ScrollReveal>
         </div>
 
         {/* Card Stack & Thumbnails Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-16 max-w-4xl mx-auto py-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-16 max-w-4xl mx-auto py-2">
           
           {/* Card Stack Wrapper */}
           <ScrollReveal variant="fade-right" duration={1000} delay={0} className="relative flex justify-center items-center">
-            <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center min-h-[480px] w-[320px] sm:w-[340px] md:w-[360px] gap-4">
+            <div className="relative p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col items-center justify-center min-h-[380px] w-[320px] sm:w-[340px] md:w-[360px] gap-4">
               <CardStack
                 images={galleryImages}
                 activeIndex={activeImage}
@@ -250,11 +250,11 @@ export default function GallerySection() {
       </div>
 
       {/* Infinite Image Marquee Slider */}
-      <div className="mt-16 border-t border-white/5 pt-12 w-full">
-        <ScrollReveal variant="fade-up" delay={100}>
-          <h3 className="font-display text-xl sm:text-2xl font-semibold text-accent text-center mb-8 uppercase tracking-widest">
-            Gallery Reel
-          </h3>
+      <div className="mt-10 border-t border-white/5 pt-8 w-full">
+        <ScrollReveal variant="fade-up" delay={100} className="w-full flex justify-center">
+          <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-8 block text-center">
+            ✦ Gallery Reel
+          </span>
         </ScrollReveal>
         <ScrollReveal variant="fade-up" delay={200}>
           <InfiniteMarquee items={images} speed={35} />

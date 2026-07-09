@@ -60,22 +60,29 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-4 mb-16 max-w-3xl mx-auto">
-          <ScrollReveal variant="fade-up" delay={0} className="w-full flex justify-center">
-            <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-2 block text-center">
-              ✦ {t.services.badge}
-            </span>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" delay={150} duration={900} className="w-full">
-            <h2 className="font-display text-[2.5rem] sm:text-[3.6rem] lg:text-[4rem] font-bold text-primary-dark leading-tight whitespace-pre-line text-center">
-              {t.services.title}
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" delay={200} className="w-full">
-            <p className="font-sans text-sm text-text-muted leading-relaxed max-w-xl text-center mx-auto mt-2">
-              {t.services.subtitle}
-            </p>
-          </ScrollReveal>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-12 mb-16">
+          {/* Left Side: Badge and Title */}
+          <div className="flex flex-col items-start text-left max-w-3xl">
+            <ScrollReveal variant="fade-up" delay={0} className="w-full">
+              <span className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-accent mb-3 block text-left">
+                ✦ {t.services.badge}
+              </span>
+            </ScrollReveal>
+            <ScrollReveal variant="fade-up" delay={150} duration={900} className="w-full">
+              <h2 className="font-display text-[2.5rem] sm:text-[3.6rem] lg:text-[4rem] font-bold text-primary-dark leading-tight whitespace-pre-line text-left">
+                {t.services.title}
+              </h2>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Side: Subtitle */}
+          <div className="max-w-md lg:mb-2 flex-shrink-0">
+            <ScrollReveal variant="fade-up" delay={200} className="w-full">
+              <p className="font-sans text-sm text-text-muted leading-relaxed text-left">
+                {t.services.subtitle}
+              </p>
+            </ScrollReveal>
+          </div>
         </div>
 
         {/* Services — Premium 3×3 Editorial Grid */}
@@ -123,7 +130,7 @@ export default function ServicesSection() {
 
                       <h3
                         className={`font-display text-lg sm:text-xl font-bold leading-snug mb-3 service-title ${
-                          service.num === "01"
+                          service.isFeatured
                             ? "service-title-gold text-accent"
                             : "text-primary-dark group-hover:text-primary transition-colors duration-200"
                         }`}
