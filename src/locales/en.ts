@@ -73,7 +73,7 @@ export const en = {
   },
   services: {
     badge: "TREATMENTS",
-    title: "Comprehensive Care,\nEvery Stage of Life",
+    title: "Comprehensive Care @\nEvery Stage of Life",
     subtitle: "From routine check-ups to complex surgical procedures — all under one roof.",
     mostRequested: "Most Requested",
     items: {
@@ -130,7 +130,7 @@ export const en = {
     bannerDesc: "Connect with Dr. Kulkarni's team for quick guidance.",
   },
   whyChoose: {
-    badge: "WHY CHOOSE US",
+    badge: "MY APPROACH",
     title: "Why Thousands of Women Trust\nDr. Kulkarni",
     pillars: [
       {
