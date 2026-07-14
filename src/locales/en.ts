@@ -124,6 +124,14 @@ export const en = {
       s12: {
         title: "Sustainable Menstruation Practices",
         desc: "Promoting menstrual cups & use of intra uterine devices like mirena for heavy menstrual problems.",
+      },
+      s13: {
+        title: "Fetal Ultrasound & Invasive Procedures",
+        desc: "We have fetal USG done by fetal medicine specialist and also carry out invasive procedures like Amniocentesis to evaluate fetal chromosomal and genetic disorders and their proper counselling.",
+      },
+      s14: {
+        title: "Cancer Screening & Management",
+        desc: "Screening for Breast, Cervical and other Gynaec Cancers/ Malignancies and their surgical procedures by Our team of Surgical Oncologist.",
       }
     },
     bannerTitle: "Not sure which treatment is right for you?",

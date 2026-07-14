@@ -18,6 +18,8 @@ const SERVICE_ICONS = [
   Scissors,    // s10: Laparoscopic Surgery
   Stethoscope, // s11: Fibroids & Ovarian Cysts
   Sparkles,    // s12: Sustainable Menstruation Practices
+  Baby,        // s13: Fetal Ultrasound & Invasive Procedures
+  ClipboardList, // s14: Cancer Screening & Management
 ];
 
 export default function ServicesSection() {
@@ -36,6 +38,8 @@ export default function ServicesSection() {
     { num: "10", title: t.services.items.s10.title, desc: t.services.items.s10.desc, isFeatured: false },
     { num: "11", title: t.services.items.s11.title, desc: t.services.items.s11.desc, isFeatured: false },
     { num: "12", title: t.services.items.s12.title, desc: t.services.items.s12.desc, isFeatured: true },
+    { num: "13", title: t.services.items.s13.title, desc: t.services.items.s13.desc, isFeatured: true },
+    { num: "14", title: t.services.items.s14.title, desc: t.services.items.s14.desc, isFeatured: false },
   ];
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
